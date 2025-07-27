@@ -13,6 +13,7 @@
     --color-accent-purple-start: #a855f7; /* For gradients */
     --color-accent-purple-end: #6366f1;   /* For gradients */
     --color-accent-pink-start: #d946ef;   /* For gradients */
+    --gradient-purple-blue: linear-gradient(to right, var(--color-accent-purple-start), var(--color-accent-purple-end));
 
     /* Shadows */
     --shadow-light: 0px 4px 15px rgba(0, 0, 0, 0.05);
@@ -277,19 +278,43 @@ button {
 }
 
 /* The actual gradient blob within the #interactive-background */
-.hero-bg-animation::before { /* Using a pseudo-element for the blob */
+.hero-bg-animation::before {
     content: '';
     position: absolute;
     top: 50%;
-    left: 40%; /* Adjust horizontally within its parent */
-    transform: translate(-50%, -50%) rotate(45deg); /* Position and subtle rotation */
-    width: 650px; /* Size of the blob */
+    left: 40%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 650px;
     height: 650px;
-    border-radius: 45% 55% 50% 50% / 60% 40% 60% 40%; /* Creates a rounded, organic blob shape */
-    background: red; /* <<-- CHANGED FOR DIAGNOSIS: Make it bright red */
-    filter: blur(10px); /* <<-- CHANGED FOR DIAGNOSIS: Reduce blur greatly */
-    opacity: 1; /* <<-- CHANGED FOR DIAGNOSIS: Make it fully opaque */
-    /* You might add subtle animations here later if you wish */
+    border-radius: 45% 55% 50% 50% / 60% 40% 60% 40%; /* This is the irregular shape */
+    background: var(--gradient-purple-blue);
+    filter: blur(15px); /* <--- TEMPORARY: Drastically reduced blur */
+    opacity: 0.85;
+    animation: blobAnimation 15s infinite alternate ease-in-out;
+}
+
+/* --- Keyframe Animation for the Blob --- */
+@keyframes blobAnimation {
+    0% {
+        transform: translate(-50%, -50%) rotate(45deg) scale(1);
+        border-radius: 45% 55% 50% 50% / 60% 40% 60% 40%;
+    }
+    25% {
+        transform: translate(-52%, -48%) rotate(48deg) scale(1.02);
+        border-radius: 50% 50% 60% 40% / 55% 45% 55% 45%;
+    }
+    50% {
+        transform: translate(-48%, -50%) rotate(42deg) scale(1);
+        border-radius: 55% 45% 45% 55% / 40% 60% 40% 60%;
+    }
+    75% {
+        transform: translate(-50%, -52%) rotate(46deg) scale(1.01);
+        border-radius: 40% 60% 50% 50% / 65% 35% 65% 35%;
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(45deg) scale(1);
+        border-radius: 45% 55% 50% 50% / 60% 40% 60% 40%;
+    }
 }
 
 
