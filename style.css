@@ -286,9 +286,9 @@ button {
     width: 650px; /* Size of the blob */
     height: 650px;
     border-radius: 45% 55% 50% 50% / 60% 40% 60% 40%; /* Creates a rounded, organic blob shape */
-    background: var(--gradient-purple-blue); /* The distinct gradient */
-    filter: blur(80px); /* Soften the edges significantly */
-    opacity: 0.8; /* Slightly transparent */
+    background: red; /* <<-- CHANGED FOR DIAGNOSIS: Make it bright red */
+    filter: blur(10px); /* <<-- CHANGED FOR DIAGNOSIS: Reduce blur greatly */
+    opacity: 1; /* <<-- CHANGED FOR DIAGNOSIS: Make it fully opaque */
     /* You might add subtle animations here later if you wish */
 }
 
