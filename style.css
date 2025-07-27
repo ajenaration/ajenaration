@@ -88,6 +88,26 @@ button {
     padding: 0 40px; /* Padding for side edges on larger screens */
 }
 
+/* --- New Section Blocks Styling --- */
+.content-section-block {
+    background-color: var(--color-background-white); /* White background for the block */
+    padding: 60px 0; /* Padding inside the block, container handles left/right */
+    margin-bottom: 40px; /* Space between blocks */
+    border-radius: var(--border-radius-large); /* Rounded corners for the block */
+    box-shadow: var(--shadow-light); /* Subtle shadow for depth */
+    overflow: hidden; /* Ensures inner elements/shadows are contained */
+}
+
+/* General section padding adjustment - ensure it's not double-padding */
+.section-padded {
+    padding: 80px 0; /* Standard padding for sections that are not "blocks" themselves */
+}
+
+/* Adjust the container within these blocks to ensure proper horizontal spacing */
+.content-section-block > .container {
+    padding: 0 40px; /* Re-apply container padding */
+}
+
 /* --- Button Styling --- */
 .btn {
     display: inline-flex; /* Use flex for easy icon/text alignment if needed */
@@ -266,29 +286,29 @@ button {
 }
 
 /* The gradient blob background animation area */
-#interactive-background { /* Assuming this is the blob area */
+#interactive-background {
     position: absolute;
-    top: 50%;
-    right: 0; /* Position to the right side of the hero section */
-    transform: translateY(-50%); /* Center vertically */
-    width: 65%; /* Adjust width to make it span from right edge */
-    height: 100%; /* Occupy full height of hero */
-    z-index: 1; /* Keep it behind the main content */
-    pointer-events: none; /* Allows clicks to pass through to content below */
+    top: 0;   /* Changed: Anchor to the top of the hero section */
+    right: 0;
+    transform: none; /* Changed: Remove vertical centering */
+    width: 65%;
+    height: 100%; /* Keep full height, positioning inside will fine-tune */
+    z-index: 1;
+    pointer-events: none;
 }
 
 /* The actual gradient blob within the #interactive-background */
 .hero-bg-animation::before {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 40%;
-    transform: translate(-50%, -50%) rotate(45deg);
+    top: 20%;   /* Adjusted: Moves the blob down from the very top edge */
+    left: 70%; /* Adjusted: Moves the blob more towards the right side */
+    transform: translate(-50%, -50%) rotate(45deg); /* Keep this for self-centering and rotation */
     width: 650px;
     height: 650px;
-    border-radius: 45% 55% 50% 50% / 60% 40% 60% 40%; /* This is the irregular shape */
+    border-radius: 45% 55% 50% 50% / 60% 40% 60% 40%;
     background: var(--gradient-purple-blue);
-    filter: blur(15px); /* <--- TEMPORARY: Drastically reduced blur */
+    filter: blur(15px); /* Using the blur value that showed the irregular shape */
     opacity: 0.85;
     animation: blobAnimation 15s infinite alternate ease-in-out;
 }
