@@ -1,0 +1,354 @@
+/* --- Global Styles & Variables --- */
+:root {
+    /* Colors derived from the image */
+    --color-text-dark: #2c2e35; /* Primary dark text, e.g., for headings, nav links */
+    --color-text-medium: #555866; /* Secondary text, e.g., for paragraphs */
+    --color-text-light: #888ba3; /* Lighter text, e.g., footer, subtle details */
+    --color-background-white: #ffffff; /* Card backgrounds, header background */
+    --color-background-light-grey: #f7f7f9; /* Main body background */
+
+    --color-button-primary: #5c64f4; /* Blue button color */
+    --color-button-hover: #8e50e9; /* Purple hover color for primary button */
+
+    --color-accent-purple-start: #a855f7; /* For gradients */
+    --color-accent-purple-end: #6366f1;   /* For gradients */
+    --color-accent-pink-start: #d946ef;   /* For gradients */
+
+    /* Shadows */
+    --shadow-light: 0px 4px 15px rgba(0, 0, 0, 0.05);
+    --shadow-medium: 0px 8px 25px rgba(0, 0, 0, 0.1);
+
+    /* Border Radius */
+    --border-radius-small: 6px; /* For buttons */
+    --border-radius-medium: 12px; /* For cards */
+    --border-radius-large: 20px; /* For large elements/containers */
+
+    /* Typography - based on visual estimation of common web fonts */
+    /* You will need to import/use your specific font files if they are custom */
+    --font-family-body: 'Arial', sans-serif; /* Placeholder, replace with your chosen body font */
+    --font-family-headings: 'Helvetica Neue', sans-serif; /* Placeholder, replace with your chosen heading font */
+    --font-size-base: 16px;
+}
+
+/* --- Base Reset & Universal Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: var(--font-size-base);
+}
+
+body {
+    font-family: var(--font-family-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-medium);
+    background-color: var(--color-background-light-grey);
+    -webkit-font-smoothing: antialiased; /* For smoother font rendering */
+    -moz-osx-font-smoothing: grayscale; /* For smoother font rendering */
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-button-primary); /* Default link color */
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: var(--color-button-hover);
+}
+
+ul {
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-headings);
+    font-weight: 700;
+    color: var(--color-text-dark);
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Reusable Container for content width */
+.container {
+    max-width: 1280px; /* Adjust based on the width in the design */
+    margin: 0 auto;
+    padding: 0 40px; /* Padding for side edges on larger screens */
+}
+
+/* --- Button Styling --- */
+.btn {
+    display: inline-flex; /* Use flex for easy icon/text alignment if needed */
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    border-radius: var(--border-radius-small);
+    font-weight: 600;
+    font-size: 0.95rem; /* Slightly smaller text for buttons */
+    text-transform: capitalize; /* As seen in the design: "Download" */
+}
+
+.primary-btn {
+    background-color: var(--color-button-primary);
+    color: var(--color-background-white);
+    box-shadow: var(--shadow-light);
+}
+
+.primary-btn:hover {
+    background-color: var(--color-button-hover);
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-2px); /* Subtle lift on hover */
+}
+
+
+/* --- Header Specific Styling --- */
+.main-header {
+    background-color: var(--color-background-white);
+    padding: 20px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Soft shadow for header */
+    position: sticky; /* Makes header stick to the top */
+    top: 0;
+    z-index: 1000; /* Ensures header is above other content */
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px; /* Fixed height for header */
+}
+
+.logo img {
+    height: 38px; /* Visual estimation of logo height */
+    width: auto;
+    display: block; /* Removes any extra space below the image */
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 32px; /* Spacing between navigation items */
+    margin-left: -50px; /* Slight adjustment to move nav left, visually aligning it */
+}
+
+.main-nav a {
+    font-family: var(--font-family-body);
+    font-weight: 500; /* Medium weight as seen */
+    font-size: 1.05rem; /* Slightly larger than base text */
+    color: var(--color-text-dark); /* Darker text for main nav links */
+    padding: 5px 0; /* Creates clickable area without increasing total height much */
+    position: relative;
+    white-space: nowrap; /* Prevents text from wrapping */
+}
+
+.main-nav a:hover {
+    color: var(--color-button-primary); /* Color on hover */
+}
+
+/* Small blue underline on hover for nav items */
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px; /* Adjust position below link */
+    width: 0;
+    height: 2px;
+    background-color: var(--color-button-primary);
+    transition: width 0.3s ease-in-out;
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+/* Specific styling for the header's download button, overriding general .btn slightly */
+.main-header .download-button {
+    padding: 10px 22px; /* Slightly refined padding for this specific button */
+    font-size: 0.95rem;
+    border-radius: var(--border-radius-small);
+}
+
+/* Media Queries for Responsiveness (Basic for now, will expand later) */
+@media (max-width: 900px) {
+    .main-header .container {
+        padding: 0 25px; /* Adjust padding for smaller screens */
+    }
+    .main-nav {
+        display: none; /* Hide nav for now on smaller screens (will add hamburger menu later) */
+    }
+    .main-header .container {
+        justify-content: space-between; /* Only logo and button visible */
+    }
+}
+
+@media (max-width: 500px) {
+    .container {
+        padding: 0 15px; /* Even tighter padding on very small screens */
+    }
+    .main-header .download-button {
+        padding: 8px 15px; /* Smaller button on very small screens */
+        font-size: 0.85rem;
+    }
+    .logo img {
+        height: 30px; /* Smaller logo */
+    }
+}
+
+/* --- Hero Section Styling --- */
+.hero-section {
+    position: relative;
+    display: flex; /* Use flexbox for content layout */
+    align-items: center; /* Vertically align content */
+    min-height: 70vh; /* Minimum height for the hero section (e.g., 70% of viewport height) */
+    padding: 80px 0; /* Vertical padding */
+    overflow: hidden; /* Hide anything overflowing, especially for the background graphic */
+    background-color: var(--color-background-light-grey); /* Fallback background */
+}
+
+.hero-section .hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1280px; /* Match your .container max-width */
+    margin: 0 auto;
+    padding: 0 40px; /* Match your .container padding */
+    width: 100%; /* Ensure it spans the container */
+    position: relative; /* For z-index to be above background graphic */
+    z-index: 2;
+}
+
+.hero-text {
+    flex: 1; /* Allows it to grow and shrink */
+    max-width: 55%; /* Visual estimation: text takes about 55% width */
+    padding-right: 40px; /* Space between text and graphic */
+    text-align: left;
+}
+
+.hero-text h2 {
+    font-size: 3.5rem; /* Larger font size for main heading */
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--color-text-dark);
+}
+
+.hero-text p {
+    font-size: 1.25rem; /* Larger font size for subheading */
+    color: var(--color-text-medium);
+    margin-bottom: 30px;
+    max-width: 500px; /* Prevent text from being too wide */
+}
+
+/* Specific styling for the CTA button in the hero section */
+.cta-button {
+    /* Inherits from .btn and .primary-btn */
+    background: var(--gradient-purple-blue); /* Gradient background as seen in design */
+    color: var(--color-white);
+    padding: 15px 40px; /* Larger padding for hero button */
+    font-size: 1.1rem;
+    border-radius: var(--border-radius-large); /* More rounded corners */
+    box-shadow: var(--shadow-medium); /* Stronger shadow */
+}
+
+.cta-button:hover {
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2); /* Even stronger shadow on hover */
+    transform: translateY(-3px); /* More pronounced lift */
+}
+
+/* The gradient blob background animation area */
+#interactive-background { /* Assuming this is the blob area */
+    position: absolute;
+    top: 50%;
+    right: 0; /* Position to the right side of the hero section */
+    transform: translateY(-50%); /* Center vertically */
+    width: 65%; /* Adjust width to make it span from right edge */
+    height: 100%; /* Occupy full height of hero */
+    z-index: 1; /* Keep it behind the main content */
+    pointer-events: none; /* Allows clicks to pass through to content below */
+}
+
+/* The actual gradient blob within the #interactive-background */
+.hero-bg-animation::before { /* Using a pseudo-element for the blob */
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 40%; /* Adjust horizontally within its parent */
+    transform: translate(-50%, -50%) rotate(45deg); /* Position and subtle rotation */
+    width: 650px; /* Size of the blob */
+    height: 650px;
+    border-radius: 45% 55% 50% 50% / 60% 40% 60% 40%; /* Creates a rounded, organic blob shape */
+    background: var(--gradient-purple-blue); /* The distinct gradient */
+    filter: blur(80px); /* Soften the edges significantly */
+    opacity: 0.8; /* Slightly transparent */
+    /* You might add subtle animations here later if you wish */
+}
+
+
+/* Media Queries for Responsiveness in Hero Section */
+@media (max-width: 900px) {
+    .hero-section {
+        min-height: auto; /* Allow height to adjust */
+        padding: 60px 0;
+    }
+    .hero-section .hero-content {
+        flex-direction: column; /* Stack text and graphic vertically */
+        text-align: center;
+        padding: 0 25px;
+    }
+    .hero-text {
+        max-width: 100%;
+        padding-right: 0;
+        margin-bottom: 40px;
+    }
+    .hero-text h2 {
+        font-size: 2.8rem; /* Smaller heading */
+    }
+    .hero-text p {
+        font-size: 1.1rem; /* Smaller paragraph text */
+    }
+    #interactive-background {
+        position: relative; /* Remove absolute positioning */
+        top: auto;
+        right: auto;
+        transform: none;
+        width: 100%;
+        height: 300px; /* Fixed height for graphic area */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .hero-bg-animation::before {
+        width: 450px; /* Smaller blob */
+        height: 450px;
+        left: 50%; /* Center horizontally within its parent */
+        transform: translate(-50%, -50%) rotate(45deg);
+        filter: blur(60px);
+    }
+}
+
+@media (max-width: 500px) {
+    .hero-text h2 {
+        font-size: 2.2rem;
+    }
+    .hero-text p {
+        font-size: 1rem;
+    }
+    .cta-button {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+    .hero-bg-animation::before {
+        width: 300px;
+        height: 300px;
+        filter: blur(40px);
+    }
+}
