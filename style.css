@@ -592,17 +592,36 @@ button {
     margin-right: auto; /* Center button horizontally */
 }
 
-/* --- Homepage Project Slider Styling --- */
-#homepage-projects .container h2 {
-    text-align: center;
-    margin-bottom: 50px;
-    font-size: 2.5rem;
+/* --- Two-Column Content Layout & Slider Styling --- */
+.two-column-section .container h2 {
+    text-align: left; /* Align headings left in their columns */
+    margin-bottom: 30px;
+    font-size: 2rem; /* Adjust heading size for columns */
 }
 
+.two-column-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 60px; /* Space between columns */
+    align-items: start; /* Align content to the top of columns */
+}
+
+.column-item {
+    /* Basic padding for consistency if needed, but the container handles most */
+}
+
+/* Coding Projects Column Specifics */
+.coding-projects-column {
+    /* Styles specific to the left column if any */
+}
+
+/* Override previous slider styles to fit within column */
 .slider-container {
     position: relative;
     width: 100%;
-    overflow: hidden; /* Hide overflowing slider items */
+    max-width: 500px; /* Max width for the slider in the column */
+    margin: 0 auto 30px auto; /* Center slider and add margin below */
+    overflow: hidden;
     border-radius: var(--border-radius-large);
     box-shadow: var(--shadow-medium);
 }
@@ -610,12 +629,11 @@ button {
 .slider-track {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    /* This will be controlled by JavaScript */
 }
 
 .slider-item {
-    min-width: 100%; /* Each item takes full width of container */
-    flex-shrink: 0; /* Prevent items from shrinking */
+    min-width: 100%;
+    flex-shrink: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -623,7 +641,7 @@ button {
 
 .slider-item img {
     width: 100%;
-    height: 400px; /* Adjust height as needed for the slider images */
+    height: 350px; /* Adjust height for column layout */
     object-fit: cover;
     display: block;
 }
@@ -632,13 +650,13 @@ button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
-    padding: 15px 18px; /* Larger padding for a visible button */
+    padding: 12px 15px; /* Slightly smaller arrows */
     cursor: pointer;
-    font-size: 1.8rem; /* Larger arrow icons */
-    border-radius: 50%; /* Circular buttons */
+    font-size: 1.5rem;
+    border-radius: 50%;
     z-index: 10;
     transition: opacity 0.3s ease-in-out;
     opacity: 0; /* Hidden by default */
@@ -650,31 +668,80 @@ button {
 }
 
 .prev-arrow {
-    left: 20px;
+    left: 15px;
 }
 
 .next-arrow {
-    right: 20px;
+    right: 15px;
 }
 
 .slider-arrow:hover {
-    background-color: var(--color-button-hover); /* Adjust hover color */
+    background-color: var(--color-button-hover);
 }
 
-/* Media Queries for Slider */
-@media (max-width: 768px) {
+.view-all-projects-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* DevRel Content Column Specifics */
+.devrel-content-column {
+    /* Styles specific to the right column if any */
+}
+
+.devrel-content-column p {
+    color: var(--color-text-medium);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.devrel-summary-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.devrel-summary-list li {
+    color: var(--color-text-dark);
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.devrel-summary-list li i {
+    margin-right: 10px;
+    color: var(--color-button-primary); /* Style for icons */
+}
+
+.view-all-devrel-button {
+    /* Your existing .btn and .secondary-btn styles will apply */
+}
+
+
+/* Media Queries for Responsive Layout */
+@media (max-width: 992px) {
+    .two-column-content-grid {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+        gap: 40px;
+    }
+    .two-column-section .container h2 {
+        text-align: center;
+    }
+    .slider-container {
+        max-width: 100%; /* Allow slider to take full width of container */
+    }
+    .view-all-projects-button-container,
+    .devrel-content-column .view-all-devrel-button {
+        text-align: center;
+    }
+}
+
+@media (max-width: 500px) {
     .slider-item img {
-        height: 300px;
+        height: 250px; /* Further reduce height on very small screens */
     }
     .slider-arrow {
-        padding: 10px 12px;
-        font-size: 1.5rem;
-    }
-    .prev-arrow {
-        left: 10px;
-    }
-    .next-arrow {
-        right: 10px;
+        padding: 8px 10px;
+        font-size: 1.2rem;
     }
 }
 

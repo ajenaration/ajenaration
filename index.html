@@ -19,7 +19,7 @@
             <ul>
                 <li><a href="#hero">Home</a></li>
                 <li><a href="/blog">Blog</a></li>
-                <li><a href="/projects">Projects</a></li>
+                <li><a href="projects.html">Projects</a></li>
                 <li><a href="/devrel">DevRel</a></li>
                 <li><a href="/about">About</a></li>
                 <li><a href="/contact">Contact</a></li>
@@ -85,36 +85,54 @@
             </div>
         </section>
 
-        <section id="homepage-projects" class="section-padded content-section-block">
-            <div class="container">
-                <h2>Coding Projects</h2>
-                <div class="slider-container">
-                    <div class="slider-track">
-                        <div class="slider-item">
-                            <img src="https://via.placeholder.com/600x400/5c64f4/FFFFFF?text=Over+The+Luna" alt="Over The Luna Project">
+        <section class="section-padded content-section-block two-column-section">
+            <div class="container two-column-content-grid">
+
+                <div class="column-item coding-projects-column">
+                    <h2>Coding Projects</h2>
+                    <div class="slider-container">
+                        <div class="slider-track">
+                            <div class="slider-item">
+                                <img src="images/otl-01.gif" alt="Over The Luna Project">
+                            </div>
+                            <div class="slider-item">
+                                <img src="images/mr-01.gif" alt="Meal Randomizer App">
+                            </div>
+                            <div class="slider-item">
+                                <img src="images/pv-01.gif" alt="Arceeus Pokémon Tracker">
+                            </div>
+                            <div class="slider-item">
+                                <img src="images/r-01.gif" alt="Rogers 5G Network Integration">
+                            </div>
+                            <div class="slider-item">
+                                <img src="images/f-01.gif" alt="Rogers Inventory Upgrade">
+                            </div>
+                            <div class="slider-item">
+                                <img src="images/fl-01.gif" alt="FlixList Project">
+                            </div>
+                            <div class="slider-item">
+                                <img src="images/ltc-01.gif" alt="Learn 2 Code Project">
+                            </div>
                         </div>
-                        <div class="slider-item">
-                            <img src="https://via.placeholder.com/600x400/8e50e9/FFFFFF?text=Meal+Randomizer" alt="Meal Randomizer App">
-                        </div>
-                        <div class="slider-item">
-                            <img src="https://via.placeholder.com/600x400/a855f7/FFFFFF?text=Arceeus+App" alt="Arceeus Pokémon Tracker">
-                        </div>
-                        <div class="slider-item">
-                            <img src="https://via.placeholder.com/600x400/6366f1/FFFFFF?text=Rogers+5G" alt="Rogers 5G Network Integration">
-                        </div>
-                        <div class="slider-item">
-                            <img src="https://via.placeholder.com/600x400/d946ef/FFFFFF?text=Rogers+Inventory" alt="Rogers Inventory Upgrade">
-                        </div>
-                        <div class="slider-item">
-                            <img src="https://via.placeholder.com/600x400/ef4480/FFFFFF?text=FlixList+App" alt="FlixList Project">
-                        </div>
-                        <div class="slider-item">
-                            <img src="https://via.placeholder.com/600x400/f87171/FFFFFF?text=Learn+2+Code" alt="Learn 2 Code Project">
-                        </div>
+                        <button class="slider-arrow prev-arrow"><span>&#10094;</span></button>
+                        <button class="slider-arrow next-arrow"><span>&#10095;</span></button>
                     </div>
-                    <button class="slider-arrow prev-arrow"><span>&#10094;</span></button>
-                    <button class="slider-arrow next-arrow"><span>&#10095;</span></button>
+                    <div class="view-all-projects-button-container">
+                        <a href="projects.html" class="btn primary-btn">View All Projects</a>
+                    </div>
                 </div>
+
+                <div class="column-item devrel-content-column">
+                    <h2>DevRel Content</h2>
+                    <p>Exploring the intersection of development and community advocacy through various activities and contributions. Stay updated with upcoming events and resources.</p>
+                    <ul class="devrel-summary-list">
+                        <li><i class="icon-speaker">🎤</i> Speaking Engagements</li>
+                        <li><i class="icon-workshop">💡</i> Workshops & Tutorials</li>
+                        <li><i class="icon-opensource">💻</i> Open Source Contributions</li>
+                    </ul>
+                    <a href="#devrel" class="btn secondary-btn view-all-devrel-button">Learn More about DevRel</a>
+                </div>
+
             </div>
         </section>
 
@@ -131,7 +149,6 @@
                         <i class="icon-workshop">💡</i>
                         <h3>Workshops & Tutorials</h3>
                         <p>Hands-on sessions for aspiring and seasoned developers.</p>
-                    </div>
                     <div class="activity-card">
                         <i class="icon-opensource">💻</i>
                         <h3>Open Source Contributions</h3>
