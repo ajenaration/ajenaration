@@ -510,3 +510,206 @@ button {
 .footer-column ul li a {
     font-family: var(--font-family-body); /* This should already be Montserrat */
 }
+
+/* --- Project Section Styling --- */
+.project-section .container h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.5rem; /* Larger heading for the section title */
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid columns, min 300px wide */
+    gap: 30px; /* Spacing between cards */
+}
+
+.project-card {
+    background-color: var(--color-background-white);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-light);
+    overflow: hidden; /* Ensures image corners are rounded with card */
+    display: flex; /* Flexbox for internal layout */
+    flex-direction: column;
+    height: 100%; /* Make all cards the same height in a row for consistent grid */
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px; /* Fixed height for images, adjust as needed */
+    object-fit: cover; /* Ensures images fill the space without distortion */
+    border-top-left-radius: var(--border-radius-medium);
+    border-top-right-radius: var(--border-radius-medium);
+}
+
+.project-card .card-content {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allows content area to grow and push button down */
+}
+
+.project-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600; /* Slightly less bold than main section headings */
+    color: var(--color-text-dark);
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.project-card p {
+    font-size: 0.95rem;
+    color: var(--color-text-medium);
+    line-height: 1.6;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Allows paragraph to take up available space */
+}
+
+.project-tags {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px; /* Spacing between tags */
+}
+
+.project-tags span {
+    background-color: #e0e7ff; /* Light blue/purple background */
+    color: var(--color-button-primary); /* Primary button color for text */
+    padding: 6px 12px;
+    border-radius: var(--border-radius-small);
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap; /* Keep tags on one line */
+}
+
+.project-card .view-project-button {
+    margin-top: auto; /* Pushes button to the bottom of the card */
+    display: block; /* Make button full width if needed, or adjust to fit-content */
+    text-align: center; /* Center text within button */
+    width: fit-content; /* Make button only as wide as its content */
+    margin-left: auto; /* Center button horizontally */
+    margin-right: auto; /* Center button horizontally */
+}
+
+/* --- Homepage Project Slider Styling --- */
+#homepage-projects .container h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden; /* Hide overflowing slider items */
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-medium);
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    /* This will be controlled by JavaScript */
+}
+
+.slider-item {
+    min-width: 100%; /* Each item takes full width of container */
+    flex-shrink: 0; /* Prevent items from shrinking */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider-item img {
+    width: 100%;
+    height: 400px; /* Adjust height as needed for the slider images */
+    object-fit: cover;
+    display: block;
+}
+
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    color: white;
+    border: none;
+    padding: 15px 18px; /* Larger padding for a visible button */
+    cursor: pointer;
+    font-size: 1.8rem; /* Larger arrow icons */
+    border-radius: 50%; /* Circular buttons */
+    z-index: 10;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0; /* Hidden by default */
+    outline: none;
+}
+
+.slider-container:hover .slider-arrow {
+    opacity: 1; /* Visible on hover */
+}
+
+.prev-arrow {
+    left: 20px;
+}
+
+.next-arrow {
+    right: 20px;
+}
+
+.slider-arrow:hover {
+    background-color: var(--color-button-hover); /* Adjust hover color */
+}
+
+/* Media Queries for Slider */
+@media (max-width: 768px) {
+    .slider-item img {
+        height: 300px;
+    }
+    .slider-arrow {
+        padding: 10px 12px;
+        font-size: 1.5rem;
+    }
+    .prev-arrow {
+        left: 10px;
+    }
+    .next-arrow {
+        right: 10px;
+    }
+}
+
+@media (max-width: 500px) {
+    .slider-item img {
+        height: 200px;
+    }
+    .slider-arrow {
+        padding: 8px 10px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Media Queries for Project Section Responsiveness */
+@media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+    .project-card img {
+        height: 180px;
+    }
+    .project-card h3 {
+        font-size: 1.3rem;
+    }
+    .project-card p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .project-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+    }
+    .project-card {
+        padding-bottom: 20px; /* Add some space at the bottom when stacking */
+    }
+}

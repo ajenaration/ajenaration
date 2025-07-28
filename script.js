@@ -196,3 +196,40 @@ document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const sliderTrack = document.querySelector('.slider-track');
+    const prevArrow = document.querySelector('.prev-arrow');
+    const nextArrow = document.querySelector('.next-arrow');
+    const sliderItems = document.querySelectorAll('.slider-item');
+
+    if (!sliderTrack || !prevArrow || !nextArrow || sliderItems.length === 0) {
+        console.warn('Slider elements not found. Skipping slider initialization.');
+        return; // Exit if elements are missing
+    }
+
+    let currentIndex = 0;
+    const totalItems = sliderItems.length;
+
+    function updateSlider() {
+        // Calculate the translation needed
+        const offset = -currentIndex * 100; // 100% for each item
+        sliderTrack.style.transform = `translateX(${offset}%)`;
+    }
+
+    prevArrow.addEventListener('click', () => {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalItems - 1;
+        updateSlider();
+    });
+
+    nextArrow.addEventListener('click', () => {
+        currentIndex = (currentIndex < totalItems - 1) ? currentIndex + 1 : 0;
+        updateSlider();
+    });
+
+    // Optional: Auto-slide (uncomment to enable)
+    // setInterval(() => {
+    //     currentIndex = (currentIndex < totalItems - 1) ? currentIndex + 1 : 0;
+    //     updateSlider();
+    // }, 5000); // Change slide every 5 seconds
+});
