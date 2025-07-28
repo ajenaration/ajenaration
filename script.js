@@ -87,8 +87,9 @@ if (dataAuraCanvasContainer) {
 
         // Get the gradient from CSS variables
         const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
-        gradient.addColorStop(0, getComputedStyle(document.documentElement).getPropertyValue('--gradient-start'));
-        gradient.addColorStop(1, getComputedStyle(document.documentElement).getPropertyValue('--gradient-end'));
+        // Corrected property names for CSS variables
+        gradient.addColorStop(0, getComputedStyle(document.documentElement).getPropertyValue('--color-accent-purple-start'));
+        gradient.addColorStop(1, getComputedStyle(document.documentElement).getPropertyValue('--color-accent-purple-end'));
 
         ctx.strokeStyle = gradient;
         ctx.lineWidth = 3;
@@ -197,39 +198,72 @@ document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
     });
 });
 
+
+// --- Homepage Project Slider (Fade Effect) ---
 document.addEventListener('DOMContentLoaded', () => {
-    const sliderTrack = document.querySelector('.slider-track');
+    // Select the slider container itself, not just the track for hover events
+    const sliderContainer = document.querySelector('.slider-container');
     const prevArrow = document.querySelector('.prev-arrow');
     const nextArrow = document.querySelector('.next-arrow');
     const sliderItems = document.querySelectorAll('.slider-item');
 
-    if (!sliderTrack || !prevArrow || !nextArrow || sliderItems.length === 0) {
+    if (!sliderContainer || !prevArrow || !nextArrow || sliderItems.length === 0) {
         console.warn('Slider elements not found. Skipping slider initialization.');
         return; // Exit if elements are missing
     }
 
     let currentIndex = 0;
     const totalItems = sliderItems.length;
+    let autoSlideInterval; // Variable to hold the interval for auto-slide
 
     function updateSlider() {
-        // Calculate the translation needed
-        const offset = -currentIndex * 100; // 100% for each item
-        sliderTrack.style.transform = `translateX(${offset}%)`;
+        // Remove 'active' class from all items
+        sliderItems.forEach((item) => {
+            item.classList.remove('active');
+        });
+
+        // Add 'active' class to the current item
+        sliderItems[currentIndex].classList.add('active');
     }
 
+    function startAutoSlide() {
+        // Clear any existing interval to prevent duplicates
+        if (autoSlideInterval) {
+            clearInterval(autoSlideInterval);
+        }
+        autoSlideInterval = setInterval(() => {
+            currentIndex = (currentIndex < totalItems - 1) ? currentIndex + 1 : 0; // Loop forward
+            updateSlider();
+        }, 5000); // Change slide every 5 seconds (adjust as needed)
+    }
+
+    // Event listener for previous arrow
     prevArrow.addEventListener('click', () => {
-        currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalItems - 1;
+        clearInterval(autoSlideInterval); // Stop auto-slide on manual click
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalItems - 1; // Loop back
         updateSlider();
+        startAutoSlide(); // Restart auto-slide after manual interaction
     });
 
+    // Event listener for next arrow
     nextArrow.addEventListener('click', () => {
-        currentIndex = (currentIndex < totalItems - 1) ? currentIndex + 1 : 0;
+        clearInterval(autoSlideInterval); // Stop auto-slide on manual click
+        currentIndex = (currentIndex < totalItems - 1) ? currentIndex + 1 : 0; // Loop forward
         updateSlider();
+        startAutoSlide(); // Restart auto-slide after manual interaction
     });
 
-    // Optional: Auto-slide (uncomment to enable)
-    // setInterval(() => {
-    //     currentIndex = (currentIndex < totalItems - 1) ? currentIndex + 1 : 0;
-    //     updateSlider();
-    // }, 5000); // Change slide every 5 seconds
+    // Initialize the slider: show the first item and start auto-slide
+    updateSlider(); // Show the first slide immediately
+    startAutoSlide(); // Start the auto-advance
+
+    // Optional: Pause auto-slide on hover and resume when mouse leaves
+    if (sliderContainer) {
+        sliderContainer.addEventListener('mouseenter', () => {
+            clearInterval(autoSlideInterval); // Pause auto-slide
+        });
+        sliderContainer.addEventListener('mouseleave', () => {
+            startAutoSlide(); // Resume auto-slide
+        });
+    }
 });

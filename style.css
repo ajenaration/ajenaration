@@ -77,7 +77,7 @@ ul {
     line-height: 1; /* Adjust line height for better spacing */
     text-transform: lowercase; /* Or capitalize the first letter via CSS if needed, based on image */
     /* If you still want a slight slant like in your original 'ajenaration' image, you might experiment with: */
-    transform: skewX(-5deg); 
+    transform: skewX(-5deg);
     display: inline-block; /* Required for transform on inline elements */
 }
 
@@ -288,7 +288,7 @@ button {
 .cta-button {
     /* Inherits from .btn and .primary-btn */
     background: var(--gradient-purple-blue); /* Gradient background as seen in design */
-    color: var(--color-white);
+    color: var(--color-background-white); /* Corrected variable name from --color-white */
     padding: 15px 40px; /* Larger padding for hero button */
     font-size: 1.1rem;
     border-radius: var(--border-radius-large); /* More rounded corners */
@@ -303,11 +303,11 @@ button {
 /* The gradient blob background animation area */
 #interactive-background {
     position: absolute;
-    top: 0;   /* Changed: Anchor to the top of the hero section */
+    top: 0;
     right: 0;
-    transform: none; /* Changed: Remove vertical centering */
+    transform: none;
     width: 65%;
-    height: 100%; /* Keep full height, positioning inside will fine-tune */
+    height: 100%;
     z-index: 1;
     pointer-events: none;
 }
@@ -316,14 +316,14 @@ button {
 .hero-bg-animation::before {
     content: '';
     position: absolute;
-    top: 20%;   /* Adjusted: Moves the blob down from the very top edge */
-    left: 70%; /* Adjusted: Moves the blob more towards the right side */
-    transform: translate(-50%, -50%) rotate(45deg); /* Keep this for self-centering and rotation */
+    top: 20%;
+    left: 70%;
+    transform: translate(-50%, -50%) rotate(45deg);
     width: 650px;
     height: 650px;
     border-radius: 45% 55% 50% 50% / 60% 40% 60% 40%;
     background: var(--gradient-purple-blue);
-    filter: blur(15px); /* Using the blur value that showed the irregular shape */
+    filter: blur(15px);
     opacity: 0.85;
     animation: blobAnimation 15s infinite alternate ease-in-out;
 }
@@ -356,11 +356,11 @@ button {
 /* Media Queries for Responsiveness in Hero Section */
 @media (max-width: 900px) {
     .hero-section {
-        min-height: auto; /* Allow height to adjust */
+        min-height: auto;
         padding: 60px 0;
     }
     .hero-section .hero-content {
-        flex-direction: column; /* Stack text and graphic vertically */
+        flex-direction: column;
         text-align: center;
         padding: 0 25px;
     }
@@ -370,26 +370,26 @@ button {
         margin-bottom: 40px;
     }
     .hero-text h2 {
-        font-size: 2.8rem; /* Smaller heading */
+        font-size: 2.8rem;
     }
     .hero-text p {
-        font-size: 1.1rem; /* Smaller paragraph text */
+        font-size: 1.1rem;
     }
     #interactive-background {
-        position: relative; /* Remove absolute positioning */
+        position: relative;
         top: auto;
         right: auto;
         transform: none;
         width: 100%;
-        height: 300px; /* Fixed height for graphic area */
+        height: 300px;
         display: flex;
         justify-content: center;
         align-items: center;
     }
     .hero-bg-animation::before {
-        width: 450px; /* Smaller blob */
+        width: 450px;
         height: 450px;
-        left: 50%; /* Center horizontally within its parent */
+        left: 50%;
         transform: translate(-50%, -50%) rotate(45deg);
         filter: blur(60px);
     }
@@ -415,13 +415,13 @@ button {
 
 /* --- Styled Footer --- */
 .styled-footer {
-    background-color: var(--color-background-light-grey); /* Use a light background */
+    background-color: var(--color-background-light-grey);
     padding: 60px 0;
 }
 
 .footer-columns {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 30px;
 }
 
@@ -493,51 +493,51 @@ button {
 /* --- Styled Footer Adjustments --- */
 .footer-column.footer-logo h3 {
     font-family: 'Shrikhand', cursive;
-    font-weight: normal; /* Shrikhand is inherently bold, no need for specific weight */
-    font-style: normal; /* Shrikhand isn't designed with true italics */
-    transform: skewX(-5deg); /* Apply the same slant */
-    display: inline-block; /* Required for transform to work on this element */
-    font-size: 1.8rem; /* Adjust size, slightly smaller than header but prominent */
-    margin-bottom: 10px; /* Adjust spacing below the logo */
+    font-weight: normal;
+    font-style: normal;
+    transform: skewX(-5deg);
+    display: inline-block;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
 }
 
 /* Ensure other h3s keep Montserrat */
-.footer-column h4 { /* Make sure other h4s in footer use Montserrat */
-    font-family: var(--font-family-headings); /* This should already be Montserrat */
+.footer-column h4 {
+    font-family: var(--font-family-headings);
 }
 
 /* Make sure footer links use the body font family */
 .footer-column ul li a {
-    font-family: var(--font-family-body); /* This should already be Montserrat */
+    font-family: var(--font-family-body);
 }
 
 /* --- Project Section Styling --- */
 .project-section .container h2 {
     text-align: center;
     margin-bottom: 50px;
-    font-size: 2.5rem; /* Larger heading for the section title */
+    font-size: 2.5rem;
 }
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid columns, min 300px wide */
-    gap: 30px; /* Spacing between cards */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
 }
 
 .project-card {
     background-color: var(--color-background-white);
     border-radius: var(--border-radius-medium);
     box-shadow: var(--shadow-light);
-    overflow: hidden; /* Ensures image corners are rounded with card */
-    display: flex; /* Flexbox for internal layout */
+    overflow: hidden;
+    display: flex;
     flex-direction: column;
-    height: 100%; /* Make all cards the same height in a row for consistent grid */
+    height: 100%;
 }
 
 .project-card img {
     width: 100%;
-    height: 200px; /* Fixed height for images, adjust as needed */
-    object-fit: cover; /* Ensures images fill the space without distortion */
+    height: 200px;
+    object-fit: cover;
     border-top-left-radius: var(--border-radius-medium);
     border-top-right-radius: var(--border-radius-medium);
 }
@@ -546,12 +546,12 @@ button {
     padding: 25px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Allows content area to grow and push button down */
+    flex-grow: 1;
 }
 
 .project-card h3 {
     font-size: 1.5rem;
-    font-weight: 600; /* Slightly less bold than main section headings */
+    font-weight: 600;
     color: var(--color-text-dark);
     margin-bottom: 10px;
     line-height: 1.3;
@@ -562,7 +562,7 @@ button {
     color: var(--color-text-medium);
     line-height: 1.6;
     margin-bottom: 15px;
-    flex-grow: 1; /* Allows paragraph to take up available space */
+    flex-grow: 1;
 }
 
 .project-tags {
@@ -570,40 +570,40 @@ button {
     margin-bottom: 20px;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px; /* Spacing between tags */
+    gap: 8px;
 }
 
 .project-tags span {
-    background-color: #e0e7ff; /* Light blue/purple background */
-    color: var(--color-button-primary); /* Primary button color for text */
+    background-color: #e0e7ff;
+    color: var(--color-button-primary);
     padding: 6px 12px;
     border-radius: var(--border-radius-small);
     font-size: 0.8rem;
     font-weight: 500;
-    white-space: nowrap; /* Keep tags on one line */
+    white-space: nowrap;
 }
 
 .project-card .view-project-button {
-    margin-top: auto; /* Pushes button to the bottom of the card */
-    display: block; /* Make button full width if needed, or adjust to fit-content */
-    text-align: center; /* Center text within button */
-    width: fit-content; /* Make button only as wide as its content */
-    margin-left: auto; /* Center button horizontally */
-    margin-right: auto; /* Center button horizontally */
+    margin-top: auto;
+    display: block;
+    text-align: center;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* --- Two-Column Content Layout & Slider Styling --- */
+/* --- Two-Column Content Layout & SLIDER STYLING (UPDATED FOR FADE) --- */
 .two-column-section .container h2 {
-    text-align: left; /* Align headings left in their columns */
+    text-align: left;
     margin-bottom: 30px;
-    font-size: 2rem; /* Adjust heading size for columns */
+    font-size: 2rem;
 }
 
 .two-column-content-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Two equal columns */
-    gap: 60px; /* Space between columns */
-    align-items: start; /* Align content to the top of columns */
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
 }
 
 .column-item {
@@ -615,33 +615,50 @@ button {
     /* Styles specific to the left column if any */
 }
 
-/* Override previous slider styles to fit within column */
+/* UPDATED SLIDER STYLES FOR FADE EFFECT */
 .slider-container {
     position: relative;
     width: 100%;
-    max-width: 500px; /* Max width for the slider in the column */
-    margin: 0 auto 30px auto; /* Center slider and add margin below */
+    max-width: 500px;
+    margin-top: -10px; /* Keep top margin as is */
+    margin-bottom: 30px; /* Keep bottom margin as is */
+    margin-left: 0; /* NEW: Remove auto to left align */
+    margin-right: auto; /* NEW: Keep auto on right to allow it to push left */
     overflow: hidden;
     border-radius: var(--border-radius-large);
     box-shadow: var(--shadow-medium);
+    height: 350px; 
 }
 
 .slider-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
+    position: relative; /* Changed from flex */
+    width: 100%;
+    height: 100%; /* Ensure track fills container */
+    /* Removed display: flex and transition: transform */
 }
 
 .slider-item {
-    min-width: 100%;
-    flex-shrink: 0;
-    display: flex;
+    position: absolute; /* Changed to absolute for stacking */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 1s ease-in-out; /* Fade transition */
+    z-index: 1; /* Default stacking order */
+    display: flex; /* Keep flex to center image within item */
     justify-content: center;
     align-items: center;
 }
 
+.slider-item.active {
+    opacity: 1; /* Show active item */
+    z-index: 2; /* Bring active item to front */
+}
+
 .slider-item img {
     width: 100%;
-    height: 350px; /* Adjust height for column layout */
+    height: 100%; /* Image fills its item container */
     object-fit: cover;
     display: block;
 }
@@ -653,18 +670,18 @@ button {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
-    padding: 12px 15px; /* Slightly smaller arrows */
+    padding: 12px 15px;
     cursor: pointer;
     font-size: 1.5rem;
     border-radius: 50%;
     z-index: 10;
     transition: opacity 0.3s ease-in-out;
-    opacity: 0; /* Hidden by default */
+    opacity: 0;
     outline: none;
 }
 
 .slider-container:hover .slider-arrow {
-    opacity: 1; /* Visible on hover */
+    opacity: 1;
 }
 
 .prev-arrow {
@@ -686,7 +703,21 @@ button {
 
 /* DevRel Content Column Specifics */
 .devrel-content-column {
-    /* Styles specific to the right column if any */
+    margin-top: 52px; /* New: Added to align with the slider's top */
+}
+
+.devrel-content-column h2 {
+    font-size: 3rem; /* Significantly increased font size */
+    line-height: 1.1; /* Adjust line height for multi-line text */
+    margin-bottom: 20px; /* Adjust as needed */
+    text-align: left; /* Ensure it stays left-aligned */
+}
+
+/* Add this to create a new line if your HTML uses <br> or a specific span */
+.devrel-content-column h2 br {
+    display: block;
+    content: "";
+    margin-top: 5px; /* Adjust vertical space between lines */
 }
 
 .devrel-content-column p {
@@ -720,34 +751,31 @@ button {
 /* Media Queries for Responsive Layout */
 @media (max-width: 992px) {
     .two-column-content-grid {
-        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+        grid-template-columns: 1fr;
         gap: 40px;
     }
     .two-column-section .container h2 {
         text-align: center;
     }
     .slider-container {
-        max-width: 100%; /* Allow slider to take full width of container */
+        max-width: 100%;
+        height: 300px; /* Adjust height for stacked layout on smaller screens */
+        margin-left: auto; /* Re-center when stacked on smaller screens */
+        margin-right: auto; /* Re-center when stacked on smaller screens */
     }
     .view-all-projects-button-container,
     .devrel-content-column .view-all-devrel-button {
         text-align: center;
     }
-}
-
-@media (max-width: 500px) {
-    .slider-item img {
-        height: 250px; /* Further reduce height on very small screens */
-    }
-    .slider-arrow {
-        padding: 8px 10px;
-        font-size: 1.2rem;
+    /* Reset margin-top for devrel-content-column on smaller screens if stacking */
+    .devrel-content-column {
+        margin-top: 0; /* Reset margin-top when columns stack */
     }
 }
 
 @media (max-width: 500px) {
-    .slider-item img {
-        height: 200px;
+    .slider-container {
+        height: 250px; /* Further adjust height on very small screens */
     }
     .slider-arrow {
         padding: 8px 10px;
@@ -774,9 +802,6 @@ button {
 
 @media (max-width: 500px) {
     .project-grid {
-        grid-template-columns: 1fr; /* Single column on very small screens */
-    }
-    .project-card {
-        padding-bottom: 20px; /* Add some space at the bottom when stacking */
+        grid-template-columns: 1fr; /* Full width cards on smallest screens */
     }
 }
