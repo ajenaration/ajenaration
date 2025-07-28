@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Shrikhand&display=swap');
+
 /* --- Global Styles & Variables --- */
 :root {
     /* Colors derived from the image */
@@ -24,10 +26,9 @@
     --border-radius-medium: 12px; /* For cards */
     --border-radius-large: 20px; /* For large elements/containers */
 
-    /* Typography - based on visual estimation of common web fonts */
-    /* You will need to import/use your specific font files if they are custom */
-    --font-family-body: 'Arial', sans-serif; /* Placeholder, replace with your chosen body font */
-    --font-family-headings: 'Helvetica Neue', sans-serif; /* Placeholder, replace with your chosen heading font */
+    /* Typography - now using Montserrat */
+    --font-family-body: 'Montserrat', sans-serif;
+    --font-family-headings: 'Montserrat', sans-serif; /* Montserrat works great for headings too */
     --font-size-base: 16px;
 }
 
@@ -64,6 +65,20 @@ a:hover {
 
 ul {
     list-style: none;
+}
+
+/* Logo text styling - apply Shrikhand only here */
+.logo h1 { /* Or .logo span, depending on your HTML structure for the logo text */
+    font-family: 'Shrikhand', cursive; /* <--- NEW: Shrikhand font */
+    font-weight: normal; /* Shrikhand is inherently bold, no need for 700 */
+    font-style: normal; /* Shrikhand isn't designed with true italics */
+    color: var(--color-text-dark); /* Or whatever color your logo is */
+    font-size: 2rem; /* Adjust size as needed, you might want it larger */
+    line-height: 1; /* Adjust line height for better spacing */
+    text-transform: lowercase; /* Or capitalize the first letter via CSS if needed, based on image */
+    /* If you still want a slight slant like in your original 'ajenaration' image, you might experiment with: */
+    transform: skewX(-5deg); 
+    display: inline-block; /* Required for transform on inline elements */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -396,4 +411,102 @@ button {
         height: 300px;
         filter: blur(40px);
     }
+}
+
+/* --- Styled Footer --- */
+.styled-footer {
+    background-color: var(--color-background-light-grey); /* Use a light background */
+    padding: 60px 0;
+}
+
+.footer-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
+    gap: 30px;
+}
+
+.footer-column {
+    padding: 0 15px;
+}
+
+.footer-column h3,
+.footer-column h4 {
+    color: var(--color-text-dark);
+    margin-bottom: 15px;
+}
+
+.footer-column h3 {
+    font-size: 1.5rem;
+}
+
+.footer-column h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: var(--color-text-medium);
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-column ul li a:hover {
+    color: var(--color-button-primary);
+}
+
+.footer-newsletter p {
+    color: var(--color-text-medium);
+    margin-bottom: 20px;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+}
+
+.newsletter-form input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius-small);
+    font-size: 0.9rem;
+}
+
+.newsletter-form button {
+    padding: 12px 20px;
+    border-radius: var(--border-radius-small);
+    font-size: 0.9rem;
+}
+
+/* --- Styled Footer Adjustments --- */
+.footer-column.footer-logo h3 {
+    font-family: 'Shrikhand', cursive;
+    font-weight: normal; /* Shrikhand is inherently bold, no need for specific weight */
+    font-style: normal; /* Shrikhand isn't designed with true italics */
+    transform: skewX(-5deg); /* Apply the same slant */
+    display: inline-block; /* Required for transform to work on this element */
+    font-size: 1.8rem; /* Adjust size, slightly smaller than header but prominent */
+    margin-bottom: 10px; /* Adjust spacing below the logo */
+}
+
+/* Ensure other h3s keep Montserrat */
+.footer-column h4 { /* Make sure other h4s in footer use Montserrat */
+    font-family: var(--font-family-headings); /* This should already be Montserrat */
+}
+
+/* Make sure footer links use the body font family */
+.footer-column ul li a {
+    font-family: var(--font-family-body); /* This should already be Montserrat */
 }
