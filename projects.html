@@ -3,161 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ajenaration - Code & Creativitea</title>
+    <title>ajenaration - Projects</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
     <header class="main-header">
-        <div class="logo">
-            <h1>ajenaration</h1>
+        <div class="container">
+            <div class="logo">
+                <h1>ajenaration</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html" class="active">Projects</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="btn primary-btn download-button">Download Resume</a>
         </div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="#hero">Home</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/projects">Projects</a></li>
-                <li><a href="/devrel">DevRel</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-        </nav>
     </header>
 
     <main>
-        <section id="projects" class="section-padded project-section content-section-block">
+        <section class="content-section-block project-section">
             <div class="container">
-                <h2>My Creations</h2> <div class="project-grid">
-                    <div class="project-card">
-                        <img src="https://via.placeholder.com/600x400/5c64f4/FFFFFF?text=Over+The+Luna" alt="Over The Luna E-commerce Project">
-                        <div class="card-content">
+                <h2>My Creations</h2>
+
+                <div class="projects-container">
+
+                    <div class="project-row">
+                        <div class="project-header">
                             <h3>E-commerce Solution for Over The Luna</h3>
-                            <p>Fluid Browse experience with responsive design, SSL encryption and secure payment via Shopify and AJAX. Product catalog is enriched with interactive elements and smooth pop-up overlays through jQuery and JavaScript. Leveraged PowerBI to improve business development to increase sales by 40% in pop up shops and spaces. Actively conducted analysis to maximize sales revenue through flash sales, holiday sales and various incentive codes. Product Manager for Startup Seasonal Launches at Over The Luna.</p>
-                            <div class="project-tags">
-                                <span>Shopify</span><span>AJAX</span><span>jQuery</span><span>JavaScript</span><span>PowerBI</span><span>Business Dev</span>
+                            <button class="expand-btn" aria-expanded="false" aria-controls="otl-description">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="project-content-wrapper">
+                            <div class="project-media-scroller">
+                                <div class="project-media-grid">
+                                    <div class="media-square"><img src="images/otl-01.gif" alt="Placeholder Alt Text - OTL 01"></div> <div class="media-square"><img src="images/otl-02.gif" alt="Placeholder Alt Text - OTL 02"></div> <div class="media-square"><img src="images/otl-03.gif" alt="Placeholder Alt Text - OTL 03"></div> <div class="media-square"><img src="images/otl-04.png" alt="Placeholder Alt Text - OTL 04"></div> </div>
                             </div>
-                            <a href="#" class="btn primary-btn view-project-button">View Project</a>
+                            <div class="project-description-wrapper">
+                                <p class="truncated-description">Developed a comprehensive e-commerce solution that significantly enhanced online sales and operational efficiency for Over The Luna. Key features included a user-friendly product catalog, secure checkout process, and integration with inventory management systems. This platform led to a substantial increase in customer engagement and streamlined order fulfillment... </p>
+                                <p class="full-description hidden">
+                                    Developed a comprehensive e-commerce solution that significantly enhanced online sales and operational efficiency for Over The Luna. Key features included a user-friendly product catalog, secure checkout process, and integration with inventory management systems. Leveraged modern web technologies to ensure responsiveness across devices and optimize loading times. Implemented analytics tools to track user behavior and sales performance, providing valuable insights for business strategy. The project aimed to create a seamless shopping experience for customers while offering robust administrative tools for product management and order processing. Further enhancements included personalized recommendations and an improved search functionality.
+                                </p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="project-card">
-                        <img src="https://via.placeholder.com/600x400/8e50e9/FFFFFF?text=Meal+Randomizer" alt="Meal Randomizer Mobile App">
-                        <div class="card-content">
-                            <h3>Meal Randomizer</h3>
-                            <p>A mobile application designed to help users decide what to eat by spinning a wheel of meal options. Perfect for picky eaters and group decisions! Made for BCNY application, merging PE Fellowship concepts of creativity, membership and design while learning Swift.</p>
-                            <div class="project-tags">
-                                <span>Swift</span><span>Mobile App</span><span>UI/UX</span>
+                    <div class="project-row">
+                        <div class="project-header">
+                            <h3>Meal Randomizer Mobile App</h3>
+                            <button class="expand-btn" aria-expanded="false" aria-controls="mr-description">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="project-content-wrapper">
+                            <div class="project-media-scroller">
+                                <div class="project-media-grid">
+                                    <div class="media-square"><img src="images/mr-01.gif" alt="Placeholder Alt Text - MR 01"></div> <div class="media-square"><img src="images/mr-02.png" alt="Placeholder Alt Text - MR 02"></div> </div>
                             </div>
-                            <a href="#" class="btn primary-btn view-project-button">View Project</a>
+                            <div class="project-description-wrapper">
+                                <p class="truncated-description">Designed and developed the Meal Randomizer mobile application, providing users with a fun and simple way to discover new meal ideas. The app features customizable filters for dietary preferences and available ingredients, ensuring relevant suggestions. It includes a user-friendly interface for Browse recipes and marking favorites... </p>
+                                <p class="full-description hidden">
+                                    Designed and developed the Meal Randomizer mobile application, providing users with a fun and simple way to discover new meal ideas. The app features customizable filters for dietary preferences and available ingredients, ensuring relevant suggestions. It includes a user-friendly interface for Browse recipes and marking favorites, enhancing user engagement. The backend was built to efficiently store and retrieve a large database of recipes, with a focus on scalability and performance. User feedback was actively incorporated throughout the development process to refine features and improve the overall user experience.
+                                </p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="project-card">
-                        <img src="https://via.placeholder.com/600x400/a855f7/FFFFFF?text=Arceeus+App" alt="Arceeus Pokémon Data Tracker">
-                        <div class="card-content">
+                    <div class="project-row">
+                        <div class="project-header">
                             <h3>Arceeus - Pokémon Data Tracker</h3>
-                            <p>Users can track Pokémon data; mainly uses PHP to implement the full dynamic server-side functionality with JavaScript, HTML5/CSS. MySQL with SSL/TLS encryption to reinforce safe storage to track a points system deployed with AWS EC2 and Accelerometer API. Reduced page loads and server traffic by 70% and improved cross-browser compatibility with jQuery and AJAX.</p>
-                            <div class="project-tags">
-                                <span>PHP</span><span>MySQL</span><span>AWS EC2</span><span>JavaScript</span><span>jQuery</span><span>AJAX</span>
+                            <button class="expand-btn" aria-expanded="false" aria-controls="pv-description">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="project-content-wrapper">
+                            <div class="project-media-scroller">
+                                <div class="project-media-grid">
+                                    <div class="media-square"><img src="images/pv-01.gif" alt="Placeholder Alt Text - PV 01"></div> <div class="media-square"><img src="images/pv-02.gif" alt="Placeholder Alt Text - PV 02"></div> <div class="media-square"><img src="images/pv-03.gif" alt="Placeholder Alt Text - PV 03"></div> <div class="media-square"><img src="images/pv-04.gif" alt="Placeholder Alt Text - PV 04"></div> <div class="media-square"><img src="images/pv-05.gif" alt="Placeholder Alt Text - PV 05"></div> <div class="media-square"><img src="images/pv-06.gif" alt="Placeholder Alt Text - PV 06"></div> <div class="media-square"><img src="images/pv-07.gif" alt="Placeholder Alt Text - PV 07"></div> <div class="media-square"><img src="images/pv-08.mp4" alt="Placeholder Alt Text - PV 08"></div> <div class="media-square"><img src="images/pv-09.png" alt="Placeholder Alt Text - PV 09"></div> </div>
                             </div>
-                            <a href="#" class="btn primary-btn view-project-button">View Project</a>
+                            <div class="project-description-wrapper">
+                                <p class="truncated-description">Created Arceeus, a comprehensive data tracker for Pokémon, providing enthusiasts with in-depth statistics, battle simulations, and collection management tools. The application features a robust database backend for efficient data retrieval and a sleek front-end for user interaction. Optimized for performance and scalability, it serves as a valuable resource for competitive players and collectors alike... </p>
+                                <p class="full-description hidden">
+                                    Created Arceeus, a comprehensive data tracker for Pokémon, providing enthusiasts with in-depth statistics, battle simulations, and collection management tools. The application features a robust database backend for efficient data retrieval and a sleek front-end for user interaction. Optimized for performance and scalability, it serves as a valuable resource for competitive players and collectors alike. Developed advanced search and filtering capabilities to quickly access specific Pokémon data. Integrated with external APIs to ensure real-time data accuracy and updates. The project focused on delivering a rich, data-driven experience for the Pokémon community.
+                                </p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="project-card">
-                        <img src="https://via.placeholder.com/600x400/6366f1/FFFFFF?text=Rogers+5G" alt="Rogers 5G Network Integration Project">
-                        <div class="card-content">
+                    <div class="project-row">
+                        <div class="project-header">
                             <h3>5G Network Integration at Rogers</h3>
-                            <p>Operating and maintaining high availability of enterprise applications running on-prem and cloud environments. Analyzing operational performance to deliver improvements in critical maintenance-related metrics and key performance indicators (KPIs). Reducing latency by 25% and increasing data transfer speeds by 30% utilizing C#, .NET and AKS. Improved uptime from ~80-90% to 99.9% through alerting & monitoring tools like Azure Portal, Dynatrace and Datadog. Resolved critical issues within 50 minutes of occurrence by monitoring microservices through SPIES, Datatdog and Grafana. Streamlined routine tasks by reducing manual intervention by 40% by leveraging automation with Python scripting and Dynatrace. Reduced maintenance costs by $75,000 per quarter by validating changes for deployments across 6 apps using Adobe Experience Cloud.</p>
-                            <div class="project-tags">
-                                <span>5G</span><span>C#</span><span>.NET</span><span>AKS</span><span>Azure</span><span>Dynatrace</span><span>Datadog</span><span>Python</span><span>DevOps</span><span>SRE</span>
+                            <button class="expand-btn" aria-expanded="false" aria-controls="r5g-description">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="project-content-wrapper">
+                            <div class="project-media-scroller">
+                                <div class="project-media-grid">
+                                    <div class="media-square"><img src="images/r-01.gif" alt="Placeholder Alt Text - R 01"></div> <div class="media-square"><img src="images/r-02.gif" alt="Placeholder Alt Text - R 02"></div> <div class="media-square"><img src="images/r-03.png" alt="Placeholder Alt Text - R 03"></div> </div>
                             </div>
-                            <a href="#" class="btn primary-btn view-project-button">View Project</a>
+                            <div class="project-description-wrapper">
+                                <p class="truncated-description">Contributed to the seamless integration of 5G network infrastructure at Rogers, focusing on optimizing network performance, reliability, and security. Played a key role in developing automation scripts for deployment and monitoring, significantly reducing manual intervention and improving system uptime. Addressed complex network challenges to ensure high-speed and low-latency connectivity for millions of users... </p>
+                                <p class="full-description hidden">
+                                    Contributed to the seamless integration of 5G network infrastructure at Rogers, focusing on optimizing network performance, reliability, and security. Played a key role in developing automation scripts for deployment and monitoring, significantly reducing manual intervention and improving system uptime. Addressed complex network challenges to ensure high-speed and low-latency connectivity for millions of users. Implemented robust security protocols to protect network data and user privacy. Collaborated with cross-functional teams to troubleshoot issues and implement scalable solutions, ensuring a smooth transition to 5G technology.
+                                </p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="project-card">
-                        <img src="https://via.placeholder.com/600x400/d946ef/FFFFFF?text=Rogers+Inventory" alt="Rogers Mobile/Web Inventory Upgrade Project">
-                        <div class="card-content">
+                    <div class="project-row">
+                        <div class="project-header">
                             <h3>Mobile/Web Inventory Upgrade at Rogers</h3>
-                            <p>Developed a system reducing inventory discrepancies by 50% and improving order fulfillment accuracy by 35% using Java, Spring Boot, PostgreSQL, Apache Kafka and Elasticsearch. Oversaw vendor relationships and facilitated issue resolution via Git-based continuous deployment, resulting in a 20% drop in errors. Achieved a 30% reduction in website downtime by troubleshooting bottlenecks of centralized log servers in SQL Dev, Redis and Cassandra. Resolved defects pertaining to deliverables in scope by testing applications using SoapUI and Postman. Contributed clear ORDs and models to stakeholders in order to increase project alignment with business and system requirements.</p>
-                            <div class="project-tags">
-                                <span>Java</span><span>Spring Boot</span><span>PostgreSQL</span><span>Kafka</span><span>Elasticsearch</span><span>Git</span><span>CI/CD</span>
+                            <button class="expand-btn" aria-expanded="false" aria-controls="inv-description">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="project-content-wrapper">
+                            <div class="project-media-scroller">
+                                <div class="project-media-grid">
+                                    <div class="media-square"><img src="images/f-01.gif" alt="Placeholder Alt Text - F 01"></div> <div class="media-square"><img src="images/f-02.gif" alt="Placeholder Alt Text - F 02"></div> <div class="media-square"><img src="images/f-03.png" alt="Placeholder Alt Text - F 03"></div> </div>
                             </div>
-                            <a href="#" class="btn primary-btn view-project-button">View Project</a>
+                            <div class="project-description-wrapper">
+                                <p class="truncated-description">Led the upgrade of Rogers' mobile and web inventory management systems, enhancing accuracy, efficiency, and real-time tracking capabilities. Designed and implemented new features to streamline inventory reconciliation, order processing, and stock alerts. The project significantly improved supply chain visibility and reduced operational costs... </p>
+                                <p class="full-description hidden">
+                                    Led the upgrade of Rogers' mobile and web inventory management systems, enhancing accuracy, efficiency, and real-time tracking capabilities. Designed and implemented new features to streamline inventory reconciliation, order processing, and stock alerts. The project significantly improved supply chain visibility and reduced operational costs. Collaborated with various departments to gather requirements and ensure the new system met business needs. Provided training and support to end-users for a smooth adoption of the upgraded platform. Focused on creating a scalable and robust solution to handle large volumes of inventory data.
+                                </p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="project-card">
-                        <img src="https://via.placeholder.com/600x400/ef4480/FFFFFF?text=FlixList+App" alt="FlixList Project">
-                        <div class="card-content">
+                    <div class="project-row">
+                        <div class="project-header">
                             <h3>FlixList at Meta & MLH</h3>
-                            <p>Website built and deployed with Python, Flask, VPS, CentOS distribution on AWS, Docker, GitHub Actions, and other technologies. Optimized cost efficiency and performance by 30% by setting up a VPS, running linter checks and integration testing. Enhanced security and reliability by 22.3% with metrics to monitor and log by spinning up an EC2 instance to test endpoints. Database functionality, caching and configuration to run the app in production using Gunicorn, SQLite, Postgres, Grafana & Prometheus.</p>
-                            <div class="project-tags">
-                                <span>Python</span><span>Flask</span><span>AWS</span><span>Docker</span><span>GitHub Actions</span><span>Grafana</span><span>Prometheus</span>
+                            <button class="expand-btn" aria-expanded="false" aria-controls="flixlist-description">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="project-content-wrapper">
+                            <div class="project-media-scroller">
+                                <div class="project-media-grid">
+                                    <div class="media-square"><img src="images/fl-01.gif" alt="Placeholder Alt Text - FL 01"></div> <div class="media-square"><img src="images/fl-02.jpg" alt="Placeholder Alt Text - FL 02"></div> <div class="media-square"><img src="images/fl-03.png" alt="Placeholder Alt Text - FL 03"></div> <div class="media-square"><img src="images/fl-04.png" alt="Placeholder Alt Text - FL 04"></div> <div class="media-square"><img src="images/fl-05.png" alt="Placeholder Alt Text - FL 05"></div> <div class="media-square"><img src="images/fl-06.jpg" alt="Placeholder Alt Text - FL 06"></div> </div>
                             </div>
-                            <a href="#" class="btn primary-btn view-project-button">View Project</a>
+                            <div class="project-description-wrapper">
+                                <p class="truncated-description">Developed FlixList, a movie and TV show tracking application, during a hackathon with Meta & MLH. This project allowed users to manage watchlists, discover new content, and share recommendations. Focused on rapid prototyping and efficient API integration to deliver a functional product within a tight deadline... </p>
+                                <p class="full-description hidden">
+                                    Developed FlixList, a movie and TV show tracking application, during a hackathon with Meta & MLH. This project allowed users to manage watchlists, discover new content, and share recommendations. Focused on rapid prototyping and efficient API integration to deliver a functional product within a tight deadline. Implemented robust search functionalities and user authentication. The application showcased skills in front-end development, backend integration, and collaborative problem-solving under pressure. User experience was prioritized, ensuring an intuitive and engaging platform for movie enthusiasts.
+                                </p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="project-card">
-                        <img src="https://via.placeholder.com/600x400/f87171/FFFFFF?text=Learn+2+Code" alt="Learn 2 Code Project">
-                        <div class="card-content">
+                    <div class="project-row">
+                        <div class="project-header">
                             <h3>Learn 2 Code at Hack the Mountain</h3>
-                            <p>A website for helping learners develop their coding skills through educational text, videos and various forms of media. Supports overall well-being and communities such as PoC, LGBTQIA+, as well as communities in need of our help now, such as #LetIndiaBreathe, #StopAsianHate, and #BlackLivesMatter. WGAC Guidelines considered for accessibility. Further research on fonts and colours for accessibility and user design/user interface concepts. Utilized Angular's library Ionic to fit the team's vision.</p>
-                            <div class="project-tags">
-                                <span>Education</span><span>Accessibility</span><span>UI/UX</span><span>Angular</span><span>Ionic</span>
+                            <button class="expand-btn" aria-expanded="false" aria-controls="l2c-description">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="project-content-wrapper">
+                            <div class="project-media-scroller">
+                                <div class="project-media-grid">
+                                    <div class="media-square"><img src="images/ltc-01.gif" alt="Placeholder Alt Text - LTC 01"></div> <div class="media-square"><img src="images/ltc-02.png" alt="Placeholder Alt Text - LTC 02"></div> <div class="media-square"><img src="images/ltc-03.png" alt="Placeholder Alt Text - LTC 03"></div> <div class="media-square"><img src="images/ltc-04.png" alt="Placeholder Alt Text - LTC 04"></div> <div class="media-square"><img src="images/ltc-05.png" alt="Placeholder Alt Text - LTC 05"></div> <div class="media-square"><img src="images/ltc-06.png" alt="Placeholder Alt Text - LTC 06"></div> <div class="media-square"><img src="images/ltc-07.png" alt="Placeholder Alt Text - LTC 07"></div> <div class="media-square"><img src="images/ltc-08.png" alt="Placeholder Alt Text - LTC 08"></div> </div>
                             </div>
-                            <a href="#" class="btn primary-btn view-project-button">View Project</a>
+                            <div class="project-description-wrapper">
+                                <p class="truncated-description">Developed "Learn 2 Code" during Hack the Mountain, an interactive platform designed to help beginners grasp fundamental programming concepts. The project featured intuitive lessons, coding challenges, and real-time feedback, making learning accessible and engaging. Focused on creating a supportive environment for aspiring developers... </p>
+                                <p class="full-description hidden">
+                                    Developed "Learn 2 Code" during Hack the Mountain, an interactive platform designed to help beginners grasp fundamental programming concepts. The project featured intuitive lessons, coding challenges, and real-time feedback, making learning accessible and engaging. Focused on creating a supportive environment for aspiring developers, with clear explanations and practical examples. The platform aimed to simplify complex topics and provide a solid foundation for further learning in computer science. Utilized a modular design to allow for easy addition of new languages and topics.
+                                </p>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
-
-
     </main>
 
-    <footer class="main-footer styled-footer">
-        <div class="container footer-columns">
-            <div class="footer-column footer-logo">
-                <h3>ajenaration</h3>
-                <p>&copy; 2025 All rights reserved.</p>
-            </div>
-            <div class="footer-column footer-explore">
-                <h4>Explore</h4>
-                <ul>
-                    <li><a href="/blog">Blog</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#devrel">DevRel</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-column footer-follow">
-                <h4>Follow Us</h4>
-                <ul>
-                    <li><a href="https://linkedin.com/in/ayana-n" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                    <li><a href="https://github.com/ajenaration" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                    <li><a href="https://twitter.com/ajenaration" target="_blank" rel="noopener noreferrer">Twitter</a></li>
-                    <li><a href="https://instagram.com/ajenaration" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-                    <li><a href="#" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-                </ul>
-            </div>
-            <div class="footer-column footer-newsletter">
-                <h4>Stay Updated</h4>
-                <p>Sign up with your email address to receive news and updates.</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Email Address">
-                    <button type="submit" class="primary-btn">Sign Up</button>
-                </form>
+    <footer class="styled-footer">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column footer-logo">
+                    <h3>ajenaration</h3>
+                    <p>Building the future, one line of code at a time.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Twitter</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Sign up with your email address to receive news and updates.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Email Address">
+                        <button type="submit" class="btn primary-btn">Sign Up</button>
+                    </form>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
-    </body>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const expandButtons = document.querySelectorAll('.expand-btn');
+
+            expandButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const projectRow = button.closest('.project-row');
+                    const fullDescription = projectRow.querySelector('.full-description');
+                    const truncatedDescription = projectRow.querySelector('.truncated-description');
+                    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+                    if (isExpanded) {
+                        fullDescription.classList.add('hidden');
+                        truncatedDescription.classList.remove('hidden');
+                        button.setAttribute('aria-expanded', 'false');
+                        button.querySelector('i').classList.remove('fa-chevron-up');
+                        button.querySelector('i').classList.add('fa-chevron-down');
+                        projectRow.classList.remove('expanded'); // Remove expanded class for styling
+                    } else {
+                        fullDescription.classList.remove('hidden');
+                        truncatedDescription.classList.add('hidden');
+                        button.setAttribute('aria-expanded', 'true');
+                        button.querySelector('i').classList.remove('fa-chevron-down');
+                        button.querySelector('i').classList.add('fa-chevron-up');
+                        projectRow.classList.add('expanded'); // Add expanded class for styling
+                    }
+                });
+            });
+
+            // Truncate descriptions initially
+            document.querySelectorAll('.project-description-wrapper p').forEach(p => {
+                if (p.classList.contains('truncated-description')) {
+                    const originalText = p.nextElementSibling.textContent.trim(); // Get full text from hidden sibling
+                    const maxLength = 250; // Adjust truncation length as needed
+                    if (originalText.length > maxLength) {
+                        p.textContent = originalText.substring(0, maxLength) + '... ';
+                        p.classList.remove('hidden');
+                        p.nextElementSibling.classList.add('hidden'); // Ensure full text is hidden
+                    } else {
+                        // If text is short, just show full text and hide expand button
+                        p.textContent = originalText;
+                        p.nextElementSibling.classList.add('hidden');
+                        p.closest('.project-description-wrapper').previousElementSibling.querySelector('.expand-btn').style.display = 'none';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
 </html>
