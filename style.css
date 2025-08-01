@@ -15,7 +15,15 @@
     --color-accent-purple-start: #a855f7; /* For gradients */
     --color-accent-purple-end: #6366f1;   /* For gradients */
     --color-accent-pink-start: #d946ef;   /* For gradients */
-    --gradient-purple-blue: linear-gradient(to right, var(--color-accent-purple-start), var(--color-accent-purple-end));
+
+    /* UPDATED: Main gradient for the blob and buttons */
+    --gradient-purple-blue: linear-gradient(135deg, #8e2de2 0%, #4a00e0 100%);
+
+    /* NEW: Specific colors for the new design elements */
+    --color-blob-purple: #8e2de2;
+    --color-blob-blue: #4a00e0;
+    --color-btn-done: #000000;
+    --color-card-bg-subtle: #f0f0f5;
 
     /* Shadows */
     --shadow-light: 0px 4px 15px rgba(0, 0, 0, 0.05);
@@ -28,7 +36,7 @@
 
     /* Typography - now using Montserrat */
     --font-family-body: 'Montserrat', sans-serif;
-    --font-family-headings: 'Montserrat', sans-serif; /* Montserrat works great for headings too */
+    --font-family-headings: 'Montserrat', sans-serif;
     --font-size-base: 16px;
 }
 
@@ -49,13 +57,13 @@ body {
     line-height: 1.6;
     color: var(--color-text-medium);
     background-color: var(--color-background-light-grey);
-    -webkit-font-smoothing: antialiased; /* For smoother font rendering */
-    -moz-osx-font-smoothing: grayscale; /* For smoother font rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 a {
     text-decoration: none;
-    color: var(--color-button-primary); /* Default link color */
+    color: var(--color-button-primary);
     transition: color 0.3s ease-in-out;
 }
 
@@ -68,17 +76,16 @@ ul {
 }
 
 /* Logo text styling - apply Shrikhand only here */
-.logo h1 { /* Or .logo span, depending on your HTML structure for the logo text */
-    font-family: 'Shrikhand', cursive; /* <--- NEW: Shrikhand font */
-    font-weight: normal; /* Shrikhand is inherently bold, no need for 700 */
-    font-style: normal; /* Shrikhand isn't designed with true italics */
-    color: var(--color-text-dark); /* Or whatever color your logo is */
-    font-size: 2rem; /* Adjust size as needed, you might want it larger */
-    line-height: 1; /* Adjust line height for better spacing */
-    text-transform: lowercase; /* Or capitalize the first letter via CSS if needed, based on image */
-    /* If you still want a slight slant like in your original 'ajenaration' image, you might experiment with: */
+.logo h1 {
+    font-family: 'Shrikhand', cursive;
+    font-weight: normal;
+    font-style: normal;
+    color: var(--color-text-dark);
+    font-size: 2rem;
+    line-height: 1;
+    text-transform: lowercase;
     transform: skewX(-5deg);
-    display: inline-block; /* Required for transform on inline elements */
+    display: inline-block;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -98,41 +105,39 @@ button {
 
 /* Reusable Container for content width */
 .container {
-    max-width: 1280px; /* Adjust based on the width in the design */
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 0 40px; /* Padding for side edges on larger screens */
+    padding: 0 40px;
 }
 
 /* --- New Section Blocks Styling --- */
 .content-section-block {
-    background-color: var(--color-background-white); /* White background for the block */
-    padding: 60px 0; /* Padding inside the block, container handles left/right */
-    margin-bottom: 40px; /* Space between blocks */
-    border-radius: var(--border-radius-large); /* Rounded corners for the block */
-    box-shadow: var(--shadow-light); /* Subtle shadow for depth */
-    overflow: hidden; /* Ensures inner elements/shadows are contained */
+    background-color: var(--color-background-white);
+    padding: 60px 0;
+    margin-bottom: 40px;
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-light);
+    overflow: hidden;
 }
 
-/* General section padding adjustment - ensure it's not double-padding */
 .section-padded {
-    padding: 80px 0; /* Standard padding for sections that are not "blocks" themselves */
+    padding: 80px 0;
 }
 
-/* Adjust the container within these blocks to ensure proper horizontal spacing */
 .content-section-block > .container {
-    padding: 0 40px; /* Re-apply container padding */
+    padding: 0 40px;
 }
 
 /* --- Button Styling --- */
 .btn {
-    display: inline-flex; /* Use flex for easy icon/text alignment if needed */
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 12px 28px;
     border-radius: var(--border-radius-small);
     font-weight: 600;
-    font-size: 0.95rem; /* Slightly smaller text for buttons */
-    text-transform: capitalize; /* As seen in the design: "Download" */
+    font-size: 0.95rem;
+    text-transform: capitalize;
 }
 
 .primary-btn {
@@ -144,273 +149,184 @@ button {
 .primary-btn:hover {
     background-color: var(--color-button-hover);
     box-shadow: var(--shadow-medium);
-    transform: translateY(-2px); /* Subtle lift on hover */
+    transform: translateY(-2px);
 }
 
-
-/* --- Header Specific Styling --- */
+/* --- UPDATED: Header & Navigation --- */
 .main-header {
-    background-color: var(--color-background-white);
-    padding: 20px 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Soft shadow for header */
-    position: sticky; /* Makes header stick to the top */
-    top: 0;
-    z-index: 1000; /* Ensures header is above other content */
+    background-color: transparent;
+    padding: 20px 40px;
+    box-shadow: none;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
 }
 
 .main-header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 60px; /* Fixed height for header */
+    height: auto;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .logo img {
-    height: 38px; /* Visual estimation of logo height */
+    height: 38px;
     width: auto;
-    display: block; /* Removes any extra space below the image */
+    display: block;
 }
 
 .main-nav ul {
+    list-style: none;
     display: flex;
-    gap: 32px; /* Spacing between navigation items */
-    margin-left: -50px; /* Slight adjustment to move nav left, visually aligning it */
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
 }
 
 .main-nav a {
-    font-family: var(--font-family-body);
-    font-weight: 500; /* Medium weight as seen */
-    font-size: 1.05rem; /* Slightly larger than base text */
-    color: var(--color-text-dark); /* Darker text for main nav links */
-    padding: 5px 0; /* Creates clickable area without increasing total height much */
-    position: relative;
-    white-space: nowrap; /* Prevents text from wrapping */
+    text-decoration: none;
+    color: var(--color-text-dark);
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
 }
 
 .main-nav a:hover {
-    color: var(--color-button-primary); /* Color on hover */
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--color-text-dark);
 }
 
-/* Small blue underline on hover for nav items */
 .main-nav a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -5px; /* Adjust position below link */
-    width: 0;
-    height: 2px;
-    background-color: var(--color-button-primary);
-    transition: width 0.3s ease-in-out;
+    display: none;
 }
 
-.main-nav a:hover::after {
-    width: 100%;
-}
-
-/* Specific styling for the header's download button, overriding general .btn slightly */
 .main-header .download-button {
-    padding: 10px 22px; /* Slightly refined padding for this specific button */
-    font-size: 0.95rem;
-    border-radius: var(--border-radius-small);
+    display: none;
 }
 
-/* Media Queries for Responsiveness (Basic for now, will expand later) */
-@media (max-width: 900px) {
-    .main-header .container {
-        padding: 0 25px; /* Adjust padding for smaller screens */
-    }
-    .main-nav {
-        display: none; /* Hide nav for now on smaller screens (will add hamburger menu later) */
-    }
-    .main-header .container {
-        justify-content: space-between; /* Only logo and button visible */
-    }
+.main-header .done-button {
+    background-color: var(--color-btn-done);
+    color: var(--color-background-white);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
 }
 
-@media (max-width: 500px) {
-    .container {
-        padding: 0 15px; /* Even tighter padding on very small screens */
-    }
-    .main-header .download-button {
-        padding: 8px 15px; /* Smaller button on very small screens */
-        font-size: 0.85rem;
-    }
-    .logo img {
-        height: 30px; /* Smaller logo */
-    }
+.main-header .done-button:hover {
+    background-color: var(--color-text-medium);
 }
 
-/* --- Hero Section Styling --- */
+
+/* --- UPDATED: Hero Section & SVG Blob --- */
 .hero-section {
-    position: relative;
-    display: flex; /* Use flexbox for content layout */
-    align-items: center; /* Vertically align content */
-    min-height: 70vh; /* Minimum height for the hero section (e.g., 70% of viewport height) */
-    padding: 80px 0; /* Vertical padding */
-    overflow: hidden; /* Hide anything overflowing, especially for the background graphic */
-    background-color: var(--color-background-light-grey); /* Fallback background */
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  align-items: center;
+  min-height: 75vh;
+  padding: 100px 40px;
+  background-color: var(--color-background-light-grey);
+  overflow: hidden;
 }
 
-.hero-section .hero-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1280px; /* Match your .container max-width */
-    margin: 0 auto;
-    padding: 0 40px; /* Match your .container padding */
-    width: 100%; /* Ensure it spans the container */
-    position: relative; /* For z-index to be above background graphic */
-    z-index: 2;
+.hero-content {
+  position: relative;
+  z-index: 3;
 }
 
-.hero-text {
-    flex: 1; /* Allows it to grow and shrink */
-    max-width: 55%; /* Visual estimation: text takes about 55% width */
-    padding-right: 40px; /* Space between text and graphic */
-    text-align: left;
+.hero-blob-container {
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 900px;
+  height: 900px;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  filter: blur(80px);
+  opacity: 0.4;
 }
 
-.hero-text h2 {
-    font-size: 3.5rem; /* Larger font size for main heading */
+.hero-blob-container svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+
+.hero-content h2 {
+    font-size: 3.5rem;
     font-weight: 700;
+    line-height: 1.1;
     margin-bottom: 20px;
     color: var(--color-text-dark);
 }
 
-.hero-text p {
-    font-size: 1.25rem; /* Larger font size for subheading */
+.hero-content p {
+    font-size: 1.25rem;
     color: var(--color-text-medium);
     margin-bottom: 30px;
-    max-width: 500px; /* Prevent text from being too wide */
 }
 
-/* Specific styling for the CTA button in the hero section */
 .cta-button {
-    /* Inherits from .btn and .primary-btn */
-    background: var(--gradient-purple-blue); /* Gradient background as seen in design */
-    color: var(--color-background-white); /* Corrected variable name from --color-white */
-    padding: 15px 40px; /* Larger padding for hero button */
-    font-size: 1.1rem;
-    border-radius: var(--border-radius-large); /* More rounded corners */
-    box-shadow: var(--shadow-medium); /* Stronger shadow */
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--color-background-white);
+    background: var(--gradient-purple-blue);
+    padding: 15px 40px;
+    border-radius: 50px;
+    box-shadow: var(--shadow-medium);
+    transition: all 0.3s ease;
 }
 
 .cta-button:hover {
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2); /* Even stronger shadow on hover */
-    transform: translateY(-3px); /* More pronounced lift */
-}
-
-/* The gradient blob background animation area */
-#interactive-background {
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: none;
-    width: 65%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
-}
-
-/* The actual gradient blob within the #interactive-background */
-.hero-bg-animation::before {
-    content: '';
-    position: absolute;
-    top: 20%;
-    left: 70%;
-    transform: translate(-50%, -50%) rotate(45deg);
-    width: 650px;
-    height: 650px;
-    border-radius: 45% 55% 50% 50% / 60% 40% 60% 40%;
-    background: var(--gradient-purple-blue);
-    filter: blur(15px);
-    opacity: 0.85;
-    animation: blobAnimation 15s infinite alternate ease-in-out;
-}
-
-/* --- Keyframe Animation for the Blob --- */
-@keyframes blobAnimation {
-    0% {
-        transform: translate(-50%, -50%) rotate(45deg) scale(1);
-        border-radius: 45% 55% 50% 50% / 60% 40% 60% 40%;
-    }
-    25% {
-        transform: translate(-52%, -48%) rotate(48deg) scale(1.02);
-        border-radius: 50% 50% 60% 40% / 55% 45% 55% 45%;
-    }
-    50% {
-        transform: translate(-48%, -50%) rotate(42deg) scale(1);
-        border-radius: 55% 45% 45% 55% / 40% 60% 40% 60%;
-    }
-    75% {
-        transform: translate(-50%, -52%) rotate(46deg) scale(1.01);
-        border-radius: 40% 60% 50% 50% / 65% 35% 65% 35%;
-    }
-    100% {
-        transform: translate(-50%, -50%) rotate(45deg) scale(1);
-        border-radius: 45% 55% 50% 50% / 60% 40% 60% 40%;
-    }
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 
-/* Media Queries for Responsiveness in Hero Section */
+/* Media Queries for Responsiveness */
 @media (max-width: 900px) {
+    .main-header .container { padding: 0 25px; }
+    .main-nav { display: none; }
+    .main-header .container { justify-content: space-between; }
     .hero-section {
-        min-height: auto;
-        padding: 60px 0;
-    }
-    .hero-section .hero-content {
-        flex-direction: column;
+        grid-template-columns: 1fr;
         text-align: center;
-        padding: 0 25px;
+        padding: 60px 25px;
     }
-    .hero-text {
-        max-width: 100%;
-        padding-right: 0;
-        margin-bottom: 40px;
+    .hero-content {
+        order: 2;
     }
-    .hero-text h2 {
-        font-size: 2.8rem;
-    }
-    .hero-text p {
-        font-size: 1.1rem;
-    }
-    #interactive-background {
+    .hero-content h2 { font-size: 2.8rem; }
+    .hero-content p { font-size: 1.1rem; }
+    .blob-container {
         position: relative;
-        top: auto;
-        right: auto;
-        transform: none;
         width: 100%;
         height: 300px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .hero-bg-animation::before {
-        width: 450px;
-        height: 450px;
-        left: 50%;
-        transform: translate(-50%, -50%) rotate(45deg);
-        filter: blur(60px);
+        z-index: 1;
+        margin: 0 auto;
     }
 }
 
 @media (max-width: 500px) {
-    .hero-text h2 {
-        font-size: 2.2rem;
-    }
-    .hero-text p {
-        font-size: 1rem;
-    }
-    .cta-button {
-        padding: 12px 30px;
-        font-size: 1rem;
-    }
-    .hero-bg-animation::before {
-        width: 300px;
-        height: 300px;
-        filter: blur(40px);
-    }
+    .container { padding: 0 15px; }
+    .main-header .done-button { padding: 8px 15px; font-size: 0.85rem; }
+    .logo img { height: 30px; }
+    .hero-content h2 { font-size: 2.2rem; }
+    .hero-content p { font-size: 1rem; }
+    .cta-button { padding: 12px 30px; font-size: 1rem; }
+    .blob-container { height: 250px; }
 }
 
 /* --- Styled Footer --- */
@@ -501,12 +417,10 @@ button {
     margin-bottom: 10px;
 }
 
-/* Ensure other h3s keep Montserrat */
 .footer-column h4 {
     font-family: var(--font-family-headings);
 }
 
-/* Make sure footer links use the body font family */
 .footer-column ul li a {
     font-family: var(--font-family-body);
 }
@@ -620,10 +534,10 @@ button {
     position: relative;
     width: 100%;
     max-width: 500px;
-    margin-top: -10px; /* Keep top margin as is */
-    margin-bottom: 30px; /* Keep bottom margin as is */
-    margin-left: 0; /* NEW: Remove auto to left align */
-    margin-right: auto; /* NEW: Keep auto on right to allow it to push left */
+    margin-top: -10px;
+    margin-bottom: 30px;
+    margin-left: 0;
+    margin-right: auto;
     overflow: hidden;
     border-radius: var(--border-radius-large);
     box-shadow: var(--shadow-medium);
@@ -631,34 +545,33 @@ button {
 }
 
 .slider-track {
-    position: relative; /* Changed from flex */
+    position: relative;
     width: 100%;
-    height: 100%; /* Ensure track fills container */
-    /* Removed display: flex and transition: transform */
+    height: 100%;
 }
 
 .slider-item {
-    position: absolute; /* Changed to absolute for stacking */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0; /* Hidden by default */
-    transition: opacity 1s ease-in-out; /* Fade transition */
-    z-index: 1; /* Default stacking order */
-    display: flex; /* Keep flex to center image within item */
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .slider-item.active {
-    opacity: 1; /* Show active item */
-    z-index: 2; /* Bring active item to front */
+    opacity: 1;
+    z-index: 2;
 }
 
 .slider-item img {
     width: 100%;
-    height: 100%; /* Image fills its item container */
+    height: 100%;
     object-fit: cover;
     display: block;
 }
@@ -703,21 +616,20 @@ button {
 
 /* DevRel Content Column Specifics */
 .devrel-content-column {
-    margin-top: 52px; /* New: Added to align with the slider's top */
+    margin-top: 52px;
 }
 
 .devrel-content-column h2 {
-    font-size: 3rem; /* Significantly increased font size */
-    line-height: 1.1; /* Adjust line height for multi-line text */
-    margin-bottom: 20px; /* Adjust as needed */
-    text-align: left; /* Ensure it stays left-aligned */
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-align: left;
 }
 
-/* Add this to create a new line if your HTML uses <br> or a specific span */
 .devrel-content-column h2 br {
     display: block;
     content: "";
-    margin-top: 5px; /* Adjust vertical space between lines */
+    margin-top: 5px;
 }
 
 .devrel-content-column p {
@@ -740,7 +652,7 @@ button {
 
 .devrel-summary-list li i {
     margin-right: 10px;
-    color: var(--color-button-primary); /* Style for icons */
+    color: var(--color-button-primary);
 }
 
 .view-all-devrel-button {
@@ -759,23 +671,22 @@ button {
     }
     .slider-container {
         max-width: 100%;
-        height: 300px; /* Adjust height for stacked layout on smaller screens */
-        margin-left: auto; /* Re-center when stacked on smaller screens */
-        margin-right: auto; /* Re-center when stacked on smaller screens */
+        height: 300px;
+        margin-left: auto;
+        margin-right: auto;
     }
     .view-all-projects-button-container,
     .devrel-content-column .view-all-devrel-button {
         text-align: center;
     }
-    /* Reset margin-top for devrel-content-column on smaller screens if stacking */
     .devrel-content-column {
-        margin-top: 0; /* Reset margin-top when columns stack */
+        margin-top: 0;
     }
 }
 
 @media (max-width: 500px) {
     .slider-container {
-        height: 250px; /* Further adjust height on very small screens */
+        height: 250px;
     }
     .slider-arrow {
         padding: 8px 10px;
@@ -783,13 +694,11 @@ button {
     }
 }
 
-
-
 /* --- Projects Section New Layout --- */
 .projects-container {
     display: flex;
     flex-direction: column;
-    gap: 40px; /* Space between project rows */
+    gap: 40px;
 }
 
 .project-row {
@@ -798,11 +707,10 @@ button {
     box-shadow: var(--shadow-light);
     padding: 25px 30px;
     transition: all 0.3s ease-in-out;
-    position: relative; /* For arrow positioning */
+    position: relative;
 }
 
 .project-row.expanded {
-    /* Styles for when the row is expanded, e.g., slightly larger shadow, different background */
     box-shadow: var(--shadow-medium);
 }
 
@@ -830,7 +738,7 @@ button {
 }
 
 .expand-btn i {
-    pointer-events: none; /* Ensures click goes to button, not icon */
+    pointer-events: none;
 }
 
 .expand-btn[aria-expanded="true"] i {
@@ -839,66 +747,76 @@ button {
 
 .project-content-wrapper {
     display: flex;
-    gap: 30px; /* Space between media scroller and description */
-    align-items: flex-start; /* Align top */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 30px;
+    align-items: flex-start;
+    flex-wrap: wrap;
 }
 
-/* --- Project Media Scroller (NOW WIDER AND WITH VISIBLE SCROLLBAR) --- */
 .project-media-scroller {
-    flex-shrink: 0; /* Prevent scroller from shrinking */
-    /* UPDATED: Allows more space for media */
-    width: 60%; /* Take up more width of the available space */
-    min-width: 300px; /* Ensure it's not too small on larger screens */
-    max-width: 100%; /* Ensure responsiveness */
-    overflow-x: auto; /* Horizontal scroll - IMPORTANT: This should be here */
-    padding-bottom: 10px; /* Space for scrollbar */
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-    /* Removed scrollbar hiding properties */
+    flex-shrink: 0;
+    width: 60%;
+    min-width: 300px;
+    max-width: 100%;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
 }
 
 .project-media-grid {
-    display: flex; /* Arrange media squares in a row */
-    gap: 15px; /* Space between media squares */
-    padding-right: 15px; /* Prevent last item from touching scrollbar end */
+    display: flex;
+    gap: 15px;
+    padding-right: 15px;
 }
 
 .media-square {
-    flex-shrink: 0; /* Prevent squares from shrinking */
-    /* UPDATED: Larger squares */
-    width: 150px; /* Increased size to allow more media to fit visible at once if space allows */
-    height: 150px; /* Make them square */
+    flex-shrink: 0;
+    width: 150px;
+    height: 150px;
     border-radius: var(--border-radius-small);
     overflow: hidden;
     box-shadow: var(--shadow-light);
-    background-color: var(--color-background-light-grey); /* Placeholder background */
+    background-color: var(--color-background-light-grey);
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    text-align: center;
 }
 
-.media-square img, .media-square video {
-    width: 100%;
+.media-square figure {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     height: 100%;
-    object-fit: cover; /* Cover the square area */
+    width: 100%;
+}
+
+.media-square figure img,
+.media-square figure video {
     display: block;
+    max-width: 100%;
+    max-height: calc(100% - 20px);
+    height: auto;
+    object-fit: contain;
 }
 
 .project-description-wrapper {
-    flex-grow: 1; /* Allow description to take remaining space */
+    flex-grow: 1;
     color: var(--color-text-medium);
     line-height: 1.6;
 }
 
 .project-description-wrapper p {
-    margin-bottom: 10px; /* Space between paragraphs if any */
+    margin-bottom: 10px;
 }
 
 .project-description-wrapper .hidden {
     display: none;
 }
 
-/* Styling for code sections and buttons that open the modal */
 .project-code-section {
     margin-top: 30px;
     border-top: 1px solid var(--color-border-light);
@@ -911,8 +829,7 @@ button {
     color: var(--color-text-dark);
 }
 
-/* Updated button to show code modal */
-.show-code-modal-btn { /* Renamed from expand-code-btn */
+.show-code-modal-btn {
     background: none;
     border: none;
     color: var(--color-button-primary);
@@ -932,25 +849,18 @@ button {
     color: var(--color-button-hover);
 }
 
-.show-code-modal-btn i {
-    margin-left: 10px; /* Space between text and icon */
-    font-size: 0.9em; /* Adjust icon size */
-}
-
-/* This class hides the original <pre> code blocks, as their content is now copied to the modal */
 .code-source.hidden {
     display: none;
 }
 
-
 /* Media Queries for responsiveness */
 @media (max-width: 992px) {
     .project-content-wrapper {
-        flex-direction: column; /* Stack media and description */
+        flex-direction: column;
     }
     .project-media-scroller {
-        width: 100%; /* Full width on smaller screens */
-        justify-content: flex-start; /* Align media to start */
+        width: 100%;
+        justify-content: flex-start;
     }
     .project-header {
         flex-direction: column;
@@ -966,7 +876,7 @@ button {
         padding: 20px 20px;
     }
     .media-square {
-        width: 100px; /* Smaller squares on mobile */
+        width: 100px;
         height: 100px;
     }
     .project-header h3 {
@@ -981,11 +891,11 @@ button {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Ensure it's on top of everything */
+    z-index: 1000;
 }
 
 .modal-overlay.hidden {
@@ -997,8 +907,8 @@ button {
     padding: 30px;
     border-radius: var(--border-radius-large);
     max-width: 90%;
-    max-height: 85%; /* Max height to allow scrolling for long code */
-    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 85%;
+    overflow-y: auto;
     position: relative;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     color: #333;
@@ -1008,7 +918,7 @@ button {
     margin-top: 0;
     margin-bottom: 20px;
     font-size: 1.5rem;
-    color: var(--color-text-dark); /* Using your defined text color */
+    color: var(--color-text-dark);
 }
 
 .modal-content pre {
@@ -1016,16 +926,16 @@ button {
     border: 1px solid #ddd;
     border-radius: var(--border-radius-small);
     padding: 15px;
-    overflow-x: auto; /* Horizontal scroll for very long lines */
+    overflow-x: auto;
     font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
     font-size: 0.9em;
     line-height: 1.4;
-    white-space: pre-wrap; /* Wrap lines if possible */
-    word-break: break-all; /* Break words to prevent overflow */
+    white-space: pre-wrap;
+    word-break: break-all;
 }
 
 .modal-content code {
-    display: block; /* Ensure code inside pre takes full width */
+    display: block;
 }
 
 .modal-close-btn {
@@ -1048,9 +958,9 @@ button {
 
 /* --- Processing Files Section --- */
 .processing-files-section {
-    background-color: var(--color-background-light-grey); /* Or white, depending on your design */
-    padding: 80px 0; /* Standard section padding */
-    text-align: center; /* Center the heading */
+    background-color: var(--color-background-light-grey);
+    padding: 80px 0;
+    text-align: center;
 }
 
 .processing-files-section h2 {
@@ -1060,30 +970,30 @@ button {
 
 .processing-files-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust minmax based on desired size */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 30px;
-    justify-items: center; /* Center items within their grid cells */
+    justify-items: center;
 }
 
 .processing-file-item {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center content horizontally */
+    align-items: center;
     text-align: center;
 }
 
 .processing-file-item .file-thumbnail {
-    width: 200px; /* Double size from typical 100px */
-    height: 200px; /* Double size */
+    width: 200px;
+    height: 200px;
     overflow: hidden;
     border-radius: var(--border-radius-medium);
     box-shadow: var(--shadow-light);
-    margin-bottom: 10px; /* Space between thumbnail and title */
-    background-color: var(--color-background-white); /* Background for blank thumbnails */
+    margin-bottom: 10px;
+    background-color: var(--color-background-white);
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer; /* Indicate it's clickable */
+    cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -1104,12 +1014,10 @@ button {
     font-family: var(--font-family-body);
     font-size: 1rem;
     color: var(--color-text-dark);
-    text-transform: lowercase; /* All lowercase */
-    margin-bottom: 5px; /* Space between title and link */
-    /* Add for the < > around the title text itself, not a separate link */
+    text-transform: lowercase;
+    margin-bottom: 5px;
 }
 
-/* For the angle brackets around the title text */
 .processing-file-item .file-title::before {
     content: '<';
 }
@@ -1120,7 +1028,7 @@ button {
 /* Media Queries for Processing Files Section */
 @media (max-width: 768px) {
     .processing-files-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust for smaller screens */
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         gap: 20px;
     }
     .processing-file-item .file-thumbnail {
@@ -1146,492 +1054,133 @@ button {
     }
 }
 
-/* style.css additions/modifications */
-
-/* Styles for the media container to allow for caption positioning */
-.media-square {
-    position: relative; /* Needed for absolute positioning of figcaption if desired */
-    display: flex; /* Use flexbox to stack image and caption */
-    flex-direction: column; /* Stack vertically */
-    align-items: center; /* Center items horizontally */
-    justify-content: flex-start; /* Align to top if images vary in height */
-    overflow: hidden; /* Hide anything overflowing the square */
-    text-align: center; /* Center the caption text */
-}
-
-.media-square figure {
-    margin: 0; /* Remove default figure margin */
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%; /* Make figure fill the media-square */
-    width: 100%; /* Make figure fill the media-square */
-}
-
-.media-square figure img,
-.media-square figure video {
-    display: block; /* Remove extra space below images */
-    max-width: 100%;
-    max-height: calc(100% - 20px); /* Adjust based on figcaption height, e.g., 20px for caption height */
-    height: auto;
-    object-fit: contain; /* Ensure the entire image fits within the bounds */
-}
-
-.media-square figcaption {
-    font-size: 0.8em; /* Smaller font size for captions */
-    color: #666; /* A softer color for captions */
-    margin-top: 5px; /* Space between image and caption */
-    text-transform: lowercase; /* Ensure lowercase */
-    padding: 0 5px; /* Little padding to prevent text touching edges */
-    box-sizing: border-box; /* Include padding in element's total width and height */
-    width: 100%; /* Make caption take full width */
-    white-space: nowrap; /* Prevent text wrapping if you want it on one line */
-    overflow: hidden; /* Hide overflowing text */
-    text-overflow: ellipsis; /* Add ellipsis for overflowing text */
-}
-
-/* General Blog Section Styles */
-.blog-hero {
-    background-color: var(--primary-color-light); /* Or a soft gradient */
-    padding: 4rem 0;
-    text-align: center;
-    color: var(--text-color);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    margin-bottom: 3rem;
+/* --- UPDATED: Interactive Cards Section --- */
+.feature-grid {
     position: relative;
-    overflow: hidden; /* For potential background effects */
-}
-
-/* Hero Post Card */
-.hero-post-card {
-    display: flex;
-    flex-direction: column; /* Stack on mobile */
-    align-items: center;
-    background-color: var(--background-color-dark); /* Darker background for contrast */
-    border-radius: 12px;
-    overflow: hidden;
-    max-width: 900px;
-    margin: 0 auto;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    text-align: left;
-    transition: transform 0.3s ease-in-out;
-}
-
-.hero-post-card:hover {
-    transform: translateY(-5px);
-}
-
-.hero-post-image {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-}
-
-.hero-post-content {
-    padding: 2.5rem;
-    color: #fff; /* White text on dark background */
-}
-
-.hero-post-content h2 {
-    font-size: 2.2em;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-    color: var(--secondary-color); /* Highlight color */
-}
-
-.hero-post-content p {
-    font-size: 1.1em;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-    opacity: 0.9;
-}
-
-.hero-post-category {
-    display: inline-block;
-    background-color: var(--primary-color);
-    color: #fff;
-    padding: 0.4rem 0.8rem;
-    border-radius: 5px;
-    font-size: 0.9em;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.hero-post-meta {
-    font-size: 0.9em;
-    color: #bbb;
-    margin-top: 1.5rem;
-    display: flex;
-    gap: 15px;
-}
-
-.hero-post-meta i {
-    margin-right: 5px;
-    color: var(--secondary-color);
-}
-
-.read-more-btn {
-    display: inline-flex;
-    align-items: center;
-    background-color: var(--secondary-color);
-    color: #fff;
-    padding: 0.8rem 1.5rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.read-more-btn:hover {
-    background-color: #ff8c00; /* A slightly different orange */
-    transform: translateX(5px);
-}
-
-.read-more-btn i {
-    margin-left: 10px;
-}
-
-/* Blog Filters */
-.blog-filters {
-    text-align: center;
-    margin-bottom: 3rem;
-    display: flex;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
-    justify-content: center;
-    gap: 15px;
-}
-
-.filter-btn {
-    background-color: var(--background-color-dark); /* Dark background for filter buttons */
-    color: var(--text-color);
-    border: 1px solid var(--border-color);
-    padding: 0.8rem 1.5rem;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.filter-btn:hover {
-    background-color: var(--primary-color-light);
-    color: var(--primary-color-dark);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-.filter-btn.active {
-    background-color: var(--primary-color); /* Use primary color for active filter */
-    color: #fff;
-    border-color: var(--primary-color);
-    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
-}
-
-/* Blog Grid (Masonry-like layout) */
-.blog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive columns */
-    grid-auto-rows: minmax(auto, auto); /* Allow rows to size based on content */
-    gap: 30px; /* Space between cards */
-    padding: 0 10px; /* Some padding on sides */
-}
-
-.blog-post-card {
-    background-color: var(--background-color);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease, display 0.3s ease;
-    display: flex; /* Ensure content stacks */
-    flex-direction: column;
-    height: auto; /* Allow height to adjust */
-}
-
-.blog-post-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
-}
-
-.blog-post-card.wide {
-    grid-column: span 2; /* Make this card span two columns if space allows */
-}
-
-.blog-post-card.tall {
-    /* For true masonry, you'd calculate heights with JS.
-       For pure CSS grid, this class might simply adjust image/content proportions
-       or rely on content to make it "tall". Example: */
-    /* This might not make it "tall" in grid-auto-rows unless content forces it */
-    /* It's more about having enough content to push it visually taller */
-}
-
-.blog-post-card img {
-    width: 100%;
-    height: 200px; /* Fixed height for image */
-    object-fit: cover;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.blog-post-card .card-content {
-    padding: 1.5rem;
-    flex-grow: 1; /* Allow content to push card height if needed */
-    display: flex;
-    flex-direction: column;
-}
-
-.blog-post-card .post-category {
-    display: inline-block;
-    background-color: var(--primary-color-light);
-    color: var(--primary-color-dark);
-    padding: 0.3rem 0.7rem;
-    border-radius: 5px;
-    font-size: 0.8em;
-    font-weight: 600;
-    margin-bottom: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.blog-post-card h3 {
-    font-size: 1.5em;
-    margin-bottom: 0.8rem;
-    line-height: 1.3;
-    color: var(--heading-color);
-}
-
-.blog-post-card p {
-    font-size: 0.95em;
-    line-height: 1.5;
-    color: var(--text-color-light);
-    margin-bottom: 1.2rem;
-    flex-grow: 1; /* Allow description to take available space */
-}
-
-.blog-post-card .post-meta {
-    font-size: 0.85em;
-    color: var(--text-color-light);
-    display: flex;
-    gap: 15px;
-    margin-top: auto; /* Push meta and link to bottom */
-    padding-top: 10px;
-    border-top: 1px solid var(--border-color);
-}
-
-.blog-post-card .post-meta i {
-    margin-right: 5px;
-    color: var(--accent-color); /* A subtle accent color for icons */
-}
-
-.blog-post-card .read-more-link {
-    display: inline-block;
-    margin-top: 1rem;
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.blog-post-card .read-more-link:hover {
-    color: var(--secondary-color);
-    text-decoration: underline;
-}
-
-
-/* Responsive Adjustments */
-@media (min-width: 768px) {
-    .hero-post-card {
-        flex-direction: row; /* Side-by-side on larger screens */
-    }
-
-    .hero-post-image {
-        width: 45%; /* Image takes up less width */
-        height: auto; /* Adjust height automatically */
-    }
-
-    .hero-post-content {
-        flex: 1; /* Content takes remaining space */
-        padding: 3rem;
-    }
-
-    .blog-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Slightly larger min column size */
-    }
-
-    .blog-post-card.wide {
-        grid-column: span 2; /* Maintain 2-column span */
-    }
-}
-
-@media (min-width: 1024px) {
-    .blog-grid {
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Even larger min column size */
-    }
-}
-
-/* Add to your existing style.css */
-
-/* Single Post Page Specific Styles */
-.single-post-page {
-    padding: 3rem 0;
-    background-color: var(--background-color-light); /* Lighter background for reading */
-}
-
-.post-article {
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: var(--background-color);
-    padding: 3rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
-
-.post-header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-}
-
-.post-header .post-category {
-    background-color: var(--primary-color-light);
-    color: var(--primary-color-dark);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9em;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    display: inline-block;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.post-header h1 {
-    font-size: 2.8em;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-    color: var(--heading-color);
-}
-
-.post-header .post-meta {
-    font-size: 0.95em;
-    color: var(--text-color-light);
+    padding: 60px 0 100px;
     display: flex;
     justify-content: center;
-    gap: 25px;
-    margin-top: 1.5rem;
+    align-items: center;
+    margin-top: -80px;
 }
 
-.post-hero-image {
-    width: 100%;
-    max-height: 450px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 2.5rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+.feature-card {
+    background-color: var(--color-background-white);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-light);
+    padding: 30px;
+    height: 100%;
+    box-sizing: border-box;
 }
 
-.post-content h2 {
+.feature-card.data-aura-card {
+    width: 600px;
+    min-height: 400px;
+    z-index: 2;
+    position: relative;
+}
+
+.feature-card.micro-game-card {
+    position: absolute;
+    box-shadow: var(--shadow-medium);
+    padding: 30px;
+    width: 450px;
+    min-height: 250px;
+    z-index: 3;
+    top: 50px;
+    left: calc(600px - 150px);
+}
+
+.data-aura-card h3, .micro-game-card h3 {
+    margin-top: 0;
+}
+
+#micro-game-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.micro-game-card-item {
+    background-color: var(--color-card-bg-subtle);
+    border-radius: var(--border-radius-medium);
+    padding: 20px;
+    text-align: center;
+    width: 120px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-title {
+    font-weight: 500;
+    color: var(--color-text-medium);
+    font-size: 0.9em;
+}
+
+.card-value {
     font-size: 2em;
-    margin-top: 2.5rem;
-    margin-bottom: 1.2rem;
-    color: var(--secondary-color);
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 0.5rem;
+    font-weight: 700;
+    margin-top: 10px;
 }
 
-.post-content h3 {
-    font-size: 1.6em;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    color: var(--heading-color);
+.card-value svg {
+    width: 2em;
+    height: 2em;
+    color: var(--color-text-dark);
 }
 
-.post-content p {
-    font-size: 1.1em;
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-    color: var(--text-color);
-}
-
-.post-content ul {
-    list-style: disc;
-    margin-left: 25px;
-    margin-bottom: 1.5rem;
-}
-
-.post-content ul li {
-    font-size: 1.1em;
-    line-height: 1.8;
-    color: var(--text-color);
-    margin-bottom: 0.5rem;
-}
-
-.post-content a {
-    color: var(--primary-color);
-    text-decoration: underline;
-    transition: color 0.3s ease;
-}
-
-.post-content a:hover {
-    color: var(--secondary-color);
-}
-
-.post-footer {
-    margin-top: 3rem;
-    text-align: center;
-    border-top: 1px solid var(--border-color);
-    padding-top: 2rem;
-}
-
-.back-to-blog-btn {
-    display: inline-flex;
-    align-items: center;
-    background-color: var(--primary-color);
-    color: #fff;
-    padding: 0.8rem 1.8rem;
-    border-radius: 8px;
-    text-decoration: none;
+.gradient-button {
+    background: var(--gradient-purple-blue);
+    color: var(--color-background-white);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
     font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    transition: transform 0.2s ease;
 }
 
-.back-to-blog-btn:hover {
-    background-color: var(--primary-color-dark);
-    transform: translateX(-5px);
+.gradient-button:hover {
+    transform: translateY(-2px);
 }
 
-.back-to-blog-btn i {
-    margin-right: 10px;
+.blob-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 700px;
+  height: 700px;
+  overflow: hidden;
+  z-index: -1; /* Behind header text */
 }
 
-/* Responsive for single post page */
-@media (max-width: 768px) {
-    .post-article {
-        padding: 2rem;
-    }
-
-    .post-header h1 {
-        font-size: 2em;
-    }
-
-    .post-header .post-meta {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .post-content h2 {
-        font-size: 1.6em;
-    }
-
-    .post-content h3 {
-        font-size: 1.3em;
-    }
-
-    .post-content p, .post-content ul li {
-        font-size: 1em;
-    }
+.blob {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
+
+.main-wrapper {
+  position: relative;
+}
+
+
+.blob-wrapper {
+  position: absolute;
+  top: -150px;
+  right: -150px;
+  width: 700px;
+  height: 700px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.blob {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+

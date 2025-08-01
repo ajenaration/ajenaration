@@ -12,29 +12,45 @@
 <body>
 
     <header class="main-header">
-        <div class="logo">
-            <h1>ajenaration</h1>
+        <div class="container">
+            <div class="logo">
+                <h1>ajenaration</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="devrel.html">DevRel</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="btn primary-btn done-button">Done</a>
         </div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="#hero">Home</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="devrel.html">DevRel</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <main>
+    <main class="main-wrapper">
         <section id="hero" class="hero-section">
-            <div class="hero-content">
-                <h2>Crafting Code,<br>Sparking Ideas.</h2>
-                <p>Where technology meets creativity, and insights are shared.</p>
-                <a href="projects.html" class="cta-button">Explore My Work</a>
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Crafting Code,<br>Sparking Ideas.</h2>
+                    <p>Where technology meets creativity, and insights are shared.</p>
+                    <a href="projects.html" class="cta-button">Explore My Work</a>
+                </div>
             </div>
-            <div id="interactive-background" class="hero-bg-animation"></div>
+            <div class="blob-container">
+                <svg viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg" class="blob">
+                    <defs>
+                        <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#00C6FF" />
+                            <stop offset="50%" stop-color="#4A00E0" />
+                            <stop offset="100%" stop-color="#F500FF" />
+                        </linearGradient>
+                    </defs>
+                    <path fill="url(#gradient)" d="M593.5,363Q570,426,501,445.5Q432,465,382.5,428Q333,391,284.5,391.5Q236,392,196.5,361.5Q157,331,122.5,283.5Q88,236,112,180Q136,124,198,114.5Q260,105,319.5,87.5Q379,70,438,100.5Q497,131,547,165Q597,199,606.5,249.5Q616,300,593.5,363Z" />
+                </svg>
+            </div>
         </section>
 
         <section id="interactive-cool-feature" class="section-padded content-section-block">
@@ -42,15 +58,26 @@
                 <div class="feature-card data-aura-card">
                     <h3>Personalized Data Aura</h3>
                     <p>Move your mouse and watch your unique digital fingerprint come alive.</p>
-                    <div id="data-aura-canvas">
-                        </div>
+                    <div id="data-aura-canvas"></div>
                     <button class="gradient-button share-button">Share Your Aura</button>
                 </div>
                 <div class="feature-card micro-game-card">
                     <h3>Playful Micro-Game/Puzzle</h3>
                     <p>Quick fun! Can you solve the byte puzzle?</p>
                     <div id="micro-game-container">
+                        <div class="micro-game-card-item">
+                            <span class="card-title">Doine</span>
+                            <span class="card-value">$</span>
                         </div>
+                        <div class="micro-game-card-item">
+                            <span class="card-title">Soure</span>
+                            <span class="card-value">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+                                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.457A4 4 0 0 0 4 6c0 .628-.134 2.219-.382 3.832-.904 3.614-2.91 5.474-5.184 6.78a2.535 2.535 0 0 0 3.224 2.656C.685 14.887 2.454 13.94 4 13.125l1.045-.589A6.5 6.5 0 0 1 8 0a6.5 6.5 0 0 1 3.555 1.488L12.56 2.077l.797-.457A4 4 0 0 0 12 6c0 .628-.134 2.219-.382 3.832-.904 3.614-2.91 5.474-5.184 6.78a2.535 2.535 0 0 0 3.224 2.656C15.315 14.887 17.086 13.94 18.665 13.125l1.045-.589A6.5 6.5 0 0 1 20 0a6.5 6.5 0 0 1 3.555 1.488L24 1.918l.797-.457A4 4 0 0 0 20 6c0 .628-.134 2.219-.382 3.832-.904 3.614-2.91 5.474-5.184 6.78a2.535 2.535 0 0 0 3.224 2.656C19.315 14.887 21.086 13.94 22.665 13.125l1.045-.589A6.5 6.5 0 0 1 24 0a6.5 6.5 0 0 1 3.555 1.488L28 1.918z" />
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
                     <button class="gradient-button play-button">Play Now</button>
                 </div>
             </div>
@@ -87,7 +114,6 @@
 
         <section class="section-padded content-section-block two-column-section">
             <div class="container two-column-content-grid">
-
                 <div class="column-item coding-projects-column">
                     <h2>Coding Projects</h2>
                     <div class="slider-container">
@@ -130,18 +156,15 @@
                         <li><i class="icon-workshop">💡</i> Workshops & Tutorials</li>
                         <li><i class="icon-opensource">💻</i> Open Source Contributions</li>
                         <li>
-                            🎬 <a href="YOUR_YOUTUBE_CHANNEL_LINK_HERE" target="_blank" style="color: var(--color-button-primary); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center;">
+                            🎬 <a href="YOUR_YOUTUBE_CHANNEL_LINK_HERE" target="_blank">
                                 Watch my latest video <span style="margin-left: 5px; font-size: 1.2em;">&#8594;</span>
                             </a>
                         </li>
                     </ul>
-
-                    <div class="view-all-devrel-button-container" style="margin-top: 30px;">
-                         <a href="devrel.html" class="btn secondary-btn view-all-devrel-button">Learn More about DevRel</a>
+                    <div class="view-all-devrel-button-container">
+                        <a href="devrel.html" class="btn secondary-btn">Learn More about DevRel</a>
                     </div>
-                   
                 </div>
-
             </div>
         </section>
 
@@ -158,6 +181,7 @@
                         <i class="icon-workshop">💡</i>
                         <h3>Workshops & Tutorials</h3>
                         <p>Hands-on sessions for aspiring and seasoned developers.</p>
+                    </div>
                     <div class="activity-card">
                         <i class="icon-opensource">💻</i>
                         <h3>Open Source Contributions</h3>
@@ -171,7 +195,6 @@
                 </div>
             </div>
         </section>
-
     </main>
 
     <footer class="main-footer styled-footer">
@@ -212,5 +235,5 @@
     </footer>
 
     <script src="script.js"></script>
-    </body>
+</body>
 </html>
