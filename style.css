@@ -3,25 +3,21 @@
 /* --- Global Styles & Variables --- */
 :root {
     /* Colors derived from the image */
-    --color-text-dark: #2c2e35; /* Primary dark text, e.g., for headings, nav links */
-    --color-text-medium: #555866; /* Secondary text, e.g., for paragraphs */
-    --color-text-light: #888ba3; /* Lighter text, e.g., footer, subtle details */
-    --color-background-white: #ffffff; /* Card backgrounds, header background */
-    --color-background-light-grey: #f7f7f9; /* Main body background */
+    --color-text-dark: #2c2e35;
+    --color-text-medium: #555866;
+    --color-text-light: #888ba3;
+    --color-background-white: #ffffff;
+    --color-background-light-grey: #f7f7f9;
 
-    --color-button-primary: #5c64f4; /* Blue button color */
-    --color-button-hover: #8e50e9; /* Purple hover color for primary button */
+    --color-button-primary: #5c64f4;
+    --color-button-hover: #8e50e9;
 
-    --color-accent-purple-start: #a855f7; /* For gradients */
-    --color-accent-purple-end: #6366f1;   /* For gradients */
-    --color-accent-pink-start: #d946ef;   /* For gradients */
+    --color-accent-purple-start: #a855f7;
+    --color-accent-purple-end: #6366f1;
+    --color-accent-pink-start: #d946ef;
 
-    /* UPDATED: Main gradient for the blob and buttons */
     --gradient-purple-blue: linear-gradient(135deg, #8e2de2 0%, #4a00e0 100%);
 
-    /* NEW: Specific colors for the new design elements */
-    --color-blob-purple: #8e2de2;
-    --color-blob-blue: #4a00e0;
     --color-btn-done: #000000;
     --color-card-bg-subtle: #f0f0f5;
 
@@ -30,11 +26,11 @@
     --shadow-medium: 0px 8px 25px rgba(0, 0, 0, 0.1);
 
     /* Border Radius */
-    --border-radius-small: 6px; /* For buttons */
-    --border-radius-medium: 12px; /* For cards */
-    --border-radius-large: 20px; /* For large elements/containers */
+    --border-radius-small: 6px;
+    --border-radius-medium: 12px;
+    --border-radius-large: 20px;
 
-    /* Typography - now using Montserrat */
+    /* Typography */
     --font-family-body: 'Montserrat', sans-serif;
     --font-family-headings: 'Montserrat', sans-serif;
     --font-size-base: 16px;
@@ -75,7 +71,6 @@ ul {
     list-style: none;
 }
 
-/* Logo text styling - apply Shrikhand only here */
 .logo h1 {
     font-family: 'Shrikhand', cursive;
     font-weight: normal;
@@ -103,22 +98,37 @@ button {
     transition: all 0.3s ease-in-out;
 }
 
-/* Reusable Container for content width */
 .container {
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 40px;
 }
 
-/* --- New Section Blocks Styling --- */
 .content-section-block {
-    background-color: var(--color-background-white);
     padding: 60px 0;
     margin-bottom: 40px;
     border-radius: var(--border-radius-large);
     box-shadow: var(--shadow-light);
     overflow: hidden;
 }
+
+/* --- EXPLICIT SECTION BACKGROUNDS FOR ALTERNATING PATTERN --- */
+#interactive-cool-feature {
+    background-color: var(--color-background-white);
+}
+
+#blog {
+    background-color: var(--color-background-light-grey);
+}
+
+.two-column-section {
+    background-color: var(--color-background-white);
+}
+
+#devrel {
+    background-color: var(--color-background-light-grey);
+}
+/* --- END EXPLICIT SECTION BACKGROUNDS --- */
 
 .section-padded {
     padding: 80px 0;
@@ -128,7 +138,6 @@ button {
     padding: 0 40px;
 }
 
-/* --- Button Styling --- */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -152,10 +161,26 @@ button {
     transform: translateY(-2px);
 }
 
-/* --- UPDATED: Header & Navigation --- */
+.secondary-btn {
+    background-color: transparent;
+    color: var(--color-text-medium);
+    border: 2px solid var(--color-text-medium);
+    padding: 10px 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 50px;
+}
+
+.secondary-btn:hover {
+    border-color: var(--color-button-hover);
+    color: var(--color-button-hover);
+    background-color: rgba(142, 80, 233, 0.1);
+}
+
+/* --- Header & Navigation --- */
 .main-header {
     background-color: transparent;
-    padding: 20px 40px;
+    padding: 20px 0;
     box-shadow: none;
     position: absolute;
     width: 100%;
@@ -167,18 +192,19 @@ button {
     justify-content: space-between;
     align-items: center;
     height: auto;
-    max-width: 1280px;
-    margin: 0 auto;
     padding: 0 20px;
 }
 
-.logo img {
-    height: 38px;
-    width: auto;
-    display: block;
+.main-header .logo h1 {
+    color: var(--color-text-dark);
 }
 
-.main-nav ul {
+.main-header.header-on-image .logo h1,
+.main-header.header-on-image .main-nav a {
+    color: var(--color-background-white);
+}
+
+.main-header .main-nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
@@ -187,7 +213,7 @@ button {
     align-items: center;
 }
 
-.main-nav a {
+.main-header .main-nav a {
     text-decoration: none;
     color: var(--color-text-dark);
     font-weight: 500;
@@ -197,16 +223,12 @@ button {
     white-space: nowrap;
 }
 
-.main-nav a:hover {
+.main-header .main-nav a:hover {
     background-color: rgba(0, 0, 0, 0.05);
     color: var(--color-text-dark);
 }
 
-.main-nav a::after {
-    display: none;
-}
-
-.main-header .download-button {
+.main-header .main-nav a::after {
     display: none;
 }
 
@@ -225,57 +247,66 @@ button {
     background-color: var(--color-text-medium);
 }
 
-
-/* --- UPDATED: Hero Section & SVG Blob --- */
+/* --- UPDATED: Hero Section & SVG Blob (Final, Aggressive Changes) --- */
 .hero-section {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  align-items: center;
-  min-height: 75vh;
-  padding: 100px 40px;
-  background-color: var(--color-background-light-grey);
-  overflow: hidden;
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    align-items: center;
+    height: 594px !important; /* Fixed pixel height */
+    min-height: 594px !important; /* Fixed pixel min-height to override any other rules */
+    padding: 20px 40px !important; /* Force a small amount of padding */
+    background-color: var(--color-background-light-grey);
+    overflow: hidden;
+}
+
+.hero-background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.hero-section .container {
+    padding: 0;
+    z-index: 2;
 }
 
 .hero-content {
-  position: relative;
-  z-index: 3;
+    position: relative;
+    z-index: 3;
+    padding-top: 0;
 }
-
-.hero-blob-container {
-  position: absolute;
-  top: -200px;
-  right: -200px;
-  width: 900px;
-  height: 900px;
-  z-index: 1;
-  pointer-events: none;
-  overflow: hidden;
-  filter: blur(80px);
-  opacity: 0.4;
-}
-
-.hero-blob-container svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
 
 .hero-content h2 {
     font-size: 3.5rem;
     font-weight: 700;
     line-height: 1.1;
-    margin-bottom: 20px;
+    margin-bottom: 5px; /* Reduced margin to pull content up */
     color: var(--color-text-dark);
+    position: relative;
+    padding-top: 15px;
+}
+
+.hero-content h2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 10px;
+    background: #a855f7;
+    border-radius: 5px;
 }
 
 .hero-content p {
     font-size: 1.25rem;
     color: var(--color-text-medium);
-    margin-bottom: 30px;
+    margin-bottom: 10px; /* Reduced margin to pull content up */
 }
 
 .cta-button {
@@ -287,11 +318,31 @@ button {
     border-radius: 50px;
     box-shadow: var(--shadow-medium);
     transition: all 0.3s ease;
+    margin-bottom: 0;
 }
 
 .cta-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.hero-blob-container {
+    position: absolute;
+    top: -150px;
+    right: -250px;
+    width: 1000px;
+    height: 1000px;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+    filter: blur(80px);
+    opacity: 0.4;
+}
+
+.hero-blob-container svg {
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 
 
@@ -303,7 +354,7 @@ button {
     .hero-section {
         grid-template-columns: 1fr;
         text-align: center;
-        padding: 60px 25px;
+        padding: 20px 25px !important;
     }
     .hero-content {
         order: 2;
@@ -1064,6 +1115,30 @@ button {
     margin-top: -80px;
 }
 
+.feature-grid .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.feature-grid h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 40px;
+    color: var(--color-text-dark);
+}
+
+.feature-grid p {
+    font-size: 1.25rem;
+    color: var(--color-text-medium);
+    text-align: center;
+    max-width: 700px;
+    margin-bottom: 50px;
+}
+
 .feature-card {
     background-color: var(--color-background-white);
     border-radius: var(--border-radius-large);
@@ -1074,9 +1149,10 @@ button {
 }
 
 .feature-card.data-aura-card {
-    width: 600px;
+    width: 400px;
     min-height: 400px;
     z-index: 2;
+    top: 50px;
     position: relative;
 }
 
@@ -1084,11 +1160,13 @@ button {
     position: absolute;
     box-shadow: var(--shadow-medium);
     padding: 30px;
-    width: 450px;
-    min-height: 250px;
-    z-index: 3;
-    top: 50px;
-    left: calc(600px - 150px);
+    width: 450px; /* Increased the width to make the card longer */
+    min-height: 750px;
+    top: 0px;
+    z-index: 2;
+    bottom: 100px;
+
+    left: 820px; /* Increased the 'left' value to move the card further to the right */
 }
 
 .data-aura-card h3, .micro-game-card h3 {
@@ -1147,40 +1225,24 @@ button {
     transform: translateY(-2px);
 }
 
+/* --- Blob Wrapper --- */
 .blob-wrapper {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 700px;
-  height: 700px;
-  overflow: hidden;
-  z-index: -1; /* Behind header text */
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 900px;
+    height: 1500px;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
 }
 
 .blob {
-  width: 100%;
-  height: 100%;
-  display: block;
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 
 .main-wrapper {
-  position: relative;
+    position: relative;
 }
-
-
-.blob-wrapper {
-  position: absolute;
-  top: -150px;
-  right: -150px;
-  width: 700px;
-  height: 700px;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.blob {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
