@@ -1,13 +1,11 @@
 <h1 align="center">Hi 👋🏾, I'm Ayana</h1>
 <h3 align="center">A passionate backend engineer with experience in fast paced startups, FAANG, telecommunications and entertainment.</h3>
 
-- 🔭 Check out [my personal website](https://ajenaration.github.io/)
+- 🔭 Check out [my personal website](https://ajenaration.com/)
 
 - 👯 I’m looking to collaborate on **Open Source or any fun creative projects**
 
 - 👨‍💻 Most of my projects are available at [my repos](https://github.com/ajenaration?tab=repositories)
-
-- 💬 Ask me about **software engineering, I learn a lot from questions**
 
 - 📫 How to reach me [linkedin.com/ayana-n](https://www.linkedin.com/ayana-n)
 
