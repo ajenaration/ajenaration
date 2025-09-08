@@ -224,16 +224,13 @@
                 button.addEventListener('click', () => {
                     const category = button.dataset.category;
 
-                    // Remove active class from all buttons and add to clicked one
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
 
-                    // Filter posts with slight animation
                     blogPostCards.forEach(card => {
                         const cardCategory = card.dataset.category;
                         if (category === 'all' || cardCategory === category) {
-                            card.style.display = 'flex'; // Use flex for card stacking
-                            // Use a small timeout to allow display change to register before opacity/transform
+                            card.style.display = 'flex';
                             setTimeout(() => {
                                 card.style.opacity = '1';
                                 card.style.transform = 'scale(1)';
@@ -241,10 +238,9 @@
                         } else {
                             card.style.opacity = '0';
                             card.style.transform = 'scale(0.95)';
-                            // Hide element completely after transition for accessibility/layout
                             setTimeout(() => {
                                 card.style.display = 'none';
-                            }, 300); // Matches transition duration
+                            }, 300);
                         }
                     });
                 });
