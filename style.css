@@ -738,10 +738,11 @@ ul li:before {
 .devrel-page .devrel-hero h1,
 .contact-page .contact-hero h1,
 .blog-post-page .blog-post-hero h1 {
-    color: var(--color-text-light);
+    color: var(--color-text-light); /* Ensure text is white */
     font-size: 3.5em;
     margin-bottom: 20px;
-    font-family: var(--font-heading); /* Keeping Shrikhand for main hero titles */
+    font-family: var(--font-heading);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Add a subtle shadow for legibility */
 }
 
 .about-page .intro-section p,
@@ -752,6 +753,8 @@ ul li:before {
     margin: 0 auto 30px auto;
     font-size: 1.15em;
     line-height: 1.8;
+    color: var(--color-text-light); /* Ensure text is white */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
 }
 
 .hero-image {
@@ -778,10 +781,12 @@ ul li:before {
     max-width: 700px;
 }
 
+/* Specific adjustment for About page */
 .about-page .intro-text h2 {
-    color: var(--color-text-light);
+    color: var(--color-text-light); /* Ensure text is white */
     font-size: 3.2em;
     font-family: var(--font-heading);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Apply shadow here as well */
 }
 
 .about-page .intro-text p {
