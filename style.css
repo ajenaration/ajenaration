@@ -2081,3 +2081,569 @@ body {
 .read-more-link:hover {
     text-decoration: underline;
 }
+
+/* --- General Page Content Styling (applies to About, DevRel, Contact, Blog Posts) --- */
+.main-wrapper,
+.about-page,
+.devrel-page,
+.contact-page,
+.blog-post-page {
+    padding-top: 80px; /* Space for fixed header */
+    padding-bottom: 80px;
+    background-color: var(--color-background-light); /* Assuming a light background for content */
+    color: var(--color-text-dark); /* Dark text for light background */
+}
+
+/* Section Tags (e.g., "Who I Am", "Get In Touch") */
+.section-tag {
+    display: inline-block;
+    background-color: var(--color-accent-purple-start); /* Using your blob gradient colors */
+    color: var(--color-text-light);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-heading-dark); /* Assuming a darker color for headings */
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+h1 { font-size: 2.8em; }
+h2 { font-size: 2.2em; }
+h3 { font-size: 1.8em; }
+h4 { font-size: 1.4em; }
+
+p {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+ul {
+    list-style: none; /* Remove default bullet points */
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+ul li {
+    position: relative;
+    padding-left: 25px; /* Space for custom bullet */
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+}
+
+ul li:before {
+    content: '→'; /* Custom bullet point */
+    position: absolute;
+    left: 0;
+    color: var(--color-accent-purple-end); /* Accent color for bullet */
+    font-weight: bold;
+}
+
+a {
+    color: var(--color-accent-purple-end); /* Consistent link color */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-accent-purple-start);
+    text-decoration: underline;
+}
+
+/* Hero Section for internal pages */
+.about-page .intro-section,
+.devrel-page .devrel-hero,
+.contact-page .contact-hero,
+.blog-post-page .blog-post-hero {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 0;
+    background: linear-gradient(135deg, var(--color-accent-purple-start), var(--color-accent-purple-end));
+    color: var(--color-text-light);
+    border-radius: 15px;
+}
+
+.about-page .intro-section h2,
+.devrel-page .devrel-hero h1,
+.contact-page .contact-hero h1,
+.blog-post-page .blog-post-hero h1 {
+    color: var(--color-text-light);
+    font-size: 3.5em;
+    margin-bottom: 20px;
+}
+
+.about-page .intro-section p,
+.devrel-page .devrel-hero .lead-paragraph,
+.contact-page .contact-hero .lead-paragraph,
+.blog-post-page .blog-post-hero .lead-paragraph {
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    font-size: 1.15em;
+    line-height: 1.8;
+}
+
+.hero-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* --- About Page Specific Styling --- */
+.about-page .intro-section {
+    display: flex;
+    flex-direction: column; /* Stack on small screens */
+    align-items: center;
+    gap: 40px;
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--color-accent-purple-start), var(--color-accent-purple-end));
+    color: var(--color-text-light);
+    border-radius: 15px;
+}
+
+.about-page .intro-text {
+    text-align: center;
+    max-width: 700px;
+}
+
+.about-page .intro-text h2 {
+    color: var(--color-text-light);
+    font-size: 3.2em;
+}
+
+.about-page .intro-text p {
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+.about-page .intro-image .profile-photo {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%; /* Make it circular */
+    object-fit: cover;
+    border: 5px solid var(--color-text-light); /* Light border around photo */
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2); /* Soft glow effect */
+}
+
+/* General content sections for About, DevRel, Contact */
+.about-content section,
+.devrel-content section,
+.contact-content section {
+    background-color: var(--color-card-background); /* A slightly off-white or light gray */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 40px;
+}
+
+.post-image-inline {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 8px;
+    margin: 30px auto;
+    display: block;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.about-page .contact-links,
+.devrel-page .contact-links {
+    font-size: 1.1em;
+    line-height: 1.8;
+    text-align: center;
+}
+.about-page .contact-links i,
+.devrel-page .contact-links i {
+    color: var(--color-accent-purple-end);
+    margin-right: 10px;
+}
+
+
+/* --- DevRel Page Specific Styling --- */
+.devrel-page .devrel-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.devrel-page .devrel-hero .hero-image {
+    max-height: 350px;
+}
+
+.devrel-page .activity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.devrel-page .activity-card {
+    background-color: var(--color-background-light); /* Lighter background for cards */
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.devrel-page .activity-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.devrel-page .activity-card i {
+    font-size: 3em;
+    color: var(--color-accent-purple-end);
+    margin-bottom: 20px;
+    display: block;
+}
+
+.devrel-page .activity-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: var(--color-heading-dark);
+}
+
+.devrel-page .activity-card p {
+    font-size: 0.95em;
+    margin-bottom: 20px;
+    color: var(--color-text-dark);
+}
+
+
+/* --- Contact Page Specific Styling --- */
+.contact-page .contact-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-page .contact-hero .hero-image {
+    max-height: 300px;
+}
+
+.contact-form {
+    display: grid;
+    gap: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--color-heading-dark);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+    background-color: var(--color-input-background);
+    color: var(--color-text-dark);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    border-color: var(--color-accent-purple-end);
+    box-shadow: 0 0 0 3px rgba(74, 0, 224, 0.2); /* Soft focus glow */
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical; /* Allow vertical resizing only */
+    min-height: 120px;
+}
+
+.submit-btn {
+    width: auto;
+    padding: 12px 30px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, var(--color-accent-purple-start), var(--color-accent-purple-end));
+    color: var(--color-text-light);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.contact-methods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.contact-method-card {
+    background-color: var(--color-background-light);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-method-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.contact-method-card .icon-large {
+    font-size: 3.5em;
+    color: var(--color-accent-purple-end);
+    margin-bottom: 20px;
+    display: block;
+}
+
+.contact-method-card h3 {
+    font-size: 1.6em;
+    margin-bottom: 10px;
+    color: var(--color-heading-dark);
+}
+
+.contact-method-card p {
+    font-size: 0.95em;
+    margin-bottom: 20px;
+    color: var(--color-text-dark);
+}
+
+.social-media-contact-section {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.social-icons a {
+    font-size: 2.5em;
+    color: var(--color-text-dark); /* Default dark color */
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-icons a:hover {
+    color: var(--color-accent-purple-end); /* Accent color on hover */
+    transform: translateY(-3px);
+    text-decoration: none;
+}
+
+/* Specific social icon colors (optional) */
+.social-icons .fa-linkedin:hover { color: #0A66C2; }
+.social-icons .fa-twitter:hover { color: #1DA1F2; }
+.social-icons .fa-instagram:hover { color: #E1306C; }
+.social-icons .fa-github:hover { color: #333; }
+.social-icons .fa-youtube:hover { color: #FF0000; }
+/* Assuming a class or icon for bluesky if Font Awesome adds it, or a custom one */
+.social-icons .fa-bluesky { /* Placeholder, if FA doesn't have it, consider custom SVG */ }
+
+
+/* --- Blog Post Page Specific Styling (For individual blog post pages) --- */
+.blog-post-page .blog-post-hero {
+    margin-bottom: 40px;
+    padding-bottom: 0; /* Adjust if hero image should not have extra bottom padding */
+}
+
+.blog-post-page .blog-post-hero .post-meta {
+    font-size: 1em;
+    color: var(--color-text-light);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.blog-post-page .blog-post-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--color-card-background);
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.blog-post-content h1, .blog-post-content h2, .blog-post-content h3, .blog-post-content h4 {
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+.blog-post-content p {
+    margin-bottom: 20px;
+    font-size: 1.05em;
+}
+
+.blog-post-content ul,
+.blog-post-content ol {
+    margin-bottom: 20px;
+    padding-left: 25px;
+    list-style: disc; /* Revert to default for blog content */
+}
+
+.blog-post-content ol {
+    list-style: decimal;
+}
+
+.blog-post-content ul li:before {
+    content: ''; /* Remove custom bullet */
+}
+
+.blog-post-content li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.blog-post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 25px 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.blog-post-content blockquote {
+    border-left: 5px solid var(--color-accent-purple-end);
+    padding: 15px 20px;
+    margin: 30px 0;
+    background-color: var(--color-card-background-light); /* Lighter background for quotes */
+    font-style: italic;
+    color: var(--color-text-dark);
+    border-radius: 0 8px 8px 0;
+}
+
+.blog-post-content code {
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    font-size: 0.9em;
+}
+
+.blog-post-content pre {
+    background-color: var(--color-dark-code-background); /* Dark background for code blocks */
+    color: var(--color-light-code-text);
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 25px 0;
+}
+
+.blog-post-content pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+    font-size: 1em;
+}
+
+/* Back to Blog Button */
+.back-to-blog-btn {
+    display: inline-block;
+    margin-top: 40px;
+    background-color: var(--color-primary-button-bg); /* Use your primary button style */
+    color: var(--color-text-light);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.back-to-blog-btn:hover {
+    background-color: var(--color-primary-button-hover);
+    text-decoration: none;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .about-page .intro-section {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 2.2em; }
+    h2 { font-size: 1.8em; }
+    h3 { font-size: 1.5em; }
+
+    .about-page .intro-text h2 {
+        font-size: 2.5em;
+    }
+
+    .about-page .intro-image .profile-photo {
+        width: 200px;
+        height: 200px;
+    }
+
+    .about-content section,
+    .devrel-content section,
+    .contact-content section,
+    .blog-post-page .blog-post-content {
+        padding: 30px 20px;
+        margin-bottom: 30px;
+    }
+
+    .devrel-page .activity-grid,
+    .contact-methods-grid {
+        grid-template-columns: 1fr; /* Stack on small screens */
+    }
+
+    .social-icons {
+        gap: 15px;
+    }
+
+    .social-icons a {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-tag {
+        font-size: 0.8em;
+        padding: 4px 12px;
+    }
+
+    .about-page .intro-text h2,
+    .devrel-page .devrel-hero h1,
+    .contact-page .contact-hero h1,
+    .blog-post-page .blog-post-hero h1 {
+        font-size: 2.5em;
+    }
+
+    .about-page .intro-text p,
+    .devrel-page .devrel-hero .lead-paragraph,
+    .contact-page .contact-hero .lead-paragraph {
+        font-size: 1em;
+    }
+
+    .hero-image {
+        margin-top: 25px;
+    }
+
+    .submit-btn {
+        width: 100%;
+    }
+}
