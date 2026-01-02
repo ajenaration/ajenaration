@@ -1,0 +1,13 @@
+{
+  "name": "functions",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "ejs": "^3.1.9",
+    "gray-matter": "^4.0.3",
+    "marked": "^5.1.1",
+    "firebase-functions": "^4.3.0"
+  }
+}

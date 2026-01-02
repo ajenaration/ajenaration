@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Blog - ajenaration</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="main-header">
+    <div class="container">
+      <div class="logo"><h1>ajenaration</h1></div>
+      <nav class="main-nav"><ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/projects.html">Projects</a></li>
+        <li><a href="/blog" class="active">Blog</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul></nav>
+    </div>
+  </header>
+
+  <main class="container section-padded">
+    <h2>All Posts</h2>
+    <div class="blog-grid">
+      <% if (posts && posts.length) { %>
+        <% posts.forEach(function(post) { %>
+          <article class="blog-post-card">
+            <h3><a href="/posts/<%= post.slug %>"><%= post.title %></a></h3>
+            <p><%= post.excerpt %></p>
+            <a href="/posts/<%= post.slug %>" class="read-more">Read More</a>
+          </article>
+        <% }) %>
+      <% } else { %>
+        <p>No posts found.</p>
+      <% } %>
+    </div>
+  </main>
+
+  <footer class="styled-footer">
+    <div class="container">
+      <p>&copy; <%= new Date().getFullYear() %> ajenaration</p>
+    </div>
+  </footer>
+</body>
+</html>

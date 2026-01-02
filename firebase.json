@@ -1,0 +1,20 @@
+{
+  "functions": {
+    "source": "functions",
+    "runtime": "nodejs24"
+  },
+  "hosting": {
+    "public": "public",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      { "source": "/posts/**", "function": "app" },
+      { "source": "/blog", "function": "app" },
+      { "source": "/about", "function": "app" },
+      { "source": "/projects", "function": "app" },
+      { "source": "/contact", "function": "app" },
+      { "source": "/devrel", "function": "app" },
+      { "source": "/posts/**", "function": "app" },
+      { "source": "**", "destination": "/index.html" }
+    ]
+  }
+}
