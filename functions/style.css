@@ -21,9 +21,11 @@
     --color-btn-done: #000000;
     --color-card-bg-subtle: #f3ede6;
 
+    /* Aura brown defaults (overrides used by script) */
     --aura-brown-start: #5a3e2b;
     --aura-brown-end: #d2b48c;
 
+    /* Header & footer backgrounds */
     --color-header-bg: #f7efe6;
     --color-footer-bg: #f7efe6; /* cream footer for readability */
     --color-footer-text: #3b2f28; /* dark brown */
@@ -187,7 +189,7 @@ button {
 
 /* --- Header & Navigation --- */
 .main-header {
-    background-color: transparent;
+    background-color: var(--color-header-bg);
     padding: 20px 0;
     box-shadow: none;
     position: absolute;
@@ -232,7 +234,7 @@ button {
 }
 
 .main-header .main-nav a:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.04);
     color: var(--color-text-dark);
 }
 
@@ -357,7 +359,7 @@ button {
     .hero-cutout {
         width: 360px;
         height: 360px;
-        background-image: url('/images/hello-2.jpg');
+        background-image: url('images/hello-2.jpg');
         background-size: cover;
         background-position: center;
         border-radius: 28px;
@@ -442,9 +444,18 @@ button {
     margin-bottom: 15px;
 }
 
-.footer-column h3 {
-    font-size: 1.5rem;
+    .footer-column h4 {
+        font-size: 1.1rem;
 }
+
+    .footer-column ul li a {
+        color: var(--color-footer-text);
+        transition: color 0.2s ease;
+    }
+
+    .footer-column ul li a:hover {
+        color: var(--color-link-accent);
+    }
 
 .footer-column h4 {
     font-size: 1.1rem;

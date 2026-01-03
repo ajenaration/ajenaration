@@ -1,0 +1,73 @@
+[debug] [2026-01-03T00:58:16.031Z] ----------------------------------------------------------------------
+[debug] [2026-01-03T00:58:16.035Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ayana\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions,hosting
+[debug] [2026-01-03T00:58:16.036Z] CLI Version:   15.1.0
+[debug] [2026-01-03T00:58:16.036Z] Platform:      win32
+[debug] [2026-01-03T00:58:16.036Z] Node Version:  v24.12.0
+[debug] [2026-01-03T00:58:16.036Z] Time:          Fri Jan 02 2026 19:58:16 GMT-0500 (Eastern Standard Time)
+[debug] [2026-01-03T00:58:16.037Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-01-03T00:58:17.806Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-01-03T00:58:17.806Z] > authorizing via signed-in user (me@ajenaration.com)
+[debug] [2026-01-03T00:58:17.806Z] [iam] checking project ajenaration for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-01-03T00:58:17.807Z] Checked if tokens are valid: true, expires at: 1767404367782
+[debug] [2026-01-03T00:58:17.807Z] Checked if tokens are valid: true, expires at: 1767404367782
+[debug] [2026-01-03T00:58:17.809Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/ajenaration:testIamPermissions [none]
+[debug] [2026-01-03T00:58:17.809Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/ajenaration:testIamPermissions x-goog-quota-user=projects/ajenaration
+[debug] [2026-01-03T00:58:17.809Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/ajenaration:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-01-03T00:58:18.158Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/ajenaration:testIamPermissions 200
+[debug] [2026-01-03T00:58:18.158Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/ajenaration:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-01-03T00:58:18.158Z] Checked if tokens are valid: true, expires at: 1767404367782
+[debug] [2026-01-03T00:58:18.158Z] Checked if tokens are valid: true, expires at: 1767404367782
+[debug] [2026-01-03T00:58:18.159Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/ajenaration/serviceAccounts/ajenaration@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2026-01-03T00:58:18.159Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/ajenaration/serviceAccounts/ajenaration@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2026-01-03T00:58:18.532Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/ajenaration/serviceAccounts/ajenaration@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2026-01-03T00:58:18.532Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/ajenaration/serviceAccounts/ajenaration@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2026-01-03T00:58:18.533Z] Checked if tokens are valid: true, expires at: 1767404367782
+[debug] [2026-01-03T00:58:18.533Z] Checked if tokens are valid: true, expires at: 1767404367782
+[debug] [2026-01-03T00:58:18.533Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/ajenaration [none]
+[debug] [2026-01-03T00:58:18.964Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/ajenaration 200
+[debug] [2026-01-03T00:58:18.965Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/ajenaration {"projectId":"ajenaration","projectNumber":"142910519324","displayName":"ajenaration","name":"projects/ajenaration","resources":{"hostingSite":"ajenaration"},"state":"ACTIVE","etag":"1_0029a716-a804-4a92-aa81-0082bde9be76"}
+[info] 
+[info] === Deploying to 'ajenaration'...
+[info] 
+[info] i  deploying functions, hosting 
+[debug] [2026-01-03T00:58:18.970Z] Checked if tokens are valid: true, expires at: 1767404367782
+[debug] [2026-01-03T00:58:18.970Z] Checked if tokens are valid: true, expires at: 1767404367782
+[debug] [2026-01-03T00:58:18.970Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/ajenaration [none]
+[debug] [2026-01-03T00:58:19.052Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/ajenaration 200
+[debug] [2026-01-03T00:58:19.053Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/ajenaration {"projectNumber":"142910519324","projectId":"ajenaration","lifecycleState":"ACTIVE","name":"ajenaration","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2026-01-02T13:26:33.528446Z","parent":{"type":"organization","id":"766430749425"}}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2026-01-03T00:58:19.057Z] Checked if tokens are valid: true, expires at: 1767404367782
+[debug] [2026-01-03T00:58:19.058Z] Checked if tokens are valid: true, expires at: 1767404367782
+[debug] [2026-01-03T00:58:19.058Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/ajenaration/adminSdkConfig [none]
+[debug] [2026-01-03T00:58:19.338Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/ajenaration/adminSdkConfig 200
+[debug] [2026-01-03T00:58:19.338Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/ajenaration/adminSdkConfig {"projectId":"ajenaration","storageBucket":"ajenaration.firebasestorage.app"}
+[debug] [2026-01-03T00:58:19.339Z] Checked if tokens are valid: true, expires at: 1767404367782
+[debug] [2026-01-03T00:58:19.339Z] Checked if tokens are valid: true, expires at: 1767404367782
+[debug] [2026-01-03T00:58:19.339Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/ajenaration/configs [none]
+[debug] [2026-01-03T00:58:19.615Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/ajenaration/configs 200
+[debug] [2026-01-03T00:58:19.615Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/ajenaration/configs {}
+[debug] [2026-01-03T00:58:19.617Z] Validating nodejs source
+[debug] [2026-01-03T00:58:22.746Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "firebase-functions": "^7.0.2",
+    "gray-matter": "^4.0.3",
+    "marked": "^5.1.1"
+  }
+}
+[debug] [2026-01-03T00:58:22.747Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2026-01-03T00:58:22.748Z] Could not find functions.yaml. Must use http discovery
+[debug] [2026-01-03T00:58:22.763Z] Found firebase-functions binary at 'C:\Users\ayana\OneDrive\Documentos\GitHub\ajenaration\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8895
+
+[debug] [2026-01-03T00:58:24.610Z] Got response from /__/functions.yaml {"endpoints":{"app":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"app"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}

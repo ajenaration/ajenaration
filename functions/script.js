@@ -59,75 +59,150 @@ if (heroBg) {
 */
 
 
-// 2. Personalized Data Aura (Conceptual - using Canvas)
+// 2. Personalized Data Aura — math-driven Lissajous & spirograph patterns
 const dataAuraCanvasContainer = document.getElementById('data-aura-canvas');
 if (dataAuraCanvasContainer) {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     dataAuraCanvasContainer.appendChild(canvas);
 
-    let animationFrameId; // To store the requestAnimationFrame ID
-
+    let w = 0, h = 0;
     function resizeCanvas() {
-        // Make canvas fill its container
-        canvas.width = dataAuraCanvasContainer.clientWidth;
-        canvas.height = dataAuraCanvasContainer.clientHeight;
-        if (animationFrameId) {
-            cancelAnimationFrame(animationFrameId); // Stop old animation
-        }
-        drawAura(); // Redraw for new size
+        w = canvas.width = dataAuraCanvasContainer.clientWidth;
+        h = canvas.height = dataAuraCanvasContainer.clientHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // Parameters for math patterns
+    let params = {
+        a: 3, b: 2, // Lissajous frequencies
+        A: 0.45, B: 0.45, // amplitudes (as fraction of min(w,h))
+        delta: 0,
+        speed: 0.003, // slower base speed
+        lineWidth: 2,
+        layers: 3
+    };
+
+    // Map mouse to frequencies/amplitudes
+    function updateParamsFromMouse(x, y) {
+        const nx = Math.max(0, Math.min(1, x / w));
+        const ny = Math.max(0, Math.min(1, y / h));
+        // frequencies 1..8
+        params.a = 1 + Math.round(nx * 7);
+        params.b = 1 + Math.round((1 - ny) * 7);
+        params.A = 0.15 + nx * 0.6;
+        params.B = 0.15 + ny * 0.6;
     }
 
-    window.addEventListener('resize', resizeCanvas); // Adjust canvas on window resize
-    resizeCanvas(); // Initial size setting
+    canvas.addEventListener('mousemove', (e) => {
+        const r = canvas.getBoundingClientRect();
+        updateParamsFromMouse(e.clientX - r.left, e.clientY - r.top);
+    });
 
-    // Example aura generation - very simple!
-    function drawAura() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+    // Click randomizes phase and optionally creates a denser spirograph
+    canvas.addEventListener('click', (e) => {
+        params.delta = Math.random() * Math.PI * 2;
+        // slower random variations
+        params.speed = 0.002 + Math.random() * 0.01;
+        params.layers = 2 + Math.floor(Math.random() * 5);
+    });
 
-        // Get the gradient from CSS variables
-        const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
-        // Corrected property names for CSS variables
-        gradient.addColorStop(0, getComputedStyle(document.documentElement).getPropertyValue('--color-accent-purple-start'));
-        gradient.addColorStop(1, getComputedStyle(document.documentElement).getPropertyValue('--color-accent-purple-end'));
-
-        ctx.strokeStyle = gradient;
-        ctx.lineWidth = 3;
-
-        // Draw a simple "aura" line that moves based on time/mouse
-        const time = Date.now() * 0.001; // Current time
-        const amplitude = canvas.height / 4;
-        const frequency = 0.02;
-
+    // Draw a Lissajous curve given parameters and phase
+    function drawLissajous(a, b, A, B, delta, color, opacity) {
+        const R = Math.min(w, h) / 2;
+        const cx = w / 2, cy = h / 2;
         ctx.beginPath();
-        for (let x = 0; x <= canvas.width; x += 5) {
-            // Simple sine wave affected by time for animation
-            const y = canvas.height / 2 + Math.sin(x * frequency + time) * amplitude * Math.sin(time * 0.5);
-            if (x === 0) {
-                ctx.moveTo(x, y);
-            } else {
-                ctx.lineTo(x, y);
-            }
+        const steps = Math.max(200, Math.floor(200 * (1 + (A + B))));
+        for (let i = 0; i <= steps; i++) {
+            const t = (i / steps) * Math.PI * 2;
+            const x = cx + R * A * Math.sin(a * t + delta);
+            const y = cy + R * B * Math.sin(b * t);
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
         }
+        ctx.strokeStyle = color;
+        ctx.globalAlpha = opacity;
+        ctx.lineWidth = params.lineWidth;
         ctx.stroke();
-
-        animationFrameId = requestAnimationFrame(drawAura); // Loop animation
+        ctx.globalAlpha = 1;
     }
 
-    // Start the aura drawing when the section is visible or page loads
-    // You might want to delay this until the user hovers or scrolls to the section
-    drawAura(); // Start immediately for demonstration
+    // Helper: color based on layer index
+    function layerColor(i, layers) {
+        // Brown palette default: walnut -> tan
+        const s = getComputedStyle(document.documentElement);
+        const start = s.getPropertyValue('--aura-brown-start') || '#8B5E3C'; // dark walnut
+        const end = s.getPropertyValue('--aura-brown-end') || '#D2B48C';   // tan
+        const t = i / Math.max(1, layers - 1);
+        function hex2rgb(hex) {
+            hex = hex.replace('#','');
+            const bigint = parseInt(hex, 16);
+            return [ (bigint>>16)&255, (bigint>>8)&255, bigint&255 ];
+        }
+        const sa = hex2rgb(start.trim());
+        const ea = hex2rgb(end.trim());
+        const r = Math.round(sa[0] + (ea[0]-sa[0])*t);
+        const g = Math.round(sa[1] + (ea[1]-sa[1])*t);
+        const b = Math.round(sa[2] + (ea[2]-sa[2])*t);
+        return `rgb(${r},${g},${b})`;
+    }
 
-    // Share button logic (conceptual)
-    const shareButton = dataAuraCanvasContainer.nextElementSibling; // Assuming it's the next sibling
+    // Animation loop
+    let time = 0;
+    function animate() {
+        // soft fade overlay for trailing effect
+        ctx.fillStyle = 'rgba(255,255,255,0.06)';
+        ctx.fillRect(0,0,w,h);
+
+        // Draw multiple layered Lissajous curves with slight phase offsets
+        for (let i = 0; i < params.layers; i++) {
+            const layerDelta = params.delta + i * (Math.PI*2/params.layers) + Math.sin(time*0.0005 + i)*0.2;
+            const col = layerColor(i, params.layers);
+            const opacity = 0.15 + 0.7*(1 - i/Math.max(1,params.layers-1));
+            drawLissajous(params.a + i, params.b + i, params.A, params.B, layerDelta + time*params.speed*0.02, col, opacity);
+        }
+
+        time += 16;
+        requestAnimationFrame(animate);
+    }
+    // initialize background
+    ctx.fillStyle = '#fff'; ctx.fillRect(0,0,w,h);
+    animate();
+
+    // Share snapshot: keep behavior similar to before
+    const shareButton = dataAuraCanvasContainer.nextElementSibling;
     if (shareButton) {
-        shareButton.addEventListener('click', () => {
-            // In a real app:
-            // 1. Convert canvas to image: canvas.toDataURL('image/png')
-            // 2. Upload image to a service (e.g., Cloudinary)
-            // 3. Generate a shareable URL
-            // 4. Use Web Share API or social media share links
-            alert("Imagine your personalized aura is shared! (Feature under development)");
+        shareButton.addEventListener('click', async () => {
+            try {
+                const snap = document.createElement('canvas');
+                snap.width = w; snap.height = h;
+                const sctx = snap.getContext('2d');
+                // white background
+                sctx.fillStyle = '#ffffff'; sctx.fillRect(0,0,w,h);
+                sctx.drawImage(canvas, 0, 0);
+                const blob = await new Promise(res => snap.toBlob(res, 'image/png'));
+
+                if (navigator.clipboard && navigator.clipboard.write) {
+                    const item = new ClipboardItem({ 'image/png': blob });
+                    await navigator.clipboard.write([item]);
+                    if (navigator.canShare && navigator.canShare({ files: [new File([blob],'aura.png',{type:'image/png'})] })) {
+                        await navigator.share({ files: [new File([blob],'aura.png',{type:'image/png'})], title: 'My Math Aura' });
+                    } else {
+                        alert('Snapshot copied to clipboard!');
+                    }
+                } else if (navigator.share) {
+                    const url = snap.toDataURL('image/png');
+                    await navigator.share({ title: 'My Math Aura', text: 'Check my math-based aura', url });
+                } else {
+                    const url = URL.createObjectURL(blob);
+                    window.open(url, '_blank');
+                    alert('Opened snapshot in new tab.');
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Unable to share image on this browser.');
+            }
         });
     }
 }
