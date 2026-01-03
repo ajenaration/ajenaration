@@ -3,14 +3,14 @@
 /* --- Global Styles & Variables --- */
 :root {
     /* Colors derived from the image */
-    --color-text-dark: #2c2e35;
-    --color-text-medium: #555866;
-    --color-text-light: #888ba3;
-    --color-background-white: #ffffff;
-    --color-background-light-grey: #f7f7f9;
+    --color-text-dark: #3b2f2a; /* deep brown */
+    --color-text-medium: #6b4f3a;
+    --color-text-light: #8f6f5a;
+    --color-background-white: #fff8f3; /* warm white */
+    --color-background-light-grey: #f6efe8; /* light beige */
 
-    --color-button-primary: #5c64f4;
-    --color-button-hover: #8e50e9;
+    --color-button-primary: #b02a2a; /* warm red highlight */
+    --color-button-hover: #8f1f1f;
 
     --color-accent-purple-start: #a855f7;
     --color-accent-purple-end: #6366f1;
@@ -19,7 +19,17 @@
     --gradient-purple-blue: linear-gradient(135deg, #8e2de2 0%, #4a00e0 100%);
 
     --color-btn-done: #000000;
-    --color-card-bg-subtle: #f0f0f5;
+    --color-card-bg-subtle: #f3ede6;
+
+    /* Aura brown defaults (overrides used by script) */
+    --aura-brown-start: #5a3e2b;
+    --aura-brown-end: #d2b48c;
+
+    /* Header & footer backgrounds */
+    --color-header-bg: #f7efe6;
+    --color-footer-bg: #f7efe6; /* cream footer for readability */
+    --color-footer-text: #3b2f28; /* dark brown */
+    --color-link-accent: #b02a2a; /* red accents */
 
     /* Shadows */
     --shadow-light: 0px 4px 15px rgba(0, 0, 0, 0.05);
@@ -179,7 +189,7 @@ button {
 
 /* --- Header & Navigation --- */
 .main-header {
-    background-color: transparent;
+    background-color: var(--color-header-bg);
     padding: 20px 0;
     box-shadow: none;
     position: absolute;
@@ -224,7 +234,7 @@ button {
 }
 
 .main-header .main-nav a:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.04);
     color: var(--color-text-dark);
 }
 
@@ -345,6 +355,35 @@ button {
     display: block;
 }
 
+    /* Hero image cutout */
+    .hero-cutout {
+        width: 360px;
+        height: 360px;
+        background-image: url('images/hello-2.jpg');
+        background-size: cover;
+        background-position: center;
+        border-radius: 28px;
+        box-shadow: 0 12px 40px rgba(75,53,38,0.25);
+        clip-path: ellipse(48% 50% at 45% 50%);
+        margin: 0 auto;
+    }
+
+    .hero-cutout-caption {
+        margin-top: 14px;
+        text-align: center;
+    }
+
+    .hero-cutout-caption a {
+        color: var(--color-link-accent);
+        font-weight: 600;
+    }
+
+    @media (min-width: 1000px) {
+        .blob-container { display: flex; align-items: center; gap: 24px; }
+        .hero-cutout { margin: 0; }
+        .hero-cutout-caption { text-align: left; }
+    }
+
 
 /* Media Queries for Responsiveness */
 @media (max-width: 900px) {
@@ -382,9 +421,12 @@ button {
 
 /* --- Styled Footer --- */
 .styled-footer {
-    background-color: var(--color-background-light-grey);
+    background-color: var(--color-footer-bg);
     padding: 60px 0;
+    color: var(--color-footer-text);
 }
+
+.styled-footer { box-shadow: inset 0 1px 0 rgba(0,0,0,0.04); }
 
 .footer-columns {
     display: grid;
@@ -398,13 +440,22 @@ button {
 
 .footer-column h3,
 .footer-column h4 {
-    color: var(--color-text-dark);
+    color: var(--color-footer-text);
     margin-bottom: 15px;
 }
 
-.footer-column h3 {
-    font-size: 1.5rem;
+    .footer-column h4 {
+        font-size: 1.1rem;
 }
+
+    .footer-column ul li a {
+        color: var(--color-footer-text);
+        transition: color 0.2s ease;
+    }
+
+    .footer-column ul li a:hover {
+        color: var(--color-link-accent);
+    }
 
 .footer-column h4 {
     font-size: 1.1rem;
@@ -424,13 +475,13 @@ button {
 }
 
 .footer-column ul li a {
-    color: var(--color-text-medium);
+    color: var(--color-footer-text);
     text-decoration: none;
     transition: color 0.3s ease-in-out;
 }
 
 .footer-column ul li a:hover {
-    color: var(--color-button-primary);
+    color: var(--color-link-accent);
 }
 
 .footer-newsletter p {

@@ -133,53 +133,9 @@ if (dataAuraCanvasContainer) {
 }
 
 
-// 3. Playful Micro-Game/Puzzle (Conceptual)
-const microGameContainer = document.getElementById('micro-game-container');
-if (microGameContainer) {
-    const playButton = microGameContainer.nextElementSibling; // Assuming it's the next sibling
-
-    microGameContainer.innerHTML = "<p>Game content goes here!</p>"; // Initial placeholder
-
-    if (playButton) {
-        playButton.addEventListener('click', () => {
-            // When button is clicked, start the game
-            microGameContainer.innerHTML = "<p>Loading game...</p>";
-            // Implement your game logic here. This could be:
-            // - A simple memory game
-            // - A "catch the falling code block" game
-            // - A drag-and-drop puzzle
-            // - You might use a small game library or build it from scratch.
-
-            // Example: Simple "Guess the number" game
-            let randomNumber = Math.floor(Math.random() * 10) + 1;
-            let attempts = 0;
-            microGameContainer.innerHTML = `
-                <p>Guess a number between 1 and 10:</p>
-                <input type="number" id="guessInput" min="1" max="10" style="width: 80px; padding: 8px; border-radius: 5px; border: 1px solid #ccc;">
-                <button id="submitGuess" style="margin-left: 10px; padding: 8px 15px; background: var(--gradient-end); color: white; border: none; border-radius: 5px; cursor: pointer;">Guess</button>
-                <p id="gameMessage"></p>
-            `;
-
-            document.getElementById('submitGuess').addEventListener('click', () => {
-                const guess = parseInt(document.getElementById('guessInput').value);
-                const messageElement = document.getElementById('gameMessage');
-                attempts++;
-
-                if (isNaN(guess) || guess < 1 || guess > 10) {
-                    messageElement.textContent = "Please enter a valid number!";
-                } else if (guess === randomNumber) {
-                    messageElement.textContent = `🎉 Correct! You guessed it in ${attempts} attempts.`;
-                    document.getElementById('submitGuess').disabled = true;
-                    document.getElementById('guessInput').disabled = true;
-                } else if (guess < randomNumber) {
-                    messageElement.textContent = "Too low! Try again.";
-                } else {
-                    messageElement.textContent = "Too high! Try again.";
-                }
-            });
-        });
-    }
-}
+// 3. Project slideshow: micro-game replaced with a small featured-projects slider
+// The global slider initialization (below) will pick up the `.slider-container` inside
+// the micro-game card and handle navigation/auto-play. No inline game logic required.
 
 
 // 4. Smooth Scrolling for Navigation

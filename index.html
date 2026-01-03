@@ -27,6 +27,7 @@
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
+            <a href="ayana-n-resume.pdf" class="btn secondary-btn view-resume-button" target="_blank" rel="noopener">View Resume</a>
             <a href="ayana-n-resume.pdf" class="btn primary-btn download-button" download>Download Resume</a>
         </div>
     </header>
@@ -35,22 +36,16 @@
         <section id="hero" class="hero-section">
             <div class="container">
                 <div class="hero-content">
-                    <h2>Crafting Code,<br>Sparking Ideas.</h2>
+                    <h2>Production Engineer &amp; Developer Advocate</h2>
                     <br></br>
                     <a href="projects.html" class="cta-button">Explore My Work</a>
                 </div>
             </div>
             <div class="blob-container">
-                <svg viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg" class="blob">
-                    <defs>
-                        <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#00C6FF" />
-                            <stop offset="50%" stop-color="#4A00E0" />
-                            <stop offset="100%" stop-color="#F500FF" />
-                        </linearGradient>
-                    </defs>
-                    <path fill="url(#gradient)" d="M593.5,363Q570,426,501,445.5Q432,465,382.5,428Q333,391,284.5,391.5Q236,392,196.5,361.5Q157,331,122.5,283.5Q88,236,112,180Q136,124,198,114.5Q260,105,319.5,87.5Q379,70,438,100.5Q497,131,547,165Q597,199,606.5,249.5Q616,300,593.5,363Z" />
-                </svg>
+                <div class="hero-cutout" role="img" aria-label="project highlight"></div>
+                <div class="hero-cutout-caption">
+                    <a href="/posts/mastering-markdown-for-developers-and-documentarians.html">Read my latest: Mastering Markdown</a>
+                </div>
             </div>
         </section>
 
@@ -63,23 +58,25 @@
                     <button class="gradient-button share-button">Share Your Aura</button>
                 </div>
                 <div class="feature-card micro-game-card">
-                    <h3>Playful Micro-Game/Puzzle</h3>
-                    <p>Quick fun! Can you solve the byte puzzle?</p>
-                    <div id="micro-game-container">
-                        <div class="micro-game-card-item">
-                            <span class="card-title">Doine</span>
-                            <span class="card-value">$</span>
+                    <h3>Projects</h3>
+                    <div class="slider-container small-slider">
+                        <div class="slider-track">
+                            <div class="slider-item">
+                                <a href="projects.html"><img src="images/otl-04.png" alt="Over The Luna Project"></a>
+                            </div>
+                            <div class="slider-item">
+                                <a href="projects.html"><img src="images/mr-02.png" alt="Meal Randomizer App"></a>
+                            </div>
+                            <div class="slider-item">
+                                <a href="projects.html"><img src="images/pv-09.png" alt="Arceeus Pokémon Tracker"></a>
+                            </div>
                         </div>
-                        <div class="micro-game-card-item">
-                            <span class="card-title">Soure</span>
-                            <span class="card-value">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
-                                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.457A4 4 0 0 0 4 6c0 .628-.134 2.219-.382 3.832-.904 3.614-2.91 5.474-5.184 6.78a2.535 2.535 0 0 0 3.224 2.656C.685 14.887 2.454 13.94 4 13.125l1.045-.589A6.5 6.5 0 0 1 8 0a6.5 6.5 0 0 1 3.555 1.488L12.56 2.077l.797-.457A4 4 0 0 0 12 6c0 .628-.134 2.219-.382 3.832-.904 3.614-2.91 5.474-5.184 6.78a2.535 2.535 0 0 0 3.224 2.656C15.315 14.887 17.086 13.94 18.665 13.125l1.045-.589A6.5 6.5 0 0 1 20 0a6.5 6.5 0 0 1 3.555 1.488L24 1.918l.797-.457A4 4 0 0 0 20 6c0 .628-.134 2.219-.382 3.832-.904 3.614-2.91 5.474-5.184 6.78a2.535 2.535 0 0 0 3.224 2.656C19.315 14.887 21.086 13.94 22.665 13.125l1.045-.589A6.5 6.5 0 0 1 24 0a6.5 6.5 0 0 1 3.555 1.488L28 1.918z" />
-                                </svg>
-                            </span>
-                        </div>
+                        <button class="slider-arrow prev-arrow"><span>&#10094;</span></button>
+                        <button class="slider-arrow next-arrow"><span>&#10095;</span></button>
                     </div>
-                    <button class="gradient-button play-button">Play Now</button>
+                    <div style="margin-top:12px; text-align:center;">
+                        <a href="projects.html" class="btn primary-btn">view all</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -115,39 +112,7 @@
 
         <section class="section-padded content-section-block two-column-section">
             <div class="container two-column-content-grid">
-                <div class="column-item coding-projects-column">
-                    <h2>Coding Projects</h2>
-                    <div class="slider-container">
-                        <div class="slider-track">
-                            <div class="slider-item">
-                                <img src="images/otl-04.png" alt="Over The Luna Project">
-                            </div>
-                            <div class="slider-item">
-                                <img src="images/mr-02.png" alt="Meal Randomizer App">
-                            </div>
-                            <div class="slider-item">
-                                <img src="images/pv-09.png" alt="Arceeus Pokémon Tracker">
-                            </div>
-                            <div class="slider-item">
-                                <img src="images/ltc-03.png" alt="Learn 2 Code Project">
-                            </div>
-                            <div class="slider-item">
-                                <img src="images/fl-02.jpg" alt="FlixList Project">
-                            </div>
-                            <div class="slider-item">
-                                <img src="images/r-03.png" alt="Rogers 5G Network Integration">
-                            </div>
-                            <div class="slider-item">
-                                <img src="images/f-03.png" alt="Rogers Inventory Upgrade">
-                            </div>
-                        </div>
-                        <button class="slider-arrow prev-arrow"><span>&#10094;</span></button>
-                        <button class="slider-arrow next-arrow"><span>&#10095;</span></button>
-                    </div>
-                    <div class="view-all-projects-button-container">
-                        <a href="projects.html" class="btn primary-btn">View All Projects</a>
-                    </div>
-                </div>
+                <!-- Coding Projects column removed per user request -->
 
                 <div class="column-item devrel-content-column">
                     <h2>DevRel <br> Content</h2>
@@ -176,7 +141,7 @@
             <div class="footer-columns">
                 <div class="footer-column footer-logo">
                     <h3>ajenaration</h3>
-                    <p>Building the future, one line of code at a time.</p>
+                    
                 </div>
                 <div class="footer-column">
                     <h4>Explore</h4>
@@ -194,6 +159,7 @@
                         <li><a href="https://instagram.com/ajenaration" target="_blank" rel="noopener noreferrer">Instagram</a></li>
                         <li><a href="https://linkedin.com/in/ayana-n" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
                         <li><a href="https://twitter.com/ajenaration" target="_blank" rel="noopener noreferrer">Twitter (X)</a></li>
+                        <li><a href="https://www.tiktok.com/@ajenaration" target="_blank" rel="noopener noreferrer">TikTok</a></li>
                         <li><a href="https://youtube.com/@ajenaration" target="_blank" rel="noopener noreferrer">YouTube</a></li>
                     </ul>
                 </div>
