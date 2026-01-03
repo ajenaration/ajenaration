@@ -46,6 +46,12 @@ async function prepare() {
       // ignore missing
     }
   }
+
+  const indexJsContent = `const { onRequest } = require("firebase-functions/v2/https");
+const app = require("./server");
+exports.app = onRequest({ region: "us-east1" }, app);
+`;
+  await fs.writeFile(path.join(functionsDir, 'index.js'), indexJsContent);
 }
 
 prepare().catch(err => { console.error(err); process.exit(1); });

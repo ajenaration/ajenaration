@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajenaration - Code & Creativitea</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <h1>ajenaration</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="devrel.html">DevRel</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="ayana-n-resume.pdf" class="btn secondary-btn view-resume-button" target="_blank" rel="noopener">View Resume</a>
+            <a href="ayana-n-resume.pdf" class="btn primary-btn download-button" download>Download Resume</a>
+        </div>
+    </header>
+
+    <main class="main-wrapper">
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Production Engineer &amp; Developer Advocate</h2>
+                    <br></br>
+                    <a href="projects.html" class="cta-button">Explore My Work</a>
+                </div>
+            </div>
+            <div class="blob-container">
+                <div class="hero-cutout" role="img" aria-label="project highlight"></div>
+                <div class="hero-cutout-caption">
+                    <a href="posts/mastering-markdown-for-developers-and-documentarians.html">Read my latest: Mastering Markdown</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="interactive-cool-feature" class="section-padded content-section-block">
+            <div class="container feature-grid">
+                <div class="feature-card data-aura-card">
+                    <h3>Personalized Data Aura</h3>
+                    <p>Move your mouse and watch your unique digital fingerprint come alive.</p>
+                    <div id="data-aura-canvas"></div>
+                    <button class="gradient-button share-button">Share Your Aura</button>
+                </div>
+                <div class="feature-card micro-game-card">
+                    <h3>Projects</h3>
+                    <div class="slider-container small-slider">
+                        <div class="slider-track">
+                            <div class="slider-item">
+                                <a href="projects.html"><img src="images/otl-04.png" alt="Over The Luna Project"></a>
+                            </div>
+                            <div class="slider-item">
+                                <a href="projects.html"><img src="images/mr-02.png" alt="Meal Randomizer App"></a>
+                            </div>
+                            <div class="slider-item">
+                                <a href="projects.html"><img src="images/pv-09.png" alt="Arceeus Pokémon Tracker"></a>
+                            </div>
+                        </div>
+                        <button class="slider-arrow prev-arrow"><span>&#10094;</span></button>
+                        <button class="slider-arrow next-arrow"><span>&#10095;</span></button>
+                    </div>
+                    <div style="margin-top:12px; text-align:center;">
+                        <a href="projects.html" class="btn primary-btn">view all</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="section-padded blog-section">
+            <div class="container">
+                <h2>Latest Insights</h2>
+                <div class="blog-grid">
+                    <article class="blog-post-card">
+                        <img src="https://picsum.photos/id/27/400/250" alt="Markdown syntax on screen">
+                        <h3>Mastering Markdown: For Developers and Documentarians</h3>
+                        <p>A comprehensive guide to leveraging Markdown for efficient documentation and communication in tech...</p>
+                        <span>July 25, 2025 · 6 min read</span>
+                        <a href="posts/mastering-markdown-for-developers-and-documentarians.html" class="read-more">Read More</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://picsum.photos/id/1015/400/250" alt="Team collaborating on a project, representing production engineering mentorship">
+                        <h3>Push to Start: My MLH Production Engineering Mentorship Journey at DevRelCon NYC</h3>
+                        <p>Reflecting on my experience mentoring aspiring engineers and contributing to a vibrant community at DevRelCon NYC...</p>
+                        <span>July 15, 2025 · 5 min read</span>
+                        <a href="posts/push-to-start-devrelcon-nyc.html" class="read-more">Read More</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://picsum.photos/id/559/400/250" alt="Conceptual image of data flow or API communication">
+                        <h3>API Best Practices: Building Robust & Scalable Integrations</h3>
+                        <p>Key strategies for designing, consuming, and maintaining APIs for seamless software interactions...</p>
+                        <span>July 10, 2025 · 7 min read</span>
+                        <a href="posts/api-best-practices.html" class="read-more">Read More</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padded content-section-block two-column-section">
+            <div class="container two-column-content-grid">
+                <!-- Coding Projects column removed per user request -->
+
+                <div class="column-item devrel-content-column">
+                    <h2>DevRel <br> Content</h2>
+                    <p>Exploring the intersection of development and community advocacy through various activities and contributions. Stay updated with upcoming events and resources.</p>
+                    <ul class="devrel-summary-list">
+                        <li><i class="fas fa-microphone"></i> Speaking Engagements</li>
+                        <li><i class="fas fa-lightbulb"></i> Workshops & Tutorials</li>
+                        <li><i class="fas fa-code-branch"></i> Open Source Contributions</li>
+                        <li>
+                            <i class="fab fa-youtube"></i> <a href="https://youtube.com/ajenaration" target="_blank" rel="noopener noreferrer">
+                                Watch my latest video <span style="margin-left: 5px; font-size: 1.2em;">&#8594;</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="view-all-devrel-button-container">
+                        <a href="devrel.html" class="btn secondary-btn">Learn More about DevRel</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="styled-footer">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column footer-logo">
+                    <h3>ajenaration</h3>
+                    
+                </div>
+                <div class="footer-column">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="https://bluesky.social/profile/ajenaration.bsky.social" target="_blank" rel="noopener noreferrer">Bluesky</a></li>
+                        <li><a href="https://instagram.com/ajenaration" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                        <li><a href="https://linkedin.com/in/ayana-n" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                        <li><a href="https://twitter.com/ajenaration" target="_blank" rel="noopener noreferrer">Twitter (X)</a></li>
+                        <li><a href="https://www.tiktok.com/@ajenaration" target="_blank" rel="noopener noreferrer">TikTok</a></li>
+                        <li><a href="https://youtube.com/@ajenaration" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Sign up with your email address to receive news and updates.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Email Address">
+                        <button type="submit" class="btn primary-btn">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

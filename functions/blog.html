@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajenaration - Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <h1>ajenaration</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="ayana-n-resume.pdf" class="btn secondary-btn view-resume-button" target="_blank" rel="noopener">View Resume</a>
+            <a href="ayana-n-resume.pdf" class="btn primary-btn download-button" download>Download Resume</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="blog-hero">
+            <div class="container">
+                <div class="hero-post-card">
+                    <img src="https://picsum.photos/id/29/1200/600" alt="DevRelCon NYC event image" class="hero-post-image">
+                    <div class="hero-post-content">
+                        <span class="hero-post-category">Dev Life</span>
+                        <h2>Push to Start: DevRelCon NYC and My Journey Ahead</h2>
+                        <p>Stepping into the vibrant DevRelCon NYC community ignited a passion to deepen my involvement and document my contributions better. This post kicks off that journey!</p>
+                        <a href="posts/push-to-start-devrelcon-nyc.html" class="read-more-btn">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                        <div class="hero-post-meta">
+                            <span><i class="fas fa-calendar-alt"></i> July 31, 2025</span>
+                            <span><i class="fas fa-book-reader"></i> 7 min read</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="blog-posts-section content-section-block">
+            <div class="container">
+                <div class="blog-filters">
+                    <button class="filter-btn active" data-category="all">All Posts</button>
+                    <button class="filter-btn" data-category="technology">Technology</button>
+                    <button class="filter-btn" data-category="design">Design</button>
+                    <button class="filter-btn" data-category="dev-life">Dev Life</button>
+                    <button class="filter-btn" data-category="personal">Personal Growth</button>
+                </div>
+
+                <div class="blog-grid" id="blog-grid">
+                    <div class="blog-post-card wide" data-category="dev-life">
+                        <img src="https://picsum.photos/id/29/800/400" alt="DevRelCon NYC event image card">
+                        <div class="card-content">
+                            <span class="post-category">Dev Life</span>
+                            <h3>Push to Start: DevRelCon NYC and My Journey Ahead</h3>
+                            <p>Attending DevRelCon NYC was a pivotal moment, inspiring me to double down on my DevRel community involvement and improve my documentation. Here's why!</p>
+                            <div class="post-meta">
+                                <span><i class="fas fa-calendar-alt"></i> July 31, 2025</span>
+                                <span><i class="fas fa-book-reader"></i> 7 min read</span>
+                            </div>
+                            <a href="posts/push-to-start-devrelcon-nyc.html" class="read-more-link">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="blog-post-card" data-category="design">
+                        <img src="https://picsum.photos/id/53/500/600" alt="Design Post 1">
+                        <div class="card-content">
+                            <span class="post-category">Design Principles</span>
+                            <h3>Beyond Aesthetics: Designing for User Experience</h3>
+                            <p>Good design isn't just about looks; it's about crafting intuitive experiences. Explore the core principles that make a design truly user-centric.</p>
+                            <div class="post-meta">
+                                <span><i class="fas fa-calendar-alt"></i> July 20, 2025</span>
+                                <span><i class="fas fa-book-reader"></i> 6 min read</span>
+                            </div>
+                            <a href="posts/beyond-aesthetics-designing-for-user-experience.html" class="read-more-link">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="blog-post-card wide" data-category="technology">
+                        <img src="https://picsum.photos/id/90/800/400" alt="Tech Post 1">
+                        <div class="card-content">
+                            <span class="post-category">AI & Future Tech</span>
+                            <h3>AI in Everyday Life: How Algorithms Shape Our World</h3>
+                            <p>From recommendation engines to smart home devices, AI is deeply integrated into our daily routines. Unpack the unseen forces at play.</p>
+                            <div class="post-meta">
+                                <span><i class="fas fa-calendar-alt"></i> July 18, 2025</span>
+                                <span><i class="fas fa-book-reader"></i> 10 min read</span>
+                            </div>
+                            <a href="posts/ai-in-everyday-life-how-algorithms-shape-our-world.html" class="read-more-link">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="blog-post-card tall" data-category="dev-life">
+                        <img src="https://picsum.photos/id/230/500/800" alt="Dev Life Post 1">
+                        <div class="card-content">
+                            <span class="post-category">Developer Insights</span>
+                            <h3>The Art of Debugging: A Developer's Essential Skill</h3>
+                            <p>Bugs are inevitable. Mastering the art of debugging isn't just about fixing errors, it's about understanding code deeply.</p>
+                            <div class="post-meta">
+                                <span><i class="fas fa-calendar-alt"></i> July 15, 2025</span>
+                                <span><i class="fas fa-book-reader"></i> 7 min read</span>
+                            </div>
+                            <a href="posts/the-art-of-debugging-a-developers-essential-skill.html" class="read-more-link">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="blog-post-card" data-category="personal">
+                        <img src="https://picsum.photos/id/236/500/600" alt="Personal Growth Post 1">
+                        <div class="card-content">
+                            <span class="post-category">Mindset</span>
+                            <h3>Cultivating Creativity in a Tech-Driven World</h3>
+                            <p>How do you stay creative when surrounded by logic and algorithms? Tips for fostering innovation and unique thinking.</p>
+                            <div class="post-meta">
+                                <span><i class="fas fa-calendar-alt"></i> July 12, 2025</span>
+                                <span><i class="fas fa-book-reader"></i> 5 min read</span>
+                            </div>
+                            <a href="posts/cultivating-creativity-in-a-tech-driven-world.html" class="read-more-link">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="blog-post-card tall" data-category="technology">
+                        <img src="https://picsum.photos/id/345/500/800" alt="Tech Post 2">
+                        <div class="card-content">
+                            <span class="post-category">Web Development</span>
+                            <h3>Beyond Frameworks: The Power of Vanilla JavaScript</h3>
+                            <p>In an era of endless frameworks, rediscovering the raw power and flexibility of vanilla JavaScript can be incredibly liberating and efficient.</p>
+                            <div class="post-meta">
+                                <span><i class="fas fa-calendar-alt"></i> July 10, 2025</span>
+                                <span><i class="fas fa-book-reader"></i> 9 min read</span>
+                            </div>
+                            <a href="posts/beyond-frameworks-the-power-of-vanilla-javascript.html" class="read-more-link">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="blog-post-card" data-category="design">
+                        <img src="https://picsum.photos/id/491/500/600" alt="Design Post 2">
+                        <div class="card-content">
+                            <span class="post-category">UI/UX Trends</span>
+                            <h3>The Evolution of Dark Mode: More Than Just a Trend</h3>
+                            <p>Dark mode has become ubiquitous, but its rise is more than just a fleeting trend. Explore its benefits, challenges, and future.</p>
+                            <div class="post-meta">
+                                <span><i class="fas fa-calendar-alt"></i> July 8, 2025</span>
+                                <span><i class="fas fa-book-reader"></i> 6 min read</span>
+                            </div>
+                            <a href="posts/the-evolution-of-dark-mode-more-than-just-a-trend.html" class="read-more-link">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="blog-post-card wide" data-category="dev-life">
+                        <img src="https://picsum.photos/id/433/800/400" alt="Dev Life Post 2">
+                        <div class="card-content">
+                            <span class="post-category">Productivity</span>
+                            <h3>Navigating Burnout: Strategies for Sustainable Development</h3>
+                            <p>The fast-paced world of tech can lead to burnout. Learn practical strategies to maintain well-being and a sustainable career path.</p>
+                            <div class="post-meta">
+                                <span><i class="fas fa-calendar-alt"></i> July 5, 2025</span>
+                                <span><i class="fas fa-book-reader"></i> 8 min read</span>
+                            </div>
+                            <a href="posts/navigating-burnout-strategies-for-sustainable-development.html" class="read-more-link">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="blog-post-card" data-category="dev-life">
+                        <img src="https://picsum.photos/id/1015/500/600" alt="DevRel Future">
+                        <div class="card-content">
+                            <span class="post-category">Dev Life</span>
+                            <h3>The Future of DevRel: Trends and Predictions</h3>
+                            <p>What's next for Developer Relations? Dive into emerging trends, new technologies, and what the future holds for community builders.</p>
+                            <div class="post-meta">
+                                <span><i class="fas fa-calendar-alt"></i> August 10, 2025</span>
+                                <span><i class="fas fa-book-reader"></i> 12 min read</span>
+                            </div>
+                            <a href="posts/the-future-of-devrel-trends-and-predictions.html" class="read-more-link">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="blog-post-card wide" data-category="technology">
+                        <img src="https://picsum.photos/id/1041/800/400" alt="Cloud Computing">
+                        <div class="card-content">
+                            <span class="post-category">Technology</span>
+                            <h3>Demystifying Cloud Computing: A Beginner's Guide</h3>
+                            <p>From IaaS to Serverless, understand the fundamental concepts of cloud computing and how it's revolutionizing tech infrastructure.</p>
+                            <div class="post-meta">
+                                <span><i class="fas fa-calendar-alt"></i> August 5, 2025</span>
+                                <span><i class="fas fa-book-reader"></i> 9 min read</span>
+                            </div>
+                            <a href="posts/demystifying-cloud-computing-a-beginners-guide.html" class="read-more-link">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="blog-post-card" data-category="personal">
+                        <img src="https://picsum.photos/id/10/500/600" alt="Ethical AI">
+                        <div class="card-content">
+                            <span class="post-category">Personal Growth</span>
+                            <h3>Ethical AI: Building Responsible Technology</h3>
+                            <p>A deep dive into the ethical considerations of artificial intelligence and the importance of responsible development practices.</p>
+                            <div class="post-meta">
+                                <span><i class="fas fa-calendar-alt"></i> July 28, 2025</span>
+                                <span><i class="fas fa-book-reader"></i> 11 min read</span>
+                            </div>
+                            <a href="posts/ethical-ai-building-responsible-technology.html" class="read-more-link">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="blog-post-card wide" data-category="dev-life">
+                        <img src="https://picsum.photos/id/27/800/400" alt="Markdown for Devs">
+                        <div class="card-content">
+                            <span class="post-category">Developer Insights</span>
+                            <h3>Mastering Markdown: For Developers and Documentarians</h3>
+                            <p>Unlock the full potential of Markdown for efficient documentation, READMEs, and everyday writing in the developer workflow.</p>
+                            <div class="post-meta">
+                                <span><i class="fas fa-calendar-alt"></i> July 25, 2025</span>
+                                <span><i class="fas fa-book-reader"></i> 6 min read</span>
+                            </div>
+                            <a href="posts/mastering-markdown-for-developers-and-documentarians.html" class="read-more-link">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="styled-footer">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column footer-logo">
+                    <h3>ajenaration</h3>
+                    
+                </div>
+                <div class="footer-column">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Twitter</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Sign up with your email address to receive news and updates.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Email Address">
+                        <button type="submit" class="btn primary-btn">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const blogGrid = document.getElementById('blog-grid');
+            const blogPostCards = document.querySelectorAll('.blog-post-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const category = button.dataset.category;
+
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    blogPostCards.forEach(card => {
+                        const cardCategory = card.dataset.category;
+                        if (category === 'all' || cardCategory === category) {
+                            card.style.display = 'flex';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'scale(1)';
+                            }, 10);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'scale(0.95)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
