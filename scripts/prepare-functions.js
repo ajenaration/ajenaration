@@ -22,10 +22,17 @@ async function prepare() {
   await fs.mkdir(functionsDir, { recursive: true });
 
   // Copy views, posts, images, and public assets if present
-  const items = ['views', 'posts', 'images', 'style.css', 'script.js', 'ayana-n-resume.pdf'];
+  const items = ['views', 'posts', 'images', 'style.css', 'script.js', 'ayana-n-resume.pdf', 'index.html', 'about.html', 'projects.html', 'blog.html', 'devrel.html', 'contact.html', 'server.js', 'package.json'];
   for (const it of items) {
     const src = path.join(root, it);
     try {
+      if (it === 'package.json') {
+        const pkg = JSON.parse(await fs.readFile(src, 'utf8'));
+        pkg.main = 'index.js';
+        await fs.writeFile(path.join(functionsDir, it), JSON.stringify(pkg, null, 2));
+        console.log('Copied and updated', it);
+        continue;
+      }
       const stat = await fs.stat(src);
       const dest = path.join(functionsDir, stat.isDirectory() ? it : it);
       if (stat.isDirectory()) {
