@@ -22,7 +22,7 @@ async function prepare() {
   await fs.mkdir(functionsDir, { recursive: true });
 
   // Copy views, posts, images, and public assets if present
-  const items = ['views', 'posts', 'images', 'style.css', 'script.js', 'ayana-n-resume.pdf', 'index.html', 'about.html', 'projects.html', 'blog.html', 'devrel.html', 'contact.html', 'server.js', 'package.json'];
+  const items = ['views', 'posts', 'images', 'style.css', 'script.js', 'ayana-n-resume.pdf', 'about.html', 'projects.html', 'blog.html', 'devrel.html', 'contact.html', 'server.js', 'package.json'];
   for (const it of items) {
     const src = path.join(root, it);
     try {
