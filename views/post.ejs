@@ -1,43 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title><%= title %> - ajenaration</title>
-  <link rel="stylesheet" href="/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> - ajenaration</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <header class="main-header">
-    <div class="container">
-      <div class="logo"><h1>ajenaration</h1></div>
-      <nav class="main-nav"><ul>
-        <li><a href="/index.html">Home</a></li>
-        <li><a href="/about.html">About</a></li>
-        <li><a href="/projects.html">Projects</a></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/contact.html">Contact</a></li>
-      </ul></nav>
-    </div>
-  </header>
+    <%- include('partials/nav', { active: 'blog' }) %>
 
-  <main class="container section-padded single-post-page">
-    <article class="post-article">
-      <header class="post-header">
-        <h1><%= title %></h1>
-      </header>
-      <div class="post-content">
-        <%- content %>
-      </div>
-      <div class="post-footer">
-        <a href="/blog" class="back-to-blog-btn">&larr; Back to All Posts</a>
-      </div>
-    </article>
-  </main>
+    <main class="blog-post-page">
+        <article class="container blog-post-content">
+            <h1><%= title %></h1>
+            <div class="post-content">
+                <%- content %>
+            </div>
+            <a href="/blog" class="back-to-blog-btn">&larr; Back to Blog</a>
+        </article>
+    </main>
 
-  <footer class="styled-footer">
-    <div class="container">
-      <p>&copy; <%= new Date().getFullYear() %> ajenaration</p>
-    </div>
-  </footer>
+    <%- include('partials/footer') %>
 </body>
 </html>

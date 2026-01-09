@@ -1,46 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact - ajenaration</title>
-  <link rel="stylesheet" href="/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Ayana N. - ajenaration</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <%- include('partials/nav', { active: 'contact' }) %>
+    <%- include('partials/nav', { active: 'contact' }) %>
 
-  <main class="contact-page">
-    <div class="container contact-content">
-      <section class="contact-hero">
-        <span class="section-tag">Get In Touch</span>
-        <h1>Let's Connect & Create</h1>
-        <p class="lead-paragraph">I'm always excited to discuss new ideas, collaborations, speaking opportunities, or just chat about tech and community.</p>
-        <img src="https://picsum.photos/id/409/1200/600" alt="People connecting" class="hero-image">
-      </section>
+    <main class="contact-page">
+        <div class="container contact-content">
+            <section class="contact-hero">
+                <span class="section-tag">Get In Touch</span>
+                <h1>Let's Connect & Create</h1>
+                <p class="lead-paragraph">
+                    I'm always excited to discuss new ideas, potential collaborations, speaking opportunities, or just chat about all things tech and community. Whether you have a project in mind, a question about my work, or just want to say hello, feel free to reach out!
+                </p>
+                <img src="https://picsum.photos/id/409/1200/600" alt="People connecting and collaborating" class="hero-image">
+            </section>
 
-      <section class="contact-form-section">
-        <h2>Send Me a Message</h2>
-        <form class="contact-form" action="/contact-submit" method="POST">
-          <div class="form-group"><label for="name">Your Name</label><input id="name" name="name" required></div>
-          <div class="form-group"><label for="email">Your Email</label><input id="email" name="email" type="email" required></div>
-          <div class="form-group"><label for="message">Your Message</label><textarea id="message" name="message" rows="6" required></textarea></div>
-          <button type="submit" class="btn primary-btn">Send Message</button>
-        </form>
-      </section>
+            <section class="contact-form-section">
+                <h2>Send Me a Message</h2>
+                <form class="contact-form" action="/contact-submit" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Sephiroth X">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required placeholder="sephiroth@ajenaration.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required placeholder="Collaboration Inquiry / Speaking Request">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="6" required placeholder="Tell me more about your idea or question..."></textarea>
+                    </div>
+                    <button type="submit" class="btn primary-btn submit-btn">Send Message</button>
+                </form>
+            </section>
 
-      <section class="alternative-contact-section">
-        <h2>Other Ways to Connect</h2>
-        <div class="contact-methods-grid">
-          <div class="contact-method-card"><h3>Direct Email</h3><a href="mailto:work@ajenaration.com" class="btn secondary-btn">work@ajenaration.com</a></div>
-          <div class="contact-method-card"><h3>LinkedIn</h3><a href="https://linkedin.com/in/ayana-n" target="_blank" rel="noopener noreferrer" class="btn secondary-btn">Connect</a></div>
+            <section class="alternative-contact-section">
+                <h2>Other Ways to Connect</h2>
+                <div class="contact-methods-grid">
+                    <div class="contact-method-card">
+                        <i class="fas fa-envelope icon-large"></i>
+                        <h3>Direct Email</h3>
+                        <p>Prefer to email directly? Drop me a line anytime.</p>
+                        <a href="mailto:work@ajenaration.com" class="btn secondary-btn">work@ajenaration.com</a>
+                    </div>
+                    <div class="contact-method-card">
+                        <i class="fab fa-linkedin icon-large"></i>
+                        <h3>LinkedIn</h3>
+                        <p>Connect with me professionally and follow my updates.</p>
+                        <a href="https://linkedin.com/in/ayana-n" target="_blank" rel="noopener noreferrer" class="btn secondary-btn">Connect on LinkedIn</a>
+                    </div>
+                    <div class="contact-method-card">
+                        <i class="fas fa-calendar-alt icon-large"></i>
+                        <h3>Schedule a Call</h3>
+                        <p>Book a meeting to discuss in detail (link to calendly/etc. if you have one).</p>
+                        <a href="http://calendly.com/ajenaration" target="_blank" rel="noopener noreferrer" class="btn secondary-btn">Book on Calendly</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="social-media-contact-section">
+                <h2>Find Me on Social Media</h2>
+                <div class="social-icons">
+                    <a href="https://bluesky.social/profile/ajenaration.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="Bluesky Profile"><i class="fab fa-bluesky"></i></a>
+                    <a href="https://twitter.com/ajenaration" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/ajenaration" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/ajenaration" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+                    <a href="https://youtube.com/ajenaration" target="_blank" rel="noopener noreferrer" aria-label="YouTube Channel"><i class="fab fa-youtube"></i></a>
+                </div>
+            </section>
         </div>
-      </section>
+    </main>
 
-    </div>
-  </main>
-
-  <%- include('partials/footer') %>
+    <%- include('partials/footer') %>
+</body>
+</html>
