@@ -3,33 +3,33 @@
 /* --- Global Styles & Variables --- */
 :root {
     /* Colors derived from the image */
-    --color-text-dark: #3b2f2a; /* deep brown */
-    --color-text-medium: #6b4f3a;
-    --color-text-light: #8f6f5a;
-    --color-background-white: #fff8f3; /* warm white */
-    --color-background-light-grey: #f6efe8; /* light beige */
+    --color-text-dark: #0D0C00; /* Very Dark/Blackish */
+    --color-text-medium: #402814; /* Dark Brown */
+    --color-text-light: #402814;
+    --color-background-white: #D9B991; /* Light Tan/Beige */
+    --color-background-light-grey: #D9B991; /* Keeping consistent background */
 
-    --color-button-primary: #b02a2a; /* warm red highlight */
-    --color-button-hover: #8f1f1f;
+    --color-button-primary: #400106; /* Dark Red/Maroon */
+    --color-button-hover: #260101; /* Very Dark Red/Brown */
 
-    --color-accent-purple-start: #a855f7;
-    --color-accent-purple-end: #6366f1;
-    --color-accent-pink-start: #d946ef;
+    --color-accent-purple-start: #400106;
+    --color-accent-purple-end: #402814;
+    --color-accent-pink-start: #400106;
 
-    --gradient-purple-blue: linear-gradient(135deg, #8e2de2 0%, #4a00e0 100%);
+    --gradient-purple-blue: linear-gradient(135deg, #400106 0%, #260101 100%);
 
-    --color-btn-done: #000000;
-    --color-card-bg-subtle: #f3ede6;
+    --color-btn-done: #0D0C00;
+    --color-card-bg-subtle: #cbb08a; /* Slightly darker tan for contrast */
 
     /* Aura brown defaults (overrides used by script) */
-    --aura-brown-start: #5a3e2b;
-    --aura-brown-end: #d2b48c;
+    --aura-brown-start: #402814;
+    --aura-brown-end: #D9B991;
 
     /* Header & footer backgrounds */
-    --color-header-bg: #f7efe6;
-    --color-footer-bg: #f7efe6; /* cream footer for readability */
-    --color-footer-text: #3b2f28; /* dark brown */
-    --color-link-accent: #b02a2a; /* red accents */
+    --color-header-bg: #D9B991;
+    --color-footer-bg: #260101; /* Very Dark Red/Brown */
+    --color-footer-text: #D9B991; /* Tan text on dark footer */
+    --color-link-accent: #400106; /* Dark Red */
 
     /* Shadows */
     --shadow-light: 0px 4px 15px rgba(0, 0, 0, 0.05);
@@ -184,7 +184,7 @@ button {
 .secondary-btn:hover {
     border-color: var(--color-button-hover);
     color: var(--color-button-hover);
-    background-color: rgba(142, 80, 233, 0.1);
+    background-color: rgba(64, 1, 6, 0.1);
 }
 
 /* --- Header & Navigation --- */
@@ -208,10 +208,10 @@ button {
     align-items: center;
     height: auto;
     padding: 10px 30px;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(217, 185, 145, 0.9); /* #D9B991 with opacity */
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(64, 40, 20, 0.1);
     border-radius: 100px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0,0,0,0.02);
     pointer-events: auto;
@@ -263,7 +263,7 @@ button {
 }
 
 .main-header .main-nav a:hover {
-    background-color: rgba(168, 85, 247, 0.1);
+    background-color: rgba(64, 1, 6, 0.1);
     color: var(--color-button-primary);
     transform: translateY(-1px);
 }
@@ -345,7 +345,7 @@ button {
     left: 0;
     width: 50px;
     height: 10px;
-    background: #a855f7;
+    background: var(--color-accent-purple-start);
     border-radius: 5px;
 }
 
@@ -629,7 +629,7 @@ button {
 }
 
 .project-tags span {
-    background-color: #e0e7ff;
+    background-color: rgba(64, 40, 20, 0.1);
     color: var(--color-button-primary);
     padding: 6px 12px;
     border-radius: var(--border-radius-small);
