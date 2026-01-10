@@ -1,0 +1,78 @@
+/* --- Base Reset & Universal Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: var(--font-size-base);
+}
+
+body {
+    font-family: var(--font-family-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-medium);
+    background-color: var(--color-background-light-grey);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-button-primary);
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: var(--color-button-hover);
+}
+
+ul {
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-headings);
+    font-weight: 700;
+    color: var(--color-text-dark);
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- Global Utilities --- */
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.section-padded {
+    padding: 80px 0;
+}
+
+.content-section-block {
+    padding: 60px 0;
+    margin-bottom: 40px;
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-light);
+    overflow: hidden;
+}
+
+.content-section-block > .container {
+    padding: 0 40px;
+}
+
+.main-wrapper {
+    position: relative;
+    padding-top: 80px; /* Space for fixed header */
+    padding-bottom: 80px;
+}

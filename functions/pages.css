@@ -1,0 +1,252 @@
+/* --- Explicit Section Backgrounds --- */
+#interactive-cool-feature, .two-column-section {
+    background-color: var(--color-background-white);
+}
+
+#blog, #devrel {
+    background-color: var(--color-background-light-grey);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    background: linear-gradient(-45deg, #000428, #004e92, #0f3460, #434343);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+    border-radius: 0 0 30px 30px;
+    margin-bottom: 4rem;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.hero-highlight {
+    background: linear-gradient(90deg, #00dbde, #fc00ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: block;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.typewriter {
+    font-family: 'Courier New', monospace;
+    border-right: 3px solid #00dbde;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+    margin: 1rem 0;
+    font-size: 1.2rem;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #00dbde; }
+}
+
+/* --- About Page --- */
+.about-page .intro-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--color-accent-purple-start), var(--color-accent-purple-end));
+    color: var(--color-background-white);
+    border-radius: 15px;
+    text-align: center;
+}
+
+.about-page .intro-text h2 {
+    color: var(--color-background-white);
+    font-size: 3.2em;
+}
+
+.about-page .intro-image .profile-photo {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--color-background-white);
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.about-content section, .devrel-content section, .contact-content section {
+    background-color: var(--color-background-white);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 40px;
+}
+
+/* --- DevRel Page --- */
+.devrel-page .devrel-hero {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 60px 0;
+    background: linear-gradient(135deg, var(--color-accent-purple-start), var(--color-accent-purple-end));
+    color: var(--color-background-white);
+    border-radius: 15px;
+}
+
+.devrel-page .devrel-hero h1 {
+    color: var(--color-background-white);
+    font-size: 3.5em;
+    margin-bottom: 20px;
+}
+
+.devrel-page .activity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.devrel-page .activity-card {
+    background-color: var(--color-background-light-grey);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.devrel-page .activity-card:hover {
+    transform: translateY(-5px);
+}
+
+.devrel-page .activity-card i {
+    font-size: 3em;
+    color: var(--color-accent-purple-end);
+    margin-bottom: 20px;
+    display: block;
+}
+
+/* --- Blog Page --- */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.blog-post-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-post-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.blog-post-card .card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.read-more-link {
+    color: var(--color-accent-purple-end);
+    font-weight: 600;
+    margin-top: auto;
+}
+
+/* Single Post Page */
+.blog-post-page .blog-post-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--color-background-white);
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.blog-post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 25px 0;
+}
+
+.blog-post-content pre {
+    background-color: #2d2d2d;
+    color: #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+/* --- Content Page (New) --- */
+.content-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 4rem 2rem;
+    margin-bottom: 4rem;
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}

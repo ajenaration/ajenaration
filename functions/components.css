@@ -1,0 +1,232 @@
+/* --- Buttons --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    border-radius: var(--border-radius-small);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: capitalize;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.primary-btn {
+    background-color: var(--color-button-primary);
+    color: var(--color-background-white);
+    box-shadow: var(--shadow-light);
+}
+
+.primary-btn:hover {
+    background-color: var(--color-button-hover);
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    background-color: transparent;
+    color: var(--color-text-medium);
+    border: 2px solid var(--color-text-medium);
+    padding: 10px 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 50px;
+}
+
+.secondary-btn:hover {
+    border-color: var(--color-button-hover);
+    color: var(--color-button-hover);
+    background-color: rgba(64, 1, 6, 0.1);
+}
+
+.cta-button, .cta-button-outline {
+    display: inline-block;
+    padding: 1rem 2rem;
+    margin: 0.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.cta-button {
+    background: linear-gradient(90deg, #00dbde, #fc00ff);
+    color: white;
+    border: none;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 219, 222, 0.3);
+}
+
+.cta-button-outline {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.cta-button-outline:hover {
+    background: white;
+    color: #000428;
+}
+
+/* --- Cards --- */
+.project-card, .blog-card, .feature-card {
+    background-color: var(--color-background-white);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-light);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover, .blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Forms --- */
+.contact-form {
+    display: grid;
+    gap: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+    background-color: #fff;
+    color: var(--color-text-dark);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--color-accent-purple-end);
+    box-shadow: 0 0 0 3px rgba(74, 0, 224, 0.2);
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.submit-btn {
+    width: auto;
+    padding: 12px 30px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, var(--color-accent-purple-start), var(--color-accent-purple-end));
+    color: var(--color-background-white);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Modals --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-overlay.hidden {
+    display: none;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: var(--border-radius-large);
+    max-width: 90%;
+    max-height: 85%;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    color: #333;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+    color: #888;
+    line-height: 1;
+    padding: 0;
+}
+
+/* --- Section Tags --- */
+.section-tag {
+    display: inline-block;
+    background-color: var(--color-accent-purple-start);
+    color: var(--color-background-white);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- Filters --- */
+.filter-btn {
+    padding: 0.6rem 1.5rem;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: linear-gradient(90deg, #00dbde, #fc00ff);
+    color: white;
+}
+
+/* --- Social Icons --- */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.social-icons a {
+    font-size: 2.5em;
+    color: var(--color-text-dark);
+    transition: color 0.3s ease, transform 0.2s ease;
+}

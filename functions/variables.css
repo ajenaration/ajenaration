@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Shrikhand&display=swap');
+
+/* --- Global Styles & Variables --- */
+:root {
+    /* Colors derived from the image */
+    --color-text-dark: #3b2f2a; /* deep brown */
+    --color-text-medium: #6b4f3a;
+    --color-text-light: #8f6f5a;
+    --color-background-white: #fff8f3; /* warm white */
+    --color-background-light-grey: #f6efe8; /* light beige */
+
+    --color-button-primary: #b02a2a; /* warm red highlight */
+    --color-button-hover: #8f1f1f;
+
+    --color-accent-purple-start: #a855f7;
+    --color-accent-purple-end: #6366f1;
+    --color-accent-pink-start: #d946ef;
+
+    --gradient-purple-blue: linear-gradient(135deg, #8e2de2 0%, #4a00e0 100%);
+
+    --color-btn-done: #000000;
+    --color-card-bg-subtle: #f3ede6;
+
+    /* Aura brown defaults (overrides used by script) */
+    --aura-brown-start: #5a3e2b;
+    --aura-brown-end: #d2b48c;
+
+    /* Header & footer backgrounds */
+    --color-header-bg: #f7efe6;
+    --color-footer-bg: #f7efe6; /* cream footer for readability */
+    --color-footer-text: #3b2f28; /* dark brown */
+    --color-link-accent: #b02a2a; /* red accents */
+
+    /* Shadows */
+    --shadow-light: 0px 4px 15px rgba(0, 0, 0, 0.05);
+    --shadow-medium: 0px 8px 25px rgba(0, 0, 0, 0.1);
+
+    /* Border Radius */
+    --border-radius-small: 6px;
+    --border-radius-medium: 12px;
+    --border-radius-large: 20px;
+
+    /* Typography */
+    --font-family-body: 'Montserrat', sans-serif;
+    --font-family-headings: 'Montserrat', sans-serif;
+    --font-size-base: 16px;
+}
