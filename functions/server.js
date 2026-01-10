@@ -128,3 +128,7 @@ if (require.main === module) {
 }
 
 module.exports = app;
+
+app.get('/content', (req, res) => {
+    res.render('content');
+});

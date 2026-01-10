@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content & Creator Portfolio | Creative Technologist</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation (match your existing nav) -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="/" class="logo">ajenaration</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="/content" class="active">Content</a>
+                <a href="/projects">Projects</a>
+                <a href="/blog">Blog</a>
+                <a href="/contact">Contact</a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Content Hero Section -->
+    <section class="content-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="highlight">Content Creator</span> &<br>
+                Developer Advocate
+            </h1>
+            <p class="hero-subtitle">
+                Merging tech education with engaging storytelling across TikTok, YouTube, and live events.
+                Building community while demystifying complex systems.
+            </p>
+            <div class="social-links">
+                <a href="https://tiktok.com/@ajenaration" target="_blank" class="social-btn tiktok">
+                    <i class="fab fa-tiktok"></i> Follow on TikTok
+                </a>
+                <a href="https://youtube.com/@ajenaration" target="_blank" class="social-btn youtube">
+                    <i class="fab fa-youtube"></i> Subscribe on YouTube
+                </a>
+            </div>
+        </div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </section>
+
+    <!-- Content Stats -->
+    <section class="content-stats">
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number" data-count="50">0</div>
+                <div class="stat-label">Tech Tutorials Created</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-count="100">0</div>
+                <div class="stat-label">Community Members Engaged</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-count="10">0</div>
+                <div class="stat-label">Speaking Events</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-count="5">0</div>
+                <div class="stat-label">Platforms Active</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Categories -->
+    <section class="content-categories">
+        <h2 class="section-title">Content <span class="highlight">Focus Areas</span></h2>
+        
+        <div class="categories-grid">
+            <div class="category-card" data-category="tutorial">
+                <div class="category-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Technical Tutorials</h3>
+                <p>Step-by-step coding tutorials, DevOps walkthroughs, and production engineering concepts made accessible.</p>
+                <ul class="category-topics">
+                    <li>Backend Development</li>
+                    <li>Cloud Infrastructure</li>
+                    <li>DevOps Tools</li>
+                </ul>
+            </div>
+            
+            <div class="category-card" data-category="career">
+                <div class="category-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Career Growth</h3>
+                <p>Navigating tech careers, remote work strategies, and building your personal brand as a developer.</p>
+                <ul class="category-topics">
+                    <li>Developer Advocacy</li>
+                    <li>Remote Work</li>
+                    <li>Tech Interviews</li>
+                </ul>
+            </div>
+            
+            <div class="category-card" data-category="creative">
+                <div class="category-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h3>Creative Tech</h3>
+                <p>Where technology meets creativity: generative art, interactive installations, and innovative design.</p>
+                <ul class="category-topics">
+                    <li>Creative Coding</li>
+                    <li>Tech & Design Fusion</li>
+                    <li>Interactive Projects</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Gallery (TikTok/YouTube style) -->
+    <section class="content-gallery">
+        <h2 class="section-title">Featured <span class="highlight">Content</span></h2>
+        
+        <div class="gallery-filters">
+            <button class="filter-btn active" data-filter="all">All Content</button>
+            <button class="filter-btn" data-filter="tiktok">TikTok</button>
+            <button class="filter-btn" data-filter="youtube">YouTube</button>
+            <button class="filter-btn" data-filter="live">Live Streams</button>
+        </div>
+        
+        <div class="gallery-grid">
+            <!-- TikTok Content Card -->
+            <div class="content-card" data-platform="tiktok">
+                <div class="content-thumbnail">
+                    <div class="platform-badge tiktok-badge">
+                        <i class="fab fa-tiktok"></i> TikTok
+                    </div>
+                    <div class="thumbnail-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="content-info">
+                    <h3>Production Engineering in 60 Seconds</h3>
+                    <p>Quick breakdown of load balancing concepts using everyday analogies.</p>
+                    <div class="content-metrics">
+                        <span><i class="fas fa-eye"></i> 25K views</span>
+                        <span><i class="fas fa-heart"></i> 1.2K likes</span>
+                        <span><i class="fas fa-comment"></i> 84 comments</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- YouTube Content Card -->
+            <div class="content-card" data-platform="youtube">
+                <div class="content-thumbnail">
+                    <div class="platform-badge youtube-badge">
+                        <i class="fab fa-youtube"></i> YouTube
+                    </div>
+                    <div class="thumbnail-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="content-info">
+                    <h3>Live Coding: Building a DevRel Portfolio</h3>
+                    <p>Real-time build of a developer advocacy portfolio with Firebase and Node.js.</p>
+                    <div class="content-metrics">
+                        <span><i class="fas fa-eye"></i> 3.4K views</span>
+                        <span><i class="fas fa-thumbs-up"></i> 214 likes</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Live Stream Content Card -->
+            <div class="content-card" data-platform="live">
+                <div class="content-thumbnail">
+                    <div class="platform-badge twitch-badge">
+                        <i class="fab fa-twitch"></i> Live
+                    </div>
+                    <div class="thumbnail-overlay">
+                        <i class="fas fa-broadcast-tower"></i>
+                    </div>
+                </div>
+                <div class="content-info">
+                    <h3>Q&A: Transitioning to Developer Advocacy</h3>
+                    <p>Answering community questions about moving from engineering to DevRel roles.</p>
+                    <div class="content-metrics">
+                        <span><i class="fas fa-users"></i> 156 attendees</span>
+                        <span><i class="fas fa-comments"></i> 47 questions</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Add more content cards as needed -->
+        </div>
+    </section>
+
+    <!-- Sponsorship Section -->
+    <section class="sponsorship-section">
+        <div class="sponsorship-content">
+            <h2>Partnership & Sponsorship Opportunities</h2>
+            <p>I collaborate with forward-thinking tech companies to create authentic content that resonates with developer communities.</p>
+            
+            <div class="sponsorship-benefits">
+                <div class="benefit">
+                    <i class="fas fa-bullhorn"></i>
+                    <h4>Brand Visibility</h4>
+                    <p>Access to engaged tech audience across multiple platforms</p>
+                </div>
+                <div class="benefit">
+                    <i class="fas fa-users"></i>
+                    <h4>Community Trust</h4>
+                    <p>Authentic product reviews and tutorials from a technical perspective</p>
+                </div>
+                <div class="benefit">
+                    <i class="fas fa-video"></i>
+                    <h4>Quality Content</h4>
+                    <p>Professional production with clear technical messaging</p>
+                </div>
+            </div>
+            
+            <a href="/contact" class="cta-button sponsorship-cta">
+                <i class="fas fa-handshake"></i> Discuss Sponsorship
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer (match your existing footer) -->
+    <footer class="main-footer">
+        <p>&copy; 2024 ajenaration. Creative Technologist & Developer Advocate.</p>
+        <div class="footer-links">
+            <a href="https://github.com/ajenaration">GitHub</a>
+            <a href="https://linkedin.com/in/ayana-n">LinkedIn</a>
+            <a href="https://twitter.com/ajenaration">Twitter</a>
+            <a href="https://tiktok.com/@ajenaration">TikTok</a>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+    <script>
+        // Content page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animated counter for stats
+            const counters = document.querySelectorAll('.stat-number');
+            const speed = 200;
+            
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-count');
+                    const count = +counter.innerText;
+                    
+                    const inc = target / speed;
+                    
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 1);
+                    } else {
+                        counter.innerText = target + '+';
+                    }
+                };
+                
+                // Start counter when element is in viewport
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            updateCount();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                });
+                
+                observer.observe(counter);
+            });
+            
+            // Content filtering
+            const filterButtons = document.querySelectorAll('.gallery-filters .filter-btn');
+            const contentCards = document.querySelectorAll('.content-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    contentCards.forEach(card => {
+                        const platform = card.getAttribute('data-platform');
+                        
+                        if (filterValue === 'all' || platform === filterValue) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'scale(1)';
+                            }, 10);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'scale(0.8)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+            
+            // Floating shapes animation
+            const shapes = document.querySelectorAll('.shape');
+            shapes.forEach((shape, index) => {
+                shape.style.animationDelay = `${index * 2}s`;
+            });
+        });
+    </script>
+</body>
+</html>

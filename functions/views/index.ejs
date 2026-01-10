@@ -14,20 +14,27 @@
   <%- include('partials/nav', { active: 'home' }) %>
 
   <main class="main-wrapper">
-    <section id="hero" class="hero-section">
-      <div class="container">
+    <section class="hero-section">
         <div class="hero-content">
-          <h2>Production Engineer &amp; Developer Advocate</h2>
-          <br></br>
-          <a href="/projects" class="cta-button">Explore My Work</a>
+            <h1 class="hero-title">
+                Developer Advocate &<br>
+                <span class="hero-highlight">Creative Technologist</span>
+            </h1>
+            
+            <div class="typewriter">
+                Merging technical depth with creative storytelling
+            </div>
+            
+            <p class="hero-subtitle">
+                I build communities and demystify technology through 
+                compelling content, clean code, and innovative experiences.
+            </p>
+            
+            <div class="hero-cta">
+                <a href="/devrel" class="cta-button">View My DevRel Work</a>
+                <a href="#projects" class="cta-button-outline">See Projects</a>
+            </div>
         </div>
-      </div>
-      <div class="blob-container">
-        <div class="hero-cutout" role="img" aria-label="project highlight"></div>
-        <div class="hero-cutout-caption">
-          <a href="/posts/mastering-markdown-for-developers-and-documentarians">Read my latest: Mastering Markdown</a>
-        </div>
-      </div>
     </section>
 
     <!-- Keep rest of index content minimal for now -->
