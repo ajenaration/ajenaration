@@ -188,54 +188,192 @@ button {
 }
 
 /* --- Header & Navigation --- */
-.main-header {
-    background-color: transparent;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border-bottom: none;
-    padding: 20px 0 0 0;
-    box-shadow: none;
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-    transition: all 0.3s ease;
-    pointer-events: none;
+/* ==========================================================================
+   NAVIGATION BAR STYLES (Updated)
+   ========================================================================== */
+
+:root {
+    /* New Variables for the Nav Bar */
+    --nav-pill-bg: #decbad;      /* The warm beige pill background */
+    --nav-text: #593c32;         /* Dark brown text */
+    --nav-active-bg: #3b1e15;    /* Darkest brown for "Home" bubble */
+    --nav-active-text: #ffffff;  /* White text for active state */
+    --btn-resume-bg: #1f4d2b;    /* Forest Green */
+    --btn-resume-hover: #14361d; /* Darker Green */
 }
 
-.main-header .container {
+/* 1. Main Header Layout */
+.main-header {
+    width: 100%;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: center; /* Centers the pill horizontally */
+    position: relative;
+    z-index: 1000;
+}
+
+/* 2. The "Pill" Container */
+.container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: auto;
-    padding: 10px 30px;
-    background: rgba(217, 185, 145, 0.9); /* #D9B991 with opacity */
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(64, 40, 20, 0.1);
-    border-radius: 50px; /* Slightly tighter radius to help fit content */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0,0,0,0.02);
-    pointer-events: auto;
-    max-width: 1100px;
-    margin: 0 auto;
-    width: 92%;
+    width: 100%;
+    max-width: 1150px; /* Prevents it from stretching too wide */
+    background-color: var(--nav-pill-bg);
+    border-radius: 50px; /* Creates the pill shape */
+    padding: 12px 40px;  /* Spacing inside the pill */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Soft shadow for depth */
 }
 
-.main-header .logo h1 {
-    font-size: 1.6rem;
-    background: linear-gradient(90deg, #400106 0%, #A0522D 50%, #400106 100%);
-    background-size: 200% auto;
+/* 3. Logo Styling */
+.logo h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 800;
+    font-family: inherit; /* Keeps your existing custom font */
+    line-height: 1;
+    
+    /* Preserving your Gradient */
+    background: linear-gradient(90deg, #4a192c 0%, #a85a3b 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 0;
-    animation: gradientText 5s ease infinite;
+    background-clip: text; 
+}
+
+.logo a {
+    text-decoration: none;
+}
+
+/* 4. Desktop Navigation Links */
+.desktop-nav ul {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem; /* Clean spacing (Replaces the arrows) */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.desktop-nav a {
+    text-decoration: none;
+    color: var(--nav-text);
+    font-weight: 500;
+    font-size: 1.05rem;
+    padding: 8px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+/* Hover State */
+.desktop-nav a:hover {
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.3); /* Subtle light highlight */
+}
+
+/* Active State (The Bubble) */
+.desktop-nav a.active {
+    background-color: var(--nav-active-bg);
+    color: var(--nav-active-text) !important;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(59, 30, 21, 0.3);
+}
+
+/* 5. Right Side Actions */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* The New Green Resume Button */
+.nav-actions .resume-btn {
+    display: inline-block;
+    background-color: var(--btn-resume-bg);
+    color: #fff !important;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s ease, background-color 0.2s;
+    border: none;
+    font-size: 0.95rem;
+}
+
+.resume-btn:hover {
+    background-color: var(--btn-resume-hover);
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 4px 10px rgba(31, 77, 43, 0.3);
+}
+
+/* Hamburger Menu (Hidden on Desktop) */
+.hamburger-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: var(--nav-active-bg);
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* 6. Mobile Responsive Adjustments */
+@media (max-width: 900px) {
+    .main-header {
+        padding: 15px;
+    }
+
+    .container {
+        padding: 15px 25px;
+        border-radius: 20px; /* Slightly less rounded on mobile to save space */
+    }
+
+    .desktop-nav {
+        display: none; /* Hide links */
+    }
+
+    .resume-btn {
+        display: none; /* Hide button on mobile bar (moves to dropdown) */
+    }
+
+    .hamburger-btn {
+        display: block; /* Show menu icon */
+    }
+}
+
+/* Ensure Mobile Nav Dropdown matches the theme */
+.mobile-nav {
+    display: none; /* Hidden by default */
+    background-color: var(--nav-pill-bg);
+    margin-top: 10px;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.mobile-nav.active {
     display: block;
 }
 
-.main-header.header-on-image .logo h1,
-.main-header.header-on-image .main-nav a {
-    color: var(--color-background-white);
+.mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
+
+.mobile-nav li {
+    margin-bottom: 15px;
+}
+
+.mobile-nav a {
+    color: var(--nav-text);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: block;
+}
+
+
 
 @keyframes gradientText {
     0% { background-position: 0% 50%; }
@@ -244,48 +382,9 @@ button {
 }
 
 /* Desktop Nav Styles */
-.main-nav {
-    background: transparent;
-    padding: 0;
-    border-radius: 0;
-    border: none;
-}
 
-.main-header .main-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 10px;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-}
 
-.main-header .main-nav a {
-    text-decoration: none;
-    color: var(--color-text-medium);
-    font-weight: 500;
-    padding: 8px 16px;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    font-size: 0.95rem;
-}
 
-.main-header .main-nav a:hover {
-    background-color: rgba(64, 1, 6, 0.1);
-    color: var(--color-button-primary);
-    transform: translateY(-1px);
-}
-
-.main-header .main-nav a.active {
-    background-color: var(--color-button-primary);
-    color: #fff;
-    box-shadow: 0 4px 10px rgba(176, 42, 42, 0.25);
-}
-
-.main-header .main-nav a::after {
-    display: none;
-}
 
 /* Nav Actions (Buttons & Hamburger) */
 .nav-actions {
@@ -310,64 +409,7 @@ button {
     padding: 5px;
 }
 
-/* Mobile Navigation Dropdown */
-.mobile-nav {
-    position: absolute;
-    top: 80px;
-    left: 50%;
-    transform: translateX(-50%) translateY(-20px);
-    width: 90%;
-    max-width: 400px;
-    background: rgba(217, 185, 145, 0.95);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(64, 40, 20, 0.1);
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    pointer-events: none;
-    z-index: 999;
-}
 
-.mobile-nav.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
-    pointer-events: auto;
-}
-
-.mobile-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    text-align: center;
-}
-
-.mobile-nav a {
-    display: block;
-    color: var(--color-text-dark);
-    font-weight: 600;
-    font-size: 1.1rem;
-    padding: 10px;
-    border-radius: 10px;
-    transition: background 0.2s;
-}
-
-.mobile-nav a:hover,
-.mobile-nav a.active {
-    background-color: rgba(64, 1, 6, 0.05);
-    color: var(--color-button-primary);
-}
-
-.mobile-only {
-    display: none;
-}
 
 /* Responsive Adjustments */
 @media (max-width: 1150px) {
