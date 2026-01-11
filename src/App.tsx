@@ -19,6 +19,10 @@ import {
   Volume2,
   ArrowLeft,
   MapPin,
+  Terminal,
+  Copy,
+  Check,
+  Play,
 } from 'lucide-react';
 import nameAudio from './fullname.mp3';
 
@@ -161,9 +165,11 @@ interface BlogPost {
 const App = () => {
   const [activeTab, setActiveTab] = useState<'projects' | 'blog'>('projects');
   const [isResumeOpen, setIsResumeOpen] = useState(false);
-  const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const [currentView, setCurrentView] = useState<'home' | 'about' | 'sponsorship'>('home');
   const [isTechStackModalOpen, setIsTechStackModalOpen] = useState(false);
+  const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
   const [terminalInput, setTerminalInput] = useState('');
+  const [isEmailCopied, setIsEmailCopied] = useState(false);
   const sponsors = ["TECHGEAR", "ROGERS", "FIDO", "A&CO", "LOGIC", "MLH", "TAIT"];
 
   const projects: Project[] = [
@@ -232,6 +238,49 @@ const App = () => {
     "AI & ML": ["TensorFlow", "PyTorch", "Scikit-learn", "MLOps", "Predictive Analytics"]
   };
 
+  const contentStats = [
+    {
+      platform: 'YouTube',
+      icon: <Youtube size={20} />,
+      url: 'https://www.youtube.com/watch?v=8m58xF2bnI8',
+      views: '12.5K',
+      title: 'Setup Tour & Tech Review',
+      image: 'https://img.youtube.com/vi/8m58xF2bnI8/maxresdefault.jpg'
+    },
+    {
+      platform: 'TikTok',
+      icon: <TiktokIcon size={20} />,
+      url: 'https://www.tiktok.com/@ajenaration/video/7563638573807766814',
+      views: '45.2K',
+      title: 'Mechanical Keyboard Build',
+      image: 'https://csspicker.dev/api/image/?q=mechanical+keyboard&image_type=photo'
+    },
+    {
+      platform: 'TikTok',
+      icon: <TiktokIcon size={20} />,
+      url: 'https://www.tiktok.com/@ajenaration/video/7563720367739505951',
+      views: '82.1K',
+      title: 'Day in the Life: Engineer',
+      image: 'https://csspicker.dev/api/image/?q=coding+setup&image_type=photo'
+    },
+    {
+      platform: 'TikTok',
+      icon: <TiktokIcon size={20} />,
+      url: 'https://www.tiktok.com/@ajenaration/video/7574134173900885279',
+      views: '28.4K',
+      title: 'Smart Home Integration',
+      image: 'https://csspicker.dev/api/image/?q=smart+home&image_type=photo'
+    },
+    {
+      platform: 'TikTok',
+      icon: <TiktokIcon size={20} />,
+      url: 'https://www.tiktok.com/@ajenaration/video/7574331979953474846',
+      views: '156K',
+      title: 'Viral Tech Tips',
+      image: 'https://csspicker.dev/api/image/?q=tech+gadgets&image_type=photo'
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-gray-100 font-sans selection:bg-cyan-500 selection:text-white">
       <div className="fixed inset-0 z-0 pointer-events-none opacity-40">
@@ -242,15 +291,14 @@ const App = () => {
       <nav className="fixed top-0 w-full z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/10">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2 font-bold text-xl tracking-tighter">
-            <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-lg flex items-center justify-center">
-              <Cpu size={18} className="text-white" />
-            </div>
+            <Terminal size={28} className="text-cyan-400" />
             <span className="font-accent font-normal text-2xl">ajenaration</span>
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
-            <a href="#home" className="hover:text-cyan-400 transition-colors">Home</a>
-            <a href="#work" className="hover:text-cyan-400 transition-colors">Work</a>
-            <a href="#sponsorship" className="hover:text-cyan-400 transition-colors">Sponsorship</a>
+            <button onClick={() => { setCurrentView('home'); window.scrollTo(0, 0); }} className={`hover:text-cyan-400 transition-colors ${currentView === 'home' ? 'text-cyan-400' : ''}`}>Home</button>
+            <button onClick={() => { setCurrentView('about'); window.scrollTo(0, 0); }} className={`hover:text-cyan-400 transition-colors ${currentView === 'about' ? 'text-cyan-400' : ''}`}>About</button>
+            <a href="#work" onClick={() => setCurrentView('home')} className="hover:text-cyan-400 transition-colors">Work</a>
+            <button onClick={() => { setCurrentView('sponsorship'); window.scrollTo(0, 0); }} className={`hover:text-cyan-400 transition-colors ${currentView === 'sponsorship' ? 'text-cyan-400' : ''}`}>Sponsorship</button>
             <button 
               onClick={() => setIsResumeOpen(true)}
               className="bg-white text-black px-4 py-2 rounded-full hover:bg-cyan-400 transition-all duration-300"
@@ -261,12 +309,14 @@ const App = () => {
         </div>
       </nav>
 
+      {currentView === 'home' && (
+        <>
       {/* Hero Section */}
       <section id="home" className="pt-32 pb-20 px-6">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
             <button 
-              onClick={() => setIsAboutOpen(true)}
+              onClick={() => setIsAboutModalOpen(true)}
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold mb-6 uppercase tracking-widest hover:bg-cyan-500/20 transition-colors cursor-pointer"
             >
               <Zap size={12} /> Available for Developer Advocate and Backend Roles
@@ -420,17 +470,163 @@ const App = () => {
           </div>
         </div>
       </section>
+        </>
+      )}
+
+      {/* About Page */}
+      {currentView === 'about' && (
+        <div className="pt-32 pb-20 px-6 min-h-screen flex justify-center">
+          <div className="relative w-full max-w-3xl">
+            <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl blur-2xl opacity-20 animate-pulse"></div>
+            <div className="bg-[#0a0a0a] w-full rounded-2xl border border-white/10 flex flex-col shadow-2xl relative overflow-hidden">
+              <div className="flex items-center justify-between p-4 border-b border-white/10 bg-[#1a1a1a]">
+                <div className="flex items-center gap-4">
+                  <div className="flex gap-2">
+                    <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                  </div>
+                  <div className="font-mono text-sm flex items-center gap-2">
+                    <span className="text-green-400">➜</span>
+                    <span className="text-cyan-400">~</span>
+                    <span className="text-white">sudo whoami</span>
+                    <span className="animate-blink w-2 h-4 bg-gray-400 block"></span>
+                  </div>
+                </div>
+                <button onClick={() => { setCurrentView('home'); window.scrollTo(0, 0); }} className="p-2 hover:bg-white/10 rounded-lg transition-colors text-gray-400 hover:text-white">
+                  <X size={20} />
+                </button>
+              </div>
+              <div className="p-8 space-y-8 bg-[#0a0a0a]">
+                <div>
+                  <h3 className="text-xl font-bold mb-2 text-white">
+                    I'm Ayana (/ə ˈjenə/) Nithey
+                    <button 
+                      onClick={() => new Audio(nameAudio).play()}
+                      className="inline-flex mx-2 align-middle p-1.5 bg-white/10 rounded-full hover:bg-cyan-500/20 text-cyan-400 transition-colors"
+                      title="Play pronunciation"
+                    >
+                      <Volume2 size={16} />
+                    </button>
+                    , a Production Engineer based at the intersection of hardware and software.
+                  </h3>
+                  <p className="text-gray-400 leading-relaxed">
+                    My work focuses on making complex technology accessible through storytelling and interactive media. My journey in tech is fueled by curiosity, creativity, and a relentless pursuit of knowledge. I'm a passionate technologist driven by the desire to build meaningful connections and foster innovation within developer communities. 
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-cyan-400 mb-4">Tech Stack</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {["Python", "Java", "React", "AWS", "Docker", "Kubernetes", "Terraform", "GitHub Actions", "PostgreSQL", "AI/ML"].map(tech => (
+                      <span key={tech} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-sm font-medium text-gray-300">
+                        {tech}
+                      </span>
+                    ))}
+                    <button 
+                      onClick={() => {
+                        setIsTechStackModalOpen(true);
+                        setTerminalInput('');
+                      }}
+                      className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-sm font-bold text-cyan-400 hover:bg-cyan-500/20 transition-colors"
+                    >
+                      + View All
+                    </button>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-cyan-400 mb-2">DevRel & Sponsorships</h4>
+                  <p className="text-gray-400 leading-relaxed mb-6">
+                    I partner with innovative dev tools, API platforms, and open-source projects to create technical content that drives adoption. From SDK walkthroughs to infrastructure deep-dives, I help developers build the future.
+                  </p>
+                  <div className="flex flex-col md:flex-row gap-4">
+                    <button className="flex items-center gap-2 px-6 py-3 bg-white text-black font-bold rounded-xl hover:bg-cyan-400 transition-all w-full md:w-auto justify-center">
+                      <Download size={18} /> Download Media Kit
+                    </button>
+                    <a href="mailto:collab@ajenaration.com" className="flex items-center gap-2 px-6 py-3 bg-white/10 border border-white/10 text-white font-bold rounded-xl hover:bg-white/20 transition-all w-full md:w-auto justify-center">
+                      <Mail size={18} /> Email Me
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Sponsorship Page */}
+      {currentView === 'sponsorship' && (
+        <div className="pt-32 pb-20 px-6 min-h-screen">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h1 className="text-5xl font-bold mb-6">Sponsorships & <span className="text-cyan-400">Collaborations</span></h1>
+              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                Partnering with brands to tell compelling technical stories. From hardware reviews to developer advocacy, I help bridge the gap between product and community.
+              </p>
+            </div>
+
+            {/* Marquee Section */}
+            <div className="mb-20 py-12 bg-white/[0.06] backdrop-blur-3xl backdrop-saturate-150 border-t border-white/20 border-b border-white/5 relative overflow-hidden shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] rounded-2xl">
+              <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-transparent pointer-events-none"></div>
+              <div className="flex flex-col md:flex-row items-center justify-between gap-8 px-8">
+                <div className="flex items-center gap-4 shrink-0">
+                  <Star className="text-yellow-400 fill-yellow-400" />
+                  <p className="text-lg font-medium">Trusted by industry leaders</p>
+                </div>
+                <div className="w-full md:w-1/2 overflow-hidden relative marquee-mask">
+                  <div className="flex gap-8 animate-scroll whitespace-nowrap w-max opacity-50 grayscale hover:grayscale-0 transition-all">
+                    {[...sponsors, ...sponsors, ...sponsors, ...sponsors].map((sponsor, index) => (
+                      <span key={index} className="font-semibold text-sm tracking-wider">{sponsor}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Video Stats Grid */}
+            <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
+              <Play className="text-cyan-400" /> Content Showcase
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {contentStats.map((video, index) => (
+                <a 
+                  key={index}
+                  href={video.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative bg-[#1a1a1a] border border-white/10 rounded-2xl overflow-hidden hover:border-cyan-500/50 transition-all"
+                >
+                  <div className="h-48 overflow-hidden relative">
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors z-10"></div>
+                    <img src={video.image} alt={video.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute bottom-3 right-3 z-20 bg-black/60 backdrop-blur-md px-2 py-1 rounded text-xs font-bold flex items-center gap-1">
+                      {video.icon} {video.platform}
+                    </div>
+                  </div>
+                  <div className="p-5">
+                    <h3 className="font-bold text-lg mb-2 group-hover:text-cyan-400 transition-colors line-clamp-1">{video.title}</h3>
+                    <div className="flex items-center gap-2 text-gray-400 text-sm">
+                      <span className="text-cyan-400 font-bold">{video.views}</span> views
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       <footer className="py-10 border-t border-white/10 text-center text-gray-500 text-sm">
         <p>© 2025 <span className="font-accent">ajenaration</span>.</p>
       </footer>
       </div>
 
-      {/* About Modal */}
-      {isAboutOpen && (
+      {/* About Modal (Mini Window) */}
+      {isAboutModalOpen && (
         <div 
           className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
-          onClick={() => setIsAboutOpen(false)}
+          onClick={() => setIsAboutModalOpen(false)}
         >
           <div 
             className="relative w-full max-w-2xl"
@@ -452,7 +648,7 @@ const App = () => {
                     <span className="animate-blink w-2 h-4 bg-gray-400 block"></span>
                   </div>
                 </div>
-                <button onClick={() => setIsAboutOpen(false)} className="p-2 hover:bg-white/10 rounded-lg transition-colors text-gray-400 hover:text-white">
+                <button onClick={() => setIsAboutModalOpen(false)} className="p-2 hover:bg-white/10 rounded-lg transition-colors text-gray-400 hover:text-white">
                   <X size={20} />
                 </button>
               </div>
@@ -611,6 +807,17 @@ const App = () => {
                   >
                     <Download size={14} /> Download PDF
                   </a>
+                  <button 
+                    onClick={() => {
+                      navigator.clipboard.writeText("work@ajenaration.com");
+                      setIsEmailCopied(true);
+                      setTimeout(() => setIsEmailCopied(false), 2000);
+                    }}
+                    className="flex items-center gap-2 px-3 py-1.5 bg-white/5 hover:bg-white/10 rounded-lg text-xs font-bold text-gray-300 hover:text-white transition-colors"
+                  >
+                    {isEmailCopied ? <Check size={14} /> : <Copy size={14} />}
+                    {isEmailCopied ? "Copied!" : "Copy Email"}
+                  </button>
                   <button onClick={() => setIsResumeOpen(false)} className="p-2 hover:bg-white/10 rounded-lg transition-colors text-gray-400 hover:text-white">
                     <X size={20} />
                   </button>
