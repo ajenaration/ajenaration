@@ -13,7 +13,6 @@
       { "source": "/projects", "function": "app" },
       { "source": "/contact", "function": "app" },
       { "source": "/devrel", "function": "app" },
-      { "source": "/posts/**", "function": "app" },
       { "source": "**", "destination": "/index.html" }
     ]
   }
