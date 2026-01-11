@@ -76,3 +76,22 @@ button {
     padding-top: 80px; /* Space for fixed header */
     padding-bottom: 80px;
 }
+
+
+/* --- EXPLICIT SECTION BACKGROUNDS FOR ALTERNATING PATTERN --- */
+#interactive-cool-feature {
+    background-color: var(--color-background-white);
+}
+
+#blog {
+    background-color: var(--color-background-light-grey);
+}
+
+.two-column-section {
+    background-color: var(--color-background-white);
+}
+
+#devrel {
+    background-color: var(--color-background-light-grey);
+}
+/* --- END EXPLICIT SECTION BACKGROUNDS --- */
