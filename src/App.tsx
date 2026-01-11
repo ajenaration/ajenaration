@@ -75,25 +75,27 @@ const GenerativeArt = () => {
 
       const shouldMove = window.scrollY > 50;
       
-      particles.forEach((p, i) => {
-        if (shouldMove) p.update();
-        p.draw();
-        
-        // Draw lines between nearby particles
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = p.x - particles[j].x;
-          const dy = p.y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 100) {
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(34, 211, 238, ${1 - dist / 100})`;
-            ctx.lineWidth = 0.5;
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
+      if (shouldMove) {
+        particles.forEach((p, i) => {
+          p.update();
+          p.draw();
+          
+          // Draw lines between nearby particles
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = p.x - particles[j].x;
+            const dy = p.y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 100) {
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(34, 211, 238, ${1 - dist / 100})`;
+              ctx.lineWidth = 0.5;
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
           }
-        }
-      });
+        });
+      }
       animationFrameId = requestAnimationFrame(animate);
     };
 
