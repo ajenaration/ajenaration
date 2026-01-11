@@ -16,7 +16,11 @@ import {
   Youtube,
   X,
   Download,
+  Volume2,
+  ArrowLeft,
+  MapPin,
 } from 'lucide-react';
+import nameAudio from './fullname.mp3';
 
 // --- Interactive Generative Art Component (Processing-like) ---
 const GenerativeArt = () => {
@@ -157,6 +161,9 @@ interface BlogPost {
 const App = () => {
   const [activeTab, setActiveTab] = useState<'projects' | 'blog'>('projects');
   const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const [isTechStackModalOpen, setIsTechStackModalOpen] = useState(false);
+  const [terminalInput, setTerminalInput] = useState('');
   const sponsors = ["TECHGEAR", "ROGERS", "FIDO", "A&CO", "LOGIC", "MLH", "TAIT"];
 
   const projects: Project[] = [
@@ -216,6 +223,15 @@ const App = () => {
     }
   ];
 
+  const fullTechStack = {
+    "Languages & Frameworks": ["Python", "C#", ".NET", "Swift", "Bash", "Java", "AngularJS", "PHP", "Spring Boot"],
+    "Cloud & DevOps": ["AWS", "Azure", "Docker", "Kubernetes", "GitHub Actions", "Terraform"],
+    "Databases": ["MySQL", "PostgreSQL", "MongoDB", "ELK Stack", "Oracle SQL"],
+    "Tools & Observability": ["Git", "Postman", "Linux", "Dynatrace", "JIRA", "Grafana", "Datadog", "Splunk"],
+    "Security": ["VPN", "PKI", "SSL", "Vault", "Incident Management"],
+    "AI & ML": ["TensorFlow", "PyTorch", "Scikit-learn", "MLOps", "Predictive Analytics"]
+  };
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-gray-100 font-sans selection:bg-cyan-500 selection:text-white">
       <div className="fixed inset-0 z-0 pointer-events-none opacity-40">
@@ -249,9 +265,12 @@ const App = () => {
       <section id="home" className="pt-32 pb-20 px-6">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold mb-6 uppercase tracking-widest">
+            <button 
+              onClick={() => setIsAboutOpen(true)}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold mb-6 uppercase tracking-widest hover:bg-cyan-500/20 transition-colors cursor-pointer"
+            >
               <Zap size={12} /> Available for Developer Advocate and Backend Roles
-            </div>
+            </button>
             <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
               Obsessed with the <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">new</span>.
             </h1>
@@ -273,13 +292,19 @@ const App = () => {
               </div>
             </div>
           </div>
-          <div className="relative max-w-lg mx-auto">
-            <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl blur-2xl opacity-20 animate-pulse"></div>
-            <img 
-              src="./src/ajenaration-main.png"
-              alt="Tech Setup" 
-              className="relative rounded-2xl border border-white/10 shadow-2xl w-full h-[450px] object-cover object-top"
-            />
+          <div className="flex flex-col items-center max-w-lg mx-auto">
+            <div className="relative w-full">
+              <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl blur-2xl opacity-20 animate-pulse"></div>
+              <img 
+                src="./src/ajenaration-main.png"
+                alt="Tech Setup" 
+                className="relative rounded-2xl border border-white/10 shadow-2xl w-full h-[450px] object-cover object-top"
+              />
+            </div>
+            <div className="flex items-center gap-2 mt-8 text-gray-400">
+              <MapPin size={16} className="text-cyan-400" />
+              <span className="text-sm font-medium">Toronto & New York</span>
+            </div>
           </div>
         </div>
       </section>
@@ -397,34 +422,203 @@ const App = () => {
       </section>
 
       <footer className="py-10 border-t border-white/10 text-center text-gray-500 text-sm">
-        <p>© 2025 ajenaration.</p>
+        <p>© 2025 <span className="font-accent">ajenaration</span>.</p>
       </footer>
       </div>
 
-      {/* Resume Modal */}
-      {isResumeOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          <div className="relative w-full max-w-5xl h-[85vh]">
+      {/* About Modal */}
+      {isAboutOpen && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+          onClick={() => setIsAboutOpen(false)}
+        >
+          <div 
+            className="relative w-full max-w-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl blur-2xl opacity-20 animate-pulse"></div>
-            <div className="bg-[#0a0a0a] w-full h-full rounded-2xl border border-white/10 flex flex-col shadow-2xl relative overflow-hidden">
-            <div className="flex items-center justify-between p-6 border-b border-white/10 bg-[#0a0a0a]">
-              <h2 className="text-2xl font-bold font-sans">Resume</h2>
-              <div className="flex gap-4">
-                <a 
-                  href="/ayana-n-resume.pdf" 
-                  download 
-                  className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm font-bold transition-colors"
-                >
-                  <Download size={18} /> Download PDF
-                </a>
-                <button onClick={() => setIsResumeOpen(false)} className="p-2 hover:bg-white/10 rounded-lg transition-colors text-gray-400 hover:text-white">
-                  <X size={24} />
+            <div className="bg-[#0a0a0a] w-full rounded-2xl border border-white/10 flex flex-col shadow-2xl relative overflow-hidden">
+              <div className="flex items-center justify-between p-4 border-b border-white/10 bg-[#1a1a1a]">
+                <div className="flex items-center gap-4">
+                  <div className="flex gap-2">
+                    <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                  </div>
+                  <div className="font-mono text-sm flex items-center gap-2">
+                    <span className="text-green-400">➜</span>
+                    <span className="text-cyan-400">~</span>
+                    <span className="text-white">sudo whoami</span>
+                    <span className="animate-blink w-2 h-4 bg-gray-400 block"></span>
+                  </div>
+                </div>
+                <button onClick={() => setIsAboutOpen(false)} className="p-2 hover:bg-white/10 rounded-lg transition-colors text-gray-400 hover:text-white">
+                  <X size={20} />
                 </button>
               </div>
+              <div className="p-8 space-y-8 bg-[#0a0a0a]">
+                <div>
+                  <h3 className="text-xl font-bold mb-2 text-white">
+                    I'm Ayana (/ə ˈjenə/) Nithey
+                    <button 
+                      onClick={() => new Audio(nameAudio).play()}
+                      className="inline-flex mx-2 align-middle p-1.5 bg-white/10 rounded-full hover:bg-cyan-500/20 text-cyan-400 transition-colors"
+                      title="Play pronunciation"
+                    >
+                      <Volume2 size={16} />
+                    </button>
+                    , a Production Engineer based at the intersection of hardware and software.
+                  </h3>
+                  <p className="text-gray-400 leading-relaxed">
+                    My work focuses on making complex technology accessible through storytelling and interactive media. My journey in tech is fueled by curiosity, creativity, and a relentless pursuit of knowledge. I'm a passionate technologist driven by the desire to build meaningful connections and foster innovation within developer communities. 
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-cyan-400 mb-4">Tech Stack</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {["Python", "Java", "React", "AWS", "Docker", "Kubernetes", "Terraform", "GitHub Actions", "PostgreSQL", "AI/ML"].map(tech => (
+                      <span key={tech} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-sm font-medium text-gray-300">
+                        {tech}
+                      </span>
+                    ))}
+                    <button 
+                      onClick={() => {
+                        setIsTechStackModalOpen(true);
+                        setTerminalInput('');
+                      }}
+                      className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-sm font-bold text-cyan-400 hover:bg-cyan-500/20 transition-colors"
+                    >
+                      + View All
+                    </button>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-cyan-400 mb-2">DevRel & Sponsorships</h4>
+                  <p className="text-gray-400 leading-relaxed mb-6">
+                    I partner with innovative dev tools, API platforms, and open-source projects to create technical content that drives adoption. From SDK walkthroughs to infrastructure deep-dives, I help developers build the future.
+                  </p>
+                  <div className="flex flex-col md:flex-row gap-4">
+                    <button className="flex items-center gap-2 px-6 py-3 bg-white text-black font-bold rounded-xl hover:bg-cyan-400 transition-all w-full md:w-auto justify-center">
+                      <Download size={18} /> Download Media Kit
+                    </button>
+                    <a href="mailto:collab@ajenaration.com" className="flex items-center gap-2 px-6 py-3 bg-white/10 border border-white/10 text-white font-bold rounded-xl hover:bg-white/20 transition-all w-full md:w-auto justify-center">
+                      <Mail size={18} /> Email Me
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="flex-1 bg-[#1a1a1a] p-1 overflow-hidden">
-              <iframe src="/ayana-n-resume.pdf" className="w-full h-full rounded-lg bg-white" title="Resume PDF" />
+          </div>
+        </div>
+      )}
+
+      {/* Tech Stack Modal */}
+      {isTechStackModalOpen && (
+        <div 
+          className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+          onClick={() => setIsTechStackModalOpen(false)}
+        >
+          <div 
+            className="relative w-full max-w-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="bg-[#0a0a0a] w-full rounded-2xl border border-white/10 flex flex-col shadow-2xl relative overflow-hidden">
+              <div className="flex items-center justify-between p-4 border-b border-white/10 bg-[#1a1a1a]">
+                <div className="flex items-center gap-4 flex-1">
+                  <div className="flex gap-2">
+                    <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                  </div>
+                  <div className="font-mono text-sm flex items-center gap-2 flex-1">
+                    <span className="text-cyan-400">~</span>
+                    <span className="text-white">/tech-stack</span>
+                    <span className="text-gray-500">$</span>
+                    <input 
+                      type="text"
+                      value={terminalInput}
+                      onChange={(e) => setTerminalInput(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' && terminalInput.trim() === 'cd ..') {
+                          setIsTechStackModalOpen(false);
+                        }
+                      }}
+                      className="bg-transparent border-none outline-none text-white flex-1 focus:ring-0 placeholder:text-gray-700"
+                      placeholder="type 'cd ..' to go back"
+                      autoFocus
+                    />
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button 
+                    onClick={() => setIsTechStackModalOpen(false)}
+                    className="flex items-center gap-2 px-3 py-1.5 bg-white/5 hover:bg-white/10 rounded-lg text-xs font-bold text-gray-400 hover:text-white transition-colors"
+                  >
+                    <ArrowLeft size={14} /> Back
+                  </button>
+                </div>
+              </div>
+              <div className="p-8 space-y-8 bg-[#0a0a0a] max-h-[70vh] overflow-y-auto">
+                {Object.entries(fullTechStack).map(([category, skills]) => (
+                  <div key={category}>
+                    <h5 className="text-xs font-bold text-gray-500 mb-3 uppercase tracking-wider">{category}</h5>
+                    <div className="flex flex-wrap gap-2">
+                      {skills.map(skill => (
+                        <span key={skill} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-sm font-medium text-gray-300">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Resume Modal */}
+      {isResumeOpen && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+          onClick={() => setIsResumeOpen(false)}
+        >
+          <div 
+            className="relative w-full max-w-5xl h-[85vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl blur-2xl opacity-20 animate-pulse"></div>
+            <div className="bg-[#0a0a0a] w-full h-full rounded-2xl border border-white/10 flex flex-col shadow-2xl relative overflow-hidden">
+              <div className="flex items-center justify-between p-4 border-b border-white/10 bg-[#1a1a1a]">
+                <div className="flex items-center gap-4">
+                  <div className="flex gap-2">
+                    <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                  </div>
+                  <div className="font-mono text-sm flex items-center gap-2">
+                    <span className="text-cyan-400">~</span>
+                    <span className="text-white">/resume.pdf</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <a 
+                    href="/ayana-n-resume.pdf" 
+                    download 
+                    className="flex items-center gap-2 px-3 py-1.5 bg-white/5 hover:bg-white/10 rounded-lg text-xs font-bold text-gray-300 hover:text-white transition-colors"
+                  >
+                    <Download size={14} /> Download PDF
+                  </a>
+                  <button onClick={() => setIsResumeOpen(false)} className="p-2 hover:bg-white/10 rounded-lg transition-colors text-gray-400 hover:text-white">
+                    <X size={20} />
+                  </button>
+                </div>
+              </div>
+              <div className="flex-1 bg-[#1a1a1a] p-1 overflow-hidden">
+                <iframe src="/ayana-n-resume.pdf" className="w-full h-full rounded-lg bg-white" title="Resume PDF" />
+              </div>
             </div>
           </div>
         </div>
@@ -434,12 +628,22 @@ const App = () => {
         .font-sans {
           font-family: 'Space Grotesk', sans-serif;
         }
+        .font-accent {
+          font-family: 'Shrikhand', cursive;
+        }
         @keyframes pulse {
           0%, 100% { opacity: 0.2; }
           50% { opacity: 0.4; }
         }
         .animate-pulse {
           animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes blink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0; }
+        }
+        .animate-blink {
+          animation: blink 1s step-end infinite;
         }
         @keyframes scroll {
           0% { transform: translateX(0); }
