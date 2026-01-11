@@ -25,6 +25,7 @@ import {
   Play,
 } from 'lucide-react';
 import nameAudio from './fullname.mp3';
+import mainImage from './ajenaration-main.png';
 
 // --- Interactive Generative Art Component (Processing-like) ---
 const GenerativeArt = () => {
@@ -165,7 +166,32 @@ interface BlogPost {
 const App = () => {
   const [activeTab, setActiveTab] = useState<'projects' | 'blog'>('projects');
   const [isResumeOpen, setIsResumeOpen] = useState(false);
-  const [currentView, setCurrentView] = useState<'home' | 'about' | 'sponsorship'>('home');
+  
+  // Handle URL routing
+  const getInitialView = () => {
+    const path = window.location.pathname;
+    if (path === '/about') return 'about';
+    if (path === '/sponsorship') return 'sponsorship';
+    return 'home';
+  };
+
+  const [currentView, setCurrentView] = useState(getInitialView);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentView(getInitialView());
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  const navigateTo = (view: 'home' | 'about' | 'sponsorship') => {
+    setCurrentView(view);
+    window.scrollTo(0, 0);
+    const path = view === 'home' ? '/' : `/${view}`;
+    window.history.pushState({}, '', path);
+  };
+
   const [isTechStackModalOpen, setIsTechStackModalOpen] = useState(false);
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
   const [terminalInput, setTerminalInput] = useState('');
@@ -295,10 +321,16 @@ const App = () => {
             <span className="font-accent font-normal text-2xl">ajenaration</span>
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
-            <button onClick={() => { setCurrentView('home'); window.scrollTo(0, 0); }} className={`hover:text-cyan-400 transition-colors ${currentView === 'home' ? 'text-cyan-400' : ''}`}>Home</button>
-            <button onClick={() => { setCurrentView('about'); window.scrollTo(0, 0); }} className={`hover:text-cyan-400 transition-colors ${currentView === 'about' ? 'text-cyan-400' : ''}`}>About</button>
-            <a href="#work" onClick={() => setCurrentView('home')} className="hover:text-cyan-400 transition-colors">Work</a>
-            <button onClick={() => { setCurrentView('sponsorship'); window.scrollTo(0, 0); }} className={`hover:text-cyan-400 transition-colors ${currentView === 'sponsorship' ? 'text-cyan-400' : ''}`}>Sponsorship</button>
+            <button onClick={() => navigateTo('home')} className={`hover:text-cyan-400 transition-colors ${currentView === 'home' ? 'text-cyan-400' : ''}`}>Home</button>
+            <button onClick={() => navigateTo('about')} className={`hover:text-cyan-400 transition-colors ${currentView === 'about' ? 'text-cyan-400' : ''}`}>About</button>
+            <a 
+              href="#work" 
+              onClick={(e) => { e.preventDefault(); navigateTo('home'); setTimeout(() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' }), 100); }} 
+              className="hover:text-cyan-400 transition-colors"
+            >
+              Work
+            </a>
+            <button onClick={() => navigateTo('sponsorship')} className={`hover:text-cyan-400 transition-colors ${currentView === 'sponsorship' ? 'text-cyan-400' : ''}`}>Sponsorship</button>
             <button 
               onClick={() => setIsResumeOpen(true)}
               className="bg-white text-black px-4 py-2 rounded-full hover:bg-cyan-400 transition-all duration-300"
@@ -347,6 +379,7 @@ const App = () => {
               <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl blur-2xl opacity-20 animate-pulse"></div>
               <img 
                 src="./src/ajenaration-main.png"
+                src={mainImage}
                 alt="Tech Setup" 
                 className="relative rounded-2xl border border-white/10 shadow-2xl w-full h-[450px] object-cover object-top"
               />
@@ -493,7 +526,7 @@ const App = () => {
                     <span className="animate-blink w-2 h-4 bg-gray-400 block"></span>
                   </div>
                 </div>
-                <button onClick={() => { setCurrentView('home'); window.scrollTo(0, 0); }} className="p-2 hover:bg-white/10 rounded-lg transition-colors text-gray-400 hover:text-white">
+                <button onClick={() => navigateTo('home')} className="p-2 hover:bg-white/10 rounded-lg transition-colors text-gray-400 hover:text-white">
                   <X size={20} />
                 </button>
               </div>
