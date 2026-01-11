@@ -1,61 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ajenaration - Code & Creativitea</title>
-  <link rel="stylesheet" href="/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Technologist | ajenaration</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <%- include('partials/nav', { active: 'home' }) %>
-
-  <main class="main-wrapper">
-    <section class="hero-section">
-        <div class="hero-content">
-            <h1 class="hero-title">
-                Developer Advocate &<br>
-                <span class="hero-highlight">Creative Technologist</span>
-            </h1>
-            
-            <div class="typewriter">
-                Merging technical depth with creative storytelling
-            </div>
-            
-            <p class="hero-subtitle">
-                I build communities and demystify technology through 
-                compelling content, clean code, and innovative experiences.
-            </p>
-            
-            <div class="hero-cta">
-                <a href="/devrel" class="cta-button">View My DevRel Work</a>
-                <a href="#projects" class="cta-button-outline">See Projects</a>
+    <%- include('nav', { currentPage: 'home' }) %>
+    
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Developer Advocate & <span class="hero-highlight">Creative Technologist</span></h1>
+                <p>Merging technical depth with creative storytelling. Building communities and demystifying technology through compelling content, clean code, and innovative experiences.</p>
+                <div class="mt-4">
+                    <a href="#projects" class="btn">View Projects</a>
+                    <a href="/content" class="btn btn-outline ml-2">See Content</a>
+                </div>
             </div>
         </div>
     </section>
-
-    <!-- Keep rest of index content minimal for now -->
-    <section id="blog" class="section-padded blog-section">
-      <div class="container">
-        <h2>Latest Insights</h2>
-        <div class="blog-grid">
-          <article class="blog-post-card">
-            <img src="https://picsum.photos/id/27/400/250" alt="Markdown syntax on screen">
-            <div class="card-content">
-              <h3>Mastering Markdown: For Developers and Documentarians</h3>
-              <p>A comprehensive guide to leveraging Markdown for efficient documentation and communication in tech...</p>
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;">
-                <span class="post-meta">July 25, 2025 · 6 min read</span>
-                <a href="/posts/mastering-markdown-for-developers-and-documentarians" class="read-more-link">Read More</a>
-              </div>
-            </div>
-          </article>
+    
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <%- include('projects') %>
         </div>
-      </div>
     </section>
-  </main>
-
-  <%- include('partials/footer') %>
+    
+    <script src="/script.js"></script>
+</body>
+</html>
