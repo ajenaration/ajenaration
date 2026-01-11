@@ -56,7 +56,7 @@ const GenerativeArt = () => {
         if (!ctx) return;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = '#ef4444'; // Red accent
+        ctx.fillStyle = '#22d3ee'; // Cyan accent
         ctx.fill();
       }
     }
@@ -70,11 +70,13 @@ const GenerativeArt = () => {
     };
 
     const animate = () => {
-      ctx.fillStyle = 'rgba(28, 13, 10, 0.1)'; // Deep brown fade
+      ctx.fillStyle = 'rgba(10, 10, 10, 0.1)'; // Dark fade
       ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      const shouldMove = window.scrollY > 50;
       
       particles.forEach((p, i) => {
-        p.update();
+        if (shouldMove) p.update();
         p.draw();
         
         // Draw lines between nearby particles
@@ -84,7 +86,7 @@ const GenerativeArt = () => {
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 100) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(239, 68, 68, ${1 - dist / 100})`;
+            ctx.strokeStyle = `rgba(34, 211, 238, ${1 - dist / 100})`;
             ctx.lineWidth = 0.5;
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -105,7 +107,7 @@ const GenerativeArt = () => {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="w-full h-full rounded-2xl" />;
+  return <canvas ref={canvasRef} className="w-full h-full" />;
 };
 
 const TiktokIcon = ({ size = 24, className = "" }: { size?: number, className?: string }) => (
@@ -153,6 +155,7 @@ interface BlogPost {
 const App = () => {
   const [activeTab, setActiveTab] = useState<'projects' | 'blog'>('projects');
   const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const sponsors = ["TECHGEAR", "ROGERS", "FIDO", "A&CO", "LOGIC", "MLH", "TAIT"];
 
   const projects: Project[] = [
     {
@@ -213,6 +216,10 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-gray-100 font-sans selection:bg-cyan-500 selection:text-white">
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-40">
+        <GenerativeArt />
+      </div>
+      <div className="relative z-10">
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/10">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -254,13 +261,13 @@ const App = () => {
                 View Projects <ChevronRight size={20} />
               </button>
               <div className="flex items-center gap-4 px-4">
-                <a href={socialLinks.github} className="p-2 text-gray-400 hover:text-white transition-colors"><Github size={24} /></a>
-                <a href={socialLinks.twitter} className="p-2 text-gray-400 hover:text-white transition-colors"><Twitter size={24} /></a>
-                <a href={socialLinks.linkedin} className="p-2 text-gray-400 hover:text-white transition-colors"><Linkedin size={24} /></a>
-                <a href={socialLinks.instagram} className="p-2 text-gray-400 hover:text-white transition-colors"><Instagram size={24} /></a>
-                <a href={socialLinks.youtube} className="p-2 text-gray-400 hover:text-white transition-colors"><Youtube size={24} /></a>
-                <a href={socialLinks.tiktok} className="p-2 text-gray-400 hover:text-white transition-colors"><TiktokIcon size={24} /></a>
-                <a href={socialLinks.bluesky} className="p-2 text-gray-400 hover:text-white transition-colors"><BlueskyIcon size={24} /></a>
+                <a href={socialLinks.github} className="p-2 text-gray-400 hover:text-cyan-400 hover:scale-110 transition-all duration-300"><Github size={24} /></a>
+                <a href={socialLinks.twitter} className="p-2 text-gray-400 hover:text-cyan-400 hover:scale-110 transition-all duration-300"><Twitter size={24} /></a>
+                <a href={socialLinks.linkedin} className="p-2 text-gray-400 hover:text-cyan-400 hover:scale-110 transition-all duration-300"><Linkedin size={24} /></a>
+                <a href={socialLinks.instagram} className="p-2 text-gray-400 hover:text-cyan-400 hover:scale-110 transition-all duration-300"><Instagram size={24} /></a>
+                <a href={socialLinks.youtube} className="p-2 text-gray-400 hover:text-cyan-400 hover:scale-110 transition-all duration-300"><Youtube size={24} /></a>
+                <a href={socialLinks.tiktok} className="p-2 text-gray-400 hover:text-cyan-400 hover:scale-110 transition-all duration-300"><TiktokIcon size={24} /></a>
+                <a href={socialLinks.bluesky} className="p-2 text-gray-400 hover:text-cyan-400 hover:scale-110 transition-all duration-300"><BlueskyIcon size={24} /></a>
               </div>
             </div>
           </div>
@@ -282,14 +289,12 @@ const App = () => {
             <Star className="text-yellow-400 fill-yellow-400" />
             <p className="text-lg font-medium">Trusted by industry leaders for hardware reviews & technical advocacy.</p>
           </div>
-          <div className="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2 opacity-50 grayscale hover:grayscale-0 transition-all">
-            <span className="font-semibold text-sm tracking-wider">TECHGEAR</span>
-            <span className="font-semibold text-sm tracking-wider">ROGERS</span>
-            <span className="font-semibold text-sm tracking-wider">FIDO</span>
-            <span className="font-semibold text-sm tracking-wider">A&CO</span>
-            <span className="font-semibold text-sm tracking-wider">LOGIC</span>
-            <span className="font-semibold text-sm tracking-wider">MLH</span>
-            <span className="font-semibold text-sm tracking-wider">TAIT</span>
+          <div className="w-full md:w-1/2 overflow-hidden relative marquee-mask">
+            <div className="flex gap-8 animate-scroll whitespace-nowrap w-max opacity-50 grayscale hover:grayscale-0 transition-all">
+              {[...sponsors, ...sponsors, ...sponsors, ...sponsors].map((sponsor, index) => (
+                <span key={index} className="font-semibold text-sm tracking-wider">{sponsor}</span>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -392,6 +397,7 @@ const App = () => {
       <footer className="py-10 border-t border-white/10 text-center text-gray-500 text-sm">
         <p>© 2025 ajenaration.</p>
       </footer>
+      </div>
 
       {/* Resume Modal */}
       {isResumeOpen && (
@@ -432,6 +438,20 @@ const App = () => {
         }
         .animate-pulse {
           animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-scroll {
+          animation: scroll 30s linear infinite;
+        }
+        .animate-scroll:hover {
+          animation-play-state: paused;
+        }
+        .marquee-mask {
+          mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+          -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         }
       `}</style>
     </div>
