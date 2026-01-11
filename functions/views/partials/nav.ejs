@@ -2,16 +2,21 @@
     <div class="container nav-content">
         <a href="/" class="logo">ajenaration</a>
         
-        <button class="mobile-menu-btn">☰</button>
+        <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
         
-        <ul class="nav-links">
-            <li><a href="/" class="<%= currentPage === 'home' ? 'active' : '' %>">Home</a></li>
-            <li><a href="/projects" class="<%= currentPage === 'projects' ? 'active' : '' %>">Projects</a></li>
-            <li><a href="/content" class="<%= currentPage === 'content' ? 'active' : '' %>">Content</a></li>
-            <li><a href="/blog" class="<%= currentPage === 'blog' ? 'active' : '' %>">Blog</a></li>
-            <li><a href="/contact" class="<%= currentPage === 'contact' ? 'active' : '' %>">Contact</a></li>
-        </ul>
-        <a href="/ayana-n-resume.pdf" class="btn secondary-btn view-resume-button" target="_blank" rel="noopener">View Resume</a>
-        <a href="/ayana-n-resume.pdf" class="btn primary-btn download-button" download>Download Resume</a>
+        <div class="nav-menu">
+            <ul class="nav-links">
+                <li><a href="/" class="<%= currentPage === 'home' ? 'active' : '' %>">Home</a></li>
+                <li><a href="/projects" class="<%= currentPage === 'projects' ? 'active' : '' %>">Projects</a></li>
+                <li><a href="/content" class="<%= currentPage === 'content' ? 'active' : '' %>">Content</a></li>
+                <li><a href="/blog" class="<%= currentPage === 'blog' ? 'active' : '' %>">Blog</a></li>
+                <li><a href="/contact" class="<%= currentPage === 'contact' ? 'active' : '' %>">Contact</a></li>
+            </ul>
+            
+            <div class="nav-buttons">
+                <a href="/ayana-n-resume.pdf" class="btn btn-outline" target="_blank" rel="noopener noreferrer">View Resume</a>
+                <a href="/ayana-n-resume.pdf" class="btn btn-primary" download>Download Resume</a>
+            </div>
+        </div>
     </div>
 </nav>
