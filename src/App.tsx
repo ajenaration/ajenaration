@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Github, 
   Twitter, 
@@ -26,142 +26,9 @@ import {
 } from 'lucide-react';
 import nameAudio from './fullname.mp3';
 import mainImage from './ajenaration-main.png';
-
-// --- Interactive Generative Art Component (Processing-like) ---
-const GenerativeArt = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    let animationFrameId: number;
-    let particles: any[] = [];
-    const particleCount = 60;
-
-    const resize = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    };
-
-    class Particle {
-      x: number; y: number; vx: number; vy: number; size: number;
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 1.5;
-        this.vy = (Math.random() - 0.5) * 1.5;
-        this.size = Math.random() * 2 + 1;
-      }
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-      }
-      draw() {
-        if (!ctx) return;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = '#22d3ee'; // Cyan accent
-        ctx.fill();
-      }
-    }
-
-    const init = () => {
-      resize();
-      particles = [];
-      for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-      }
-    };
-
-    const animate = () => {
-      ctx.fillStyle = 'rgba(10, 10, 10, 0.1)'; // Dark fade
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      const shouldMove = window.scrollY > 50;
-      
-      if (shouldMove) {
-        particles.forEach((p, i) => {
-          p.update();
-          p.draw();
-          
-          // Draw lines between nearby particles
-          for (let j = i + 1; j < particles.length; j++) {
-            const dx = p.x - particles[j].x;
-            const dy = p.y - particles[j].y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 100) {
-              ctx.beginPath();
-              ctx.strokeStyle = `rgba(34, 211, 238, ${1 - dist / 100})`;
-              ctx.lineWidth = 0.5;
-              ctx.moveTo(p.x, p.y);
-              ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.stroke();
-            }
-          }
-        });
-      }
-      animationFrameId = requestAnimationFrame(animate);
-    };
-
-    window.addEventListener('resize', resize);
-    init();
-    animate();
-
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', resize);
-    };
-  }, []);
-
-  return <canvas ref={canvasRef} className="w-full h-full" />;
-};
-
-const TiktokIcon = ({ size = 24, className = "" }: { size?: number, className?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} fill="currentColor" viewBox="0 0 16 16" className={className}>
-    <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"/>
-  </svg>
-);
-
-const BlueskyIcon = ({ size = 24, className = "" }: { size?: number, className?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} fill="currentColor" viewBox="0 0 24 24" className={className}>
-    <path d="M12 10.8c-1.6-3.6-5.3-5.4-8.4-5.4-1 0-1.8.1-2.3.3-.6.2-1 .8-.9 1.5.1 1.4 1.1 5.1 4.8 8.8-3.4 1.3-6.1 4.2-5.1 8.3.1.4.5.7.9.7h.1c3.5 0 7.3-3.3 10.9-9.1 3.6 5.8 7.4 9.1 10.9 9.1h.1c.4 0 .8-.3.9-.7 1-4.1-1.7-7-5.1-8.3 3.7-3.7 4.7-7.4 4.8-8.8.1-.7-.3-1.3-.9-1.5-.5-.2-1.3-.3-2.3-.3-3.1 0-6.8 1.8-8.4 5.4z"/>
-  </svg>
-);
-
-
-  const socialLinks = {
-    github: "https://github.com/ajenaration",
-    twitter: "https://twitter.com/ajenaration",
-    instagram: "https://instagram.com/ajenaration",
-    tiktok: "https://tiktok.com/@ajenaration",
-    youtube: "https://youtube.com/@ajenaration",
-    bluesky: "https://bsky.app/profile/ajenaration.bsky.social",
-    linkedin: "https://linkedin.com/in/ayana-n/"
-  };
-
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  tags: string[];
-  image: string;
-  link: string;
-}
-
-interface BlogPost {
-  id: number;
-  title: string;
-  excerpt: string;
-  date: string;
-  readTime: string;
-  platform: 'Medium' | 'Dev.to';
-  url: string;
-}
+import GenerativeArt from './components/GenerativeArt';
+import { TiktokIcon, BlueskyIcon } from './components/CustomIcons';
+import { socialLinks, sponsors, projects, blogPosts, fullTechStack, contentStats } from './data/content';
 
 const App = () => {
   const [activeTab, setActiveTab] = useState<'projects' | 'blog'>('projects');
@@ -196,116 +63,6 @@ const App = () => {
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
   const [terminalInput, setTerminalInput] = useState('');
   const [isEmailCopied, setIsEmailCopied] = useState(false);
-  const sponsors = ["TECHGEAR", "ROGERS", "FIDO", "A&CO", "LOGIC", "MLH", "TAIT"];
-
-  const projects: Project[] = [
-    {
-      id: 1,
-      title: "Neural Interface Dashboard",
-      description: "A real-time data visualization tool for BCI devices using React and Three.js. Optimized for high-frequency data streams.",
-      tags: ["React", "Three.js", "WebSockets"],
-      image: "https://csspicker.dev/api/image/?q=cyberpunk+interface&image_type=photo",
-      link: "#"
-    },
-    {
-      id: 2,
-      title: "Autonomous Drone Swarm",
-      description: "Lead developer for a decentralized coordination system for 50+ micro-drones. Sponsored by TechGear Pro.",
-      tags: ["C++", "Python", "ROS"],
-      image: "https://csspicker.dev/api/image/?q=drone+technology&image_type=photo",
-      link: "#"
-    },
-    {
-      id: 3,
-      title: "Edge AI Camera Kit",
-      description: "Open-source hardware and software stack for real-time object detection on low-power ARM devices.",
-      tags: ["TensorFlow", "Edge Computing", "IoT"],
-      image: "https://csspicker.dev/api/image/?q=circuit+board&image_type=photo",
-      link: "#"
-    }
-  ];
-
-  const blogPosts: BlogPost[] = [
-    {
-      id: 1,
-      title: "Why Developer Advocacy is the Future of Engineering",
-      excerpt: "Exploring the intersection of community building and technical excellence in the modern SaaS landscape.",
-      date: "Oct 12, 2023",
-      readTime: "8 min read",
-      platform: "Medium",
-      url: "#"
-    },
-    {
-      id: 2,
-      title: "Optimizing WebGL for Low-End Mobile Devices",
-      excerpt: "A deep dive into shader optimization and memory management for mobile-first creative coding.",
-      date: "Sep 28, 2023",
-      readTime: "12 min read",
-      platform: "Dev.to",
-      url: "#"
-    },
-    {
-      id: 3,
-      title: "Building a Career as a Creative Technologist",
-      excerpt: "How to bridge the gap between design, hardware, and software to create unique digital experiences.",
-      date: "Aug 15, 2023",
-      readTime: "6 min read",
-      platform: "Medium",
-      url: "#"
-    }
-  ];
-
-  const fullTechStack = {
-    "Languages & Frameworks": ["Python", "C#", ".NET", "Swift", "Bash", "Java", "AngularJS", "PHP", "Spring Boot"],
-    "Cloud & DevOps": ["AWS", "Azure", "Docker", "Kubernetes", "GitHub Actions", "Terraform"],
-    "Databases": ["MySQL", "PostgreSQL", "MongoDB", "ELK Stack", "Oracle SQL"],
-    "Tools & Observability": ["Git", "Postman", "Linux", "Dynatrace", "JIRA", "Grafana", "Datadog", "Splunk"],
-    "Security": ["VPN", "PKI", "SSL", "Vault", "Incident Management"],
-    "AI & ML": ["TensorFlow", "PyTorch", "Scikit-learn", "MLOps", "Predictive Analytics"]
-  };
-
-  const contentStats = [
-    {
-      platform: 'YouTube',
-      icon: <Youtube size={20} />,
-      url: 'https://www.youtube.com/watch?v=8m58xF2bnI8',
-      views: '12.5K',
-      title: 'Setup Tour & Tech Review',
-      image: 'https://img.youtube.com/vi/8m58xF2bnI8/maxresdefault.jpg'
-    },
-    {
-      platform: 'TikTok',
-      icon: <TiktokIcon size={20} />,
-      url: 'https://www.tiktok.com/@ajenaration/video/7563638573807766814',
-      views: '45.2K',
-      title: 'Mechanical Keyboard Build',
-      image: 'https://csspicker.dev/api/image/?q=mechanical+keyboard&image_type=photo'
-    },
-    {
-      platform: 'TikTok',
-      icon: <TiktokIcon size={20} />,
-      url: 'https://www.tiktok.com/@ajenaration/video/7563720367739505951',
-      views: '82.1K',
-      title: 'Day in the Life: Engineer',
-      image: 'https://csspicker.dev/api/image/?q=coding+setup&image_type=photo'
-    },
-    {
-      platform: 'TikTok',
-      icon: <TiktokIcon size={20} />,
-      url: 'https://www.tiktok.com/@ajenaration/video/7574134173900885279',
-      views: '28.4K',
-      title: 'Smart Home Integration',
-      image: 'https://csspicker.dev/api/image/?q=smart+home&image_type=photo'
-    },
-    {
-      platform: 'TikTok',
-      icon: <TiktokIcon size={20} />,
-      url: 'https://www.tiktok.com/@ajenaration/video/7574331979953474846',
-      views: '156K',
-      title: 'Viral Tech Tips',
-      image: 'https://csspicker.dev/api/image/?q=tech+gadgets&image_type=photo'
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-gray-100 font-sans selection:bg-cyan-500 selection:text-white">
@@ -508,8 +265,8 @@ const App = () => {
 
       {/* About Page */}
       {currentView === 'about' && (
-        <div className="pt-32 pb-20 px-6 min-h-screen flex justify-center">
-          <div className="relative w-full max-w-3xl">
+        <div className="pt-32 pb-20 px-6 min-h-screen">
+          <div className="relative w-full max-w-6xl mx-auto">
             <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl blur-2xl opacity-20 animate-pulse"></div>
             <div className="bg-[#0a0a0a] w-full rounded-2xl border border-white/10 flex flex-col shadow-2xl relative overflow-hidden">
               <div className="flex items-center justify-between p-4 border-b border-white/10 bg-[#1a1a1a]">
@@ -530,7 +287,7 @@ const App = () => {
                   <X size={20} />
                 </button>
               </div>
-              <div className="p-8 space-y-8 bg-[#0a0a0a]">
+              <div className="p-8 space-y-12 bg-[#0a0a0a]">
                 <div>
                   <h3 className="text-xl font-bold mb-2 text-white">
                     I'm Ayana (/ə ˈjenə/) Nithey
@@ -549,22 +306,20 @@ const App = () => {
                 </div>
 
                 <div>
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-cyan-400 mb-4">Tech Stack</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {["Python", "Java", "React", "AWS", "Docker", "Kubernetes", "Terraform", "GitHub Actions", "PostgreSQL", "AI/ML"].map(tech => (
-                      <span key={tech} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-sm font-medium text-gray-300">
-                        {tech}
-                      </span>
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-cyan-400 mb-6">Tech Stack</h4>
+                  <div className="grid md:grid-cols-2 gap-8">
+                    {Object.entries(fullTechStack).map(([category, skills]) => (
+                      <div key={category}>
+                        <h5 className="text-xs font-bold text-gray-500 mb-3 uppercase tracking-wider">{category}</h5>
+                        <div className="flex flex-wrap gap-2">
+                          {skills.map(skill => (
+                            <span key={skill} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-sm font-medium text-gray-300">
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
                     ))}
-                    <button 
-                      onClick={() => {
-                        setIsTechStackModalOpen(true);
-                        setTerminalInput('');
-                      }}
-                      className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-sm font-bold text-cyan-400 hover:bg-cyan-500/20 transition-colors"
-                    >
-                      + View All
-                    </button>
                   </div>
                 </div>
 
