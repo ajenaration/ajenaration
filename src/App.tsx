@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { 
   Github, 
   Twitter, 
@@ -11,8 +11,125 @@ import {
   Mail, 
   ChevronRight,
   Star,
-  Coffee
+  Coffee,
+  Instagram,
+  Youtube,
+  X,
+  Download,
 } from 'lucide-react';
+
+// --- Interactive Generative Art Component (Processing-like) ---
+const GenerativeArt = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animationFrameId: number;
+    let particles: any[] = [];
+    const particleCount = 60;
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+
+    class Particle {
+      x: number; y: number; vx: number; vy: number; size: number;
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 1.5;
+        this.vy = (Math.random() - 0.5) * 1.5;
+        this.size = Math.random() * 2 + 1;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+      }
+      draw() {
+        if (!ctx) return;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = '#ef4444'; // Red accent
+        ctx.fill();
+      }
+    }
+
+    const init = () => {
+      resize();
+      particles = [];
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    };
+
+    const animate = () => {
+      ctx.fillStyle = 'rgba(28, 13, 10, 0.1)'; // Deep brown fade
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      particles.forEach((p, i) => {
+        p.update();
+        p.draw();
+        
+        // Draw lines between nearby particles
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = p.x - particles[j].x;
+          const dy = p.y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 100) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(239, 68, 68, ${1 - dist / 100})`;
+            ctx.lineWidth = 0.5;
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      });
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    window.addEventListener('resize', resize);
+    init();
+    animate();
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('resize', resize);
+    };
+  }, []);
+
+  return <canvas ref={canvasRef} className="w-full h-full rounded-2xl" />;
+};
+
+const TiktokIcon = ({ size = 24, className = "" }: { size?: number, className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} fill="currentColor" viewBox="0 0 16 16" className={className}>
+    <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"/>
+  </svg>
+);
+
+const BlueskyIcon = ({ size = 24, className = "" }: { size?: number, className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} fill="currentColor" viewBox="0 0 24 24" className={className}>
+    <path d="M12 10.8c-1.6-3.6-5.3-5.4-8.4-5.4-1 0-1.8.1-2.3.3-.6.2-1 .8-.9 1.5.1 1.4 1.1 5.1 4.8 8.8-3.4 1.3-6.1 4.2-5.1 8.3.1.4.5.7.9.7h.1c3.5 0 7.3-3.3 10.9-9.1 3.6 5.8 7.4 9.1 10.9 9.1h.1c.4 0 .8-.3.9-.7 1-4.1-1.7-7-5.1-8.3 3.7-3.7 4.7-7.4 4.8-8.8.1-.7-.3-1.3-.9-1.5-.5-.2-1.3-.3-2.3-.3-3.1 0-6.8 1.8-8.4 5.4z"/>
+  </svg>
+);
+
+
+  const socialLinks = {
+    github: "https://github.com/ajenaration",
+    twitter: "https://twitter.com/ajenaration",
+    instagram: "https://instagram.com/ajenaration",
+    tiktok: "https://tiktok.com/@ajenaration",
+    youtube: "https://youtube.com/@ajenaration",
+    bluesky: "https://bsky.app/profile/ajenaration.bsky.social",
+    linkedin: "https://linkedin.com/in/ayana-n/"
+  };
 
 interface Project {
   id: number;
@@ -35,6 +152,7 @@ interface BlogPost {
 
 const App = () => {
   const [activeTab, setActiveTab] = useState<'projects' | 'blog'>('projects');
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   const projects: Project[] = [
     {
@@ -102,13 +220,16 @@ const App = () => {
             <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-lg flex items-center justify-center">
               <Cpu size={18} className="text-white" />
             </div>
-            <span>TECH<span className="text-cyan-400">ADVOCATE</span></span>
+            <span className="font-accent font-normal text-2xl">ajenaration</span>
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
             <a href="#home" className="hover:text-cyan-400 transition-colors">Home</a>
             <a href="#work" className="hover:text-cyan-400 transition-colors">Work</a>
             <a href="#sponsorship" className="hover:text-cyan-400 transition-colors">Sponsorship</a>
-            <button className="bg-white text-black px-4 py-2 rounded-full hover:bg-cyan-400 transition-all duration-300">
+            <button 
+              onClick={() => setIsResumeOpen(true)}
+              className="bg-white text-black px-4 py-2 rounded-full hover:bg-cyan-400 transition-all duration-300"
+            >
               Hire Me
             </button>
           </div>
@@ -120,10 +241,10 @@ const App = () => {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold mb-6 uppercase tracking-widest">
-              <Zap size={12} /> Available for Developer Advocate Roles
+              <Zap size={12} /> Available for Developer Advocate and Backend Roles
             </div>
             <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
-              Building the <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Future</span> of Tech.
+              Obsessed with the <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">new</span>.
             </h1>
             <p className="text-xl text-gray-400 mb-8 leading-relaxed">
               Creative Technologist & Developer Advocate. I bridge the gap between complex engineering and human-centric storytelling.
@@ -133,18 +254,22 @@ const App = () => {
                 View Projects <ChevronRight size={20} />
               </button>
               <div className="flex items-center gap-4 px-4">
-                <a href="#" className="p-2 text-gray-400 hover:text-white transition-colors"><Github size={24} /></a>
-                <a href="#" className="p-2 text-gray-400 hover:text-white transition-colors"><Twitter size={24} /></a>
-                <a href="#" className="p-2 text-gray-400 hover:text-white transition-colors"><Linkedin size={24} /></a>
+                <a href={socialLinks.github} className="p-2 text-gray-400 hover:text-white transition-colors"><Github size={24} /></a>
+                <a href={socialLinks.twitter} className="p-2 text-gray-400 hover:text-white transition-colors"><Twitter size={24} /></a>
+                <a href={socialLinks.linkedin} className="p-2 text-gray-400 hover:text-white transition-colors"><Linkedin size={24} /></a>
+                <a href={socialLinks.instagram} className="p-2 text-gray-400 hover:text-white transition-colors"><Instagram size={24} /></a>
+                <a href={socialLinks.youtube} className="p-2 text-gray-400 hover:text-white transition-colors"><Youtube size={24} /></a>
+                <a href={socialLinks.tiktok} className="p-2 text-gray-400 hover:text-white transition-colors"><TiktokIcon size={24} /></a>
+                <a href={socialLinks.bluesky} className="p-2 text-gray-400 hover:text-white transition-colors"><BlueskyIcon size={24} /></a>
               </div>
             </div>
           </div>
-          <div className="relative">
+          <div className="relative max-w-lg mx-auto">
             <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl blur-2xl opacity-20 animate-pulse"></div>
             <img 
-              src="https://csspicker.dev/api/image/?q=developer+setup+neon&image_type=photo" 
+              src="./src/ajenaration-main.png"
               alt="Tech Setup" 
-              className="relative rounded-2xl border border-white/10 shadow-2xl"
+              className="relative rounded-2xl border border-white/10 shadow-2xl w-full h-[450px] object-cover object-top"
             />
           </div>
         </div>
@@ -153,14 +278,18 @@ const App = () => {
       {/* Sponsorship Banner */}
       <section id="sponsorship" className="py-12 bg-white/5 border-y border-white/10">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 shrink-0">
             <Star className="text-yellow-400 fill-yellow-400" />
             <p className="text-lg font-medium">Trusted by industry leaders for hardware reviews & technical advocacy.</p>
           </div>
-          <div className="flex items-center gap-8 opacity-50 grayscale hover:grayscale-0 transition-all">
-            <span className="font-bold text-2xl">TECHGEAR</span>
-            <span className="font-bold text-2xl">LOGIC</span>
-            <span className="font-bold text-2xl">NVIDIA</span>
+          <div className="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2 opacity-50 grayscale hover:grayscale-0 transition-all">
+            <span className="font-semibold text-sm tracking-wider">TECHGEAR</span>
+            <span className="font-semibold text-sm tracking-wider">ROGERS</span>
+            <span className="font-semibold text-sm tracking-wider">FIDO</span>
+            <span className="font-semibold text-sm tracking-wider">A&CO</span>
+            <span className="font-semibold text-sm tracking-wider">LOGIC</span>
+            <span className="font-semibold text-sm tracking-wider">MLH</span>
+            <span className="font-semibold text-sm tracking-wider">TAIT</span>
           </div>
         </div>
       </section>
@@ -250,21 +379,53 @@ const App = () => {
             Looking for a technical speaker, hardware reviewer, or a developer advocate to grow your community?
           </p>
           <div className="flex flex-col md:flex-row justify-center gap-4">
-            <a href="mailto:hello@example.com" className="flex items-center justify-center gap-2 bg-white text-black font-bold px-8 py-4 rounded-xl hover:bg-cyan-400 transition-all">
-              <Mail size={20} /> Send an Email
+            <a href="mailto:collab@ajenaration.com" className="flex items-center justify-center gap-2 bg-white text-black font-bold px-8 py-4 rounded-xl hover:bg-cyan-400 transition-all">
+              <Mail size={20} /> Let's collab
             </a>
             <button className="flex items-center justify-center gap-2 bg-white/10 border border-white/10 font-bold px-8 py-4 rounded-xl hover:bg-white/20 transition-all">
-              <Coffee size={20} /> Buy me a Gear
+              <Coffee size={20} /> Support me
             </button>
           </div>
         </div>
       </section>
 
       <footer className="py-10 border-t border-white/10 text-center text-gray-500 text-sm">
-        <p>© 2023 Creative Technologist Portfolio. Built with React & Tailwind.</p>
+        <p>© 2025 ajenaration.</p>
       </footer>
 
+      {/* Resume Modal */}
+      {isResumeOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+          <div className="relative w-full max-w-5xl h-[85vh]">
+            <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl blur-2xl opacity-20 animate-pulse"></div>
+            <div className="bg-[#0a0a0a] w-full h-full rounded-2xl border border-white/10 flex flex-col shadow-2xl relative overflow-hidden">
+            <div className="flex items-center justify-between p-6 border-b border-white/10 bg-[#0a0a0a]">
+              <h2 className="text-2xl font-bold font-sans">Resume</h2>
+              <div className="flex gap-4">
+                <a 
+                  href="/ayana-n-resume.pdf" 
+                  download 
+                  className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm font-bold transition-colors"
+                >
+                  <Download size={18} /> Download PDF
+                </a>
+                <button onClick={() => setIsResumeOpen(false)} className="p-2 hover:bg-white/10 rounded-lg transition-colors text-gray-400 hover:text-white">
+                  <X size={24} />
+                </button>
+              </div>
+            </div>
+            <div className="flex-1 bg-[#1a1a1a] p-1 overflow-hidden">
+              <iframe src="/ayana-n-resume.pdf" className="w-full h-full rounded-lg bg-white" title="Resume PDF" />
+            </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <style>{`
+        .font-sans {
+          font-family: 'Space Grotesk', sans-serif;
+        }
         @keyframes pulse {
           0%, 100% { opacity: 0.2; }
           50% { opacity: 0.4; }
