@@ -43,9 +43,9 @@ const GenerativeArt = () => {
     const resize = () => {
       // Handle high-DPI screens for crisp rendering
       const dpr = window.devicePixelRatio || 1;
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
+      const rect = canvas!.getBoundingClientRect();
+      canvas!.width = rect.width * dpr;
+      canvas!.height = rect.height * dpr;
       ctx.scale(dpr, dpr);
     };
 
@@ -53,8 +53,8 @@ const GenerativeArt = () => {
       x: number; y: number; vx: number; vy: number; size: number;
       constructor() {
         // Use the unscaled client dimensions for positioning
-        this.x = Math.random() * canvas.clientWidth;
-        this.y = Math.random() * canvas.clientHeight;
+        this.x = Math.random() * canvas!.clientWidth;
+        this.y = Math.random() * canvas!.clientHeight;
         this.vx = (Math.random() - 0.5) * 1.5;
         this.vy = (Math.random() - 0.5) * 1.5;
         this.size = Math.random() * 2 + 1;
@@ -62,8 +62,8 @@ const GenerativeArt = () => {
       update() {
         this.x += this.vx;
         this.y += this.vy;
-        if (this.x < 0 || this.x > canvas.clientWidth) this.vx *= -1;
-        if (this.y < 0 || this.y > canvas.clientHeight) this.vy *= -1;
+        if (this.x < 0 || this.x > canvas!.clientWidth) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas!.clientHeight) this.vy *= -1;
       }
       draw() {
         if (!ctx) return;
@@ -83,9 +83,9 @@ const GenerativeArt = () => {
     };
 
     const animate = () => {
-      ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+      ctx.clearRect(0, 0, canvas!.clientWidth, canvas!.clientHeight);
       ctx.fillStyle = 'rgba(10, 10, 10, 0.1)';
-      ctx.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+      ctx.fillRect(0, 0, canvas!.clientWidth, canvas!.clientHeight);
 
       const shouldMove = window.scrollY > 50;
       
