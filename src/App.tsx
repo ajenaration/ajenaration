@@ -24,7 +24,7 @@ import {
   Play,
 } from 'lucide-react';
 import nameAudio from './fullname.mp3';
-import mainImage from './ajenaration-main.png';
+import mainImage from './ajenaration-main.jpg';
 
 // --- Interactive Generative Art Component (Processing-like) ---
 const GenerativeArt = () => {
