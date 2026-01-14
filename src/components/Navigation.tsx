@@ -1,6 +1,6 @@
 import React from 'react';
-import { Terminal } from 'lucide-react';
 import { useNavigation } from '../hooks/useNavigation';
+import { WaveIcon } from './ui/CustomIcons';
 import { ViewType } from '../types';
 
 interface NavigationProps {
@@ -15,7 +15,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentView, onOpenResume }) =>
     <nav className="fixed top-0 w-full z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/10">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-2 font-bold text-xl tracking-tighter">
-          <Terminal size={28} className="text-cyan-400" />
+          <WaveIcon size={28} className="text-cyan-400" />
           <span className="font-accent font-normal text-2xl">ajenaration</span>
         </div>
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
