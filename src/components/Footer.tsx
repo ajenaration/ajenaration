@@ -1,0 +1,9 @@
+import React from 'react';
+
+const Footer = () => (
+  <footer className="py-10 border-t border-white/10 text-center text-gray-500 text-sm">
+    <p>© 2025 <span className="font-accent">ajenaration</span>.</p>
+  </footer>
+);
+
+export default Footer;
