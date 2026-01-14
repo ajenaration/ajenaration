@@ -14,10 +14,10 @@ const Navigation: React.FC<NavigationProps> = ({ currentView, onOpenResume }) =>
   return (
     <nav className="fixed top-0 w-full z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/10">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <div className="flex items-center gap-2 font-bold text-xl tracking-tighter">
+        <a href="/" onClick={(e) => { e.preventDefault(); navigateTo('home'); }} className="flex items-center gap-2 font-bold text-xl tracking-tighter">
           <WaveIcon size={28} className="text-cyan-400" />
           <span className="font-accent font-normal text-2xl">ajenaration</span>
-        </div>
+        </a>
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
           <button onClick={() => navigateTo('home')} className={`hover:text-cyan-400 transition-colors ${currentView === 'home' ? 'text-cyan-400' : ''}`}>Home</button>
           <button onClick={() => navigateTo('about')} className={`hover:text-cyan-400 transition-colors ${currentView === 'about' ? 'text-cyan-400' : ''}`}>About</button>
@@ -35,6 +35,14 @@ const Navigation: React.FC<NavigationProps> = ({ currentView, onOpenResume }) =>
           >
             Hire Me
           </button>
+          <a
+            href="https://buymeacoffee.com/ajena"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-yellow-400 text-black px-3 py-1 rounded-md font-bold hover:brightness-95 transition-all"
+          >
+            Buy me a coffee
+          </a>
         </div>
       </div>
     </nav>
