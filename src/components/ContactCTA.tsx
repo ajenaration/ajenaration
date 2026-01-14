@@ -13,9 +13,9 @@ const ContactCTA: React.FC = () => {
           <a href="mailto:collab@ajenaration.com" className="flex items-center justify-center gap-2 bg-white text-black font-bold px-8 py-4 rounded-xl hover:bg-cyan-400 transition-all">
             <Mail size={20} /> Let's collab
           </a>
-          <button className="flex items-center justify-center gap-2 bg-white/10 border border-white/10 font-bold px-8 py-4 rounded-xl hover:bg-white/20 transition-all">
+          <a href="https://buymeacoffee.com/ajena" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-white text-black font-bold px-8 py-4 rounded-xl hover:bg-cyan-400 transition-all">
             <Coffee size={20} /> Support me
-          </button>
+          </a>
         </div>
       </div>
     </section>

@@ -35,14 +35,6 @@ const Navigation: React.FC<NavigationProps> = ({ currentView, onOpenResume }) =>
           >
             Hire Me
           </button>
-          <a
-            href="https://buymeacoffee.com/ajena"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-yellow-400 text-black px-3 py-1 rounded-md font-bold hover:brightness-95 transition-all"
-          >
-            Buy me a coffee
-          </a>
         </div>
       </div>
     </nav>
